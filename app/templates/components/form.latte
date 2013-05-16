@@ -1,0 +1,19 @@
+{form $form}
+<ul class=error n:if="$form->errors">
+	<li n:foreach="$form->errors as $error">{$error}</li>
+</ul>
+
+<table>
+{foreach $form->controls as $input }
+<tr n:class="$input->required ? required">
+	<th>{label $input /}</th>
+	<td>{if $input->controlPrototype->type !== submit}{input $input}{/if}
+		<span class=error n:if="$input->errors">{$input->errors|implode:' '}</span>
+	</td>
+</tr>
+<tr>
+	<td colspan="2">{if $input->controlPrototype->type === submit}{input $input}{/if}</td>
+</tr>
+{/foreach}
+</table>
+{/form}
