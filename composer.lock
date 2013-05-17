@@ -3,8 +3,56 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "71b69f6571d246c6a50614a2ce19d2dd",
+    "hash": "8a5d23f32dd6e13b1b782857e889e648",
     "packages": [
+        {
+            "name": "dibi/dibi",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dg/dibi.git",
+                "reference": "v2.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dg/dibi/zipball/v2.0.3",
+                "reference": "v2.0.3",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "dibi/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3",
+                "GPLv2",
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "David Grudl",
+                    "homepage": "http://davidgrudl.com"
+                }
+            ],
+            "description": "Dibi is Database Abstraction Library for PHP 5.",
+            "homepage": "http://dibiphp.com/",
+            "keywords": [
+                "access",
+                "database",
+                "dbal",
+                "mssql",
+                "mysql",
+                "odbc",
+                "oracle",
+                "pdo",
+                "postgresql",
+                "sqlite"
+            ],
+            "time": "2013-04-03 12:40:16"
+        },
         {
             "name": "nette/nette",
             "version": "v2.0.10",
@@ -168,6 +216,52 @@
                 "nette"
             ],
             "time": "2013-04-09 14:26:20"
+        },
+        {
+            "name": "schmutzka/gettexttranslator",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Schmutzka/GettextTranslator.git",
+                "reference": "2.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Schmutzka/GettextTranslator/zipball/2.0.2",
+                "reference": "2.0.2",
+                "shasum": ""
+            },
+            "require": {
+                "nette/nette": ">=2.0.0",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "GettextTranslator/"
+                ]
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Patrik Votoček",
+                    "email": "patrik@votocek.cz",
+                    "homepage": "http://patrik.votocek.cz",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Tomáš Votruba",
+                    "homepage": "http://www.schmutzka.eu"
+                }
+            ],
+            "description": "Translator for Nette (PHP framework).",
+            "homepage": "http://addons.nette.org/en/gettext-translator",
+            "keywords": [
+                "gettext",
+                "nette",
+                "translator"
+            ],
+            "time": "2013-04-03 00:58:45"
         }
     ],
     "packages-dev": [
@@ -177,12 +271,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "dd4f7e25ff6175b598cbc3462ca13a411e3c27f4"
+                "reference": "b7680a1ab6ee5e7eca44097340f7058fe0bf07de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/dd4f7e25ff6175b598cbc3462ca13a411e3c27f4",
-                "reference": "dd4f7e25ff6175b598cbc3462ca13a411e3c27f4",
+                "url": "https://api.github.com/repos/nette/tester/zipball/b7680a1ab6ee5e7eca44097340f7058fe0bf07de",
+                "reference": "b7680a1ab6ee5e7eca44097340f7058fe0bf07de",
                 "shasum": ""
             },
             "require": {
@@ -220,7 +314,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2013-04-25 13:48:02"
+            "time": "2013-05-17 12:49:59"
         }
     ],
     "aliases": [

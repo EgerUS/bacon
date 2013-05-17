@@ -7,7 +7,7 @@ require __DIR__ . '/../libs/autoload.php';
 $configurator = new Nette\Config\Configurator;
 
 // Enable Nette Debugger for error visualisation & logging
-//$configurator->setDebugMode(TRUE);
+$configurator->setDebugMode(TRUE);
 $configurator->enableDebugger(__DIR__ . '/../log');
 
 // Specify folder for cache
@@ -22,6 +22,34 @@ $configurator->createRobotLoader()
 // Create Dependency Injection container from config.neon file
 $configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->addConfig(__DIR__ . '/config/config.local.neon', $configurator::NONE); // none section
+
+$configurator->onCompile[] = function ($configurator, $compiler) {
+    $compiler->addExtension('dibi', new DibiNetteExtension);
+};
+
+// GettextTranslator
+$configurator->onCompile[] = function ($configurator, $compiler) {
+    $compiler->addExtension('gettextTranslator', new GettextTranslator\DI\Extension);
+};
+
 $container = $configurator->createContainer();
+
+//Nextras
+use Nette\Forms\Container;
+use Nextras\Forms\Controls;
+
+Container::extensionMethod('addOptionList', function (Container $container, $name, $label = NULL, array $items = NULL) {
+    return $container[$name] = new Controls\OptionList($label, $items);
+});
+Container::extensionMethod('addMultiOptionList', function (Container $container, $name, $label = NULL, array $items = NULL) {
+    return $container[$name] = new Controls\MultiOptionList($label, $items);
+});
+Container::extensionMethod('addDatePicker', function (Container $container, $name, $label = NULL) {
+    return $container[$name] = new Controls\DatePicker($label);
+});
+Container::extensionMethod('addDateTimePicker', function (Container $container, $name, $label = NULL) {
+    return $container[$name] = new Controls\DateTimePicker($label);
+});
+//Nextras
 
 return $container;
