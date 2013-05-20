@@ -49,7 +49,6 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 	 */
 	public function calculateHash($password)
 	{
-		dump($password);
 		return md5($password);
 	}
 

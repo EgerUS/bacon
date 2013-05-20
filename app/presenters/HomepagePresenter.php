@@ -11,4 +11,10 @@ class HomepagePresenter extends BasePresenter
 		$this->template->anyVariable = 'any value';
 	}
 
+	protected function startup()
+    {
+        parent::startup();
+
+		$this->isInRole();
+	}
 }
