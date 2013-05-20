@@ -15,7 +15,6 @@ common:
 
 	parameters:
 		security:
-			salt: bb			# sul pro kryptovani hesel
 			sessionExpire: '+30 minutes'	# expirace prihlaseni
 			sessionLongExpire: '+30 days'	# expirace dlouhodobeho prihlaseni
 		user:
@@ -24,7 +23,7 @@ common:
 	dibi:
 		host: localhost
 		username: bacon
-		password:
+		password: slanink4!
 		database: bacon
 		lazy: true
 
@@ -42,7 +41,7 @@ common:
 
 
 	services:
-		authenticator: Authenticator(%security.salt%)
+		authenticator: Authenticator
 		userRepository: User\UserRepository
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
