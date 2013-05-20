@@ -1,0 +1,20 @@
+# Gettext keys exported by GettextTranslator and Translation Panel
+# Created: 2013-05-20 13:04:53
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-05-20 13:04+0200\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4 ? 1 : 2));\n"
+
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "Česky"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
