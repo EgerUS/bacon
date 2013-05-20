@@ -1,13 +1,64 @@
 body {
-	font-size: 15px;
-	line-height: 1.6;
+	font: 10px Verdana;
+	background: #3484d2;
 	color: #333;
-	background: white;
+	margin: 38px auto;
+	min-width: 1250px;
+	width: 91%;
 }
 
-h1 {
-	color: #3484D2;
+h1, h2 {
+	font: 15px Verdana;
+	color: #1e5eb6;
+	-webkit-text-stroke: 1px rgba(0,0,0,0);
 }
+
+#banner {
+	background: #d40900;  /* Show a solid color for older browsers */
+	background: -moz-linear-gradient(#d40900, #d45000);
+	background: -o-linear-gradient(#d40900, #d45000);
+	background: -webkit-linear-gradient(#d40900, #d45000);
+	border-radius: 12px 12px 0 0;
+}
+
+#banner h1 {
+	color: white;
+	font-size: 70px;
+	line-height: 121px;
+	margin: 0;
+	padding-left: 40px;
+	text-shadow: 3px 3px 0 rgba(0, 0, 0, .9);
+	filter: shadow(color=#000000, direction=135, Strength=4);
+}
+
+nav { 
+	height: 20px;
+	background: #ddd; /* Show a solid color for older browsers */
+	background: -moz-linear-gradient(#fff, #ddd);
+	background: -o-linear-gradient(#fff, #ddd);
+	background: -webkit-linear-gradient(#fff, #ddd);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd'); /* for IE */
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+	border: 1px solid #eee;
+} 
+
+#content {
+	background: white;
+	border: 1px solid #eff4f7;
+	border-radius: 0 0 12px 12px;
+	padding: 10px 40px;
+}
+
+footer {
+	font-size: 9px;
+	padding: 1em 0;
+	text-align: center; 
+	color: gray;
+}
+
+
 
 #ajax-spinner {
 	margin: 15px 0 0 15px;

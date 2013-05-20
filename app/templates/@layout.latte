@@ -19,9 +19,10 @@
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/datepicker.css{scache}">
 
 		<!-- Vzdy az na konec aby prepsali pripadne konflikty -->
+		<link rel="stylesheet" href="{$basePath}/css/menu.css{scache}">
 		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css{scache}">
 		<link rel="stylesheet" media="print" href="{$basePath}/css/print.css{scache}">
-		<link rel="shortcut icon" href="{$basePath}/favicon.ico">
+		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAA7Q8QAAAAAAMfF+gA5Q7EAc6bwAGGI2wCEy/QASVnPAEJK5wB3uOgAOEWTAKWi9wAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREREREREREREREREREREREREREREREYoRERERERM4UxEREQp5EzZhERGghlo4YxERRkMBiqARERERGoiBERERERGoaBERERERGGERERsRERERgRERIbERERERERERERERERERsRERERERERIbERERH//wAA//8AAP//AAD/+QAA/8AAAPgAAADgAQAAgAMAAAAHAACAPwAAwP8AAIPfAADHrwAA7/8AAP7/AAD9fwAA" rel="shortcut icon" type="image/x-icon" />
 		
 		{block head}{/block}
 	</head>
@@ -30,7 +31,7 @@
 		<script> document.body.className+=' js' </script>
 
 		<div id="banner">
-			<h1>radec</h1>
+			<h1>bacon</h1>
 			<nav>
 				<div id="menu_container">
 					<ul class="sf-menu" id="nav">
@@ -102,7 +103,7 @@
 
 			{include #content}
 
-			<footer>Copyright &copy; 2013 Jiri Eger | radius easy control | Powered by Nette Framework {=Nette\Framework::VERSION}</footer>
+			<footer>Copyright &copy; 2013 Jiri Eger | backup control | Powered by Nette Framework {=Nette\Framework::VERSION}</footer>
 		</div>
 
 		{block scripts}
@@ -115,6 +116,10 @@
         <script src="{$basePath}/js/bootstrap/bootstrap.min.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.cs.js"></script>
+
+		<!-- Menu -->
+		<script src="{$basePath}/js/menu/jquery.easing-sooper.js"></script>
+		<script src="{$basePath}/js/menu/jquery.sooperfish.js"></script>
 
 		<script src="{$basePath}/js/netteForms.js"></script>
 		
