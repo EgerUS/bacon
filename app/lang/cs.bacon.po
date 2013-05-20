@@ -1,13 +1,16 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-05-20 16:11:43
+# Created: 2013-05-20 23:06:57
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-05-20 16:11+0200\n"
+"PO-Revision-Date: 2013-05-20 23:06+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4 ? 1 : 2));\n"
 
+
+msgid "Account disabled"
+msgstr "Účet je zablokován"
 
 msgid "Enter your password..."
 msgstr "Zadejte své heslo..."
@@ -39,6 +42,9 @@ msgstr "Zadejte prosím své uživatelské jméno"
 msgid "Sign in"
 msgstr "Přihlásit"
 
+msgid "Signed out due to inactivity"
+msgstr "Došlo k odhlášení z důvodu neaktivity"
+
 msgid "Timeout occured, please try it again"
 msgstr "Vypršel časový limit, zkuste to prosím znovu"
 
@@ -58,10 +64,10 @@ msgid "You have successfully signed out"
 msgstr "Byl/a jste úspěšně odhlášen/a"
 
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 msgid "Sign out"
-msgstr ""
+msgstr "Odhlásit"
 
 msgid "Česky"
 msgstr ""
