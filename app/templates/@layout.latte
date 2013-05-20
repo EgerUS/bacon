@@ -7,18 +7,19 @@
  *}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="description" content="">
 		<meta name="robots" content="{$robots}" n:ifset="$robots">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<title>{block title|striptags}bacon{/block}</title>
 
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/bootstrap.min.css{scache}">
+		<link rel="stylesheet" href="{$basePath}/css/bootstrap/bootstrap-responsive.min.css{scache}">
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/datepicker.css{scache}">
 
-		<!-- Vzdy az na konec aby prepsali pripadne konflikty -->
 		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css{scache}">
 		<link rel="stylesheet" media="print" href="{$basePath}/css/print.css{scache}">
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAA7Q8QAAAAAAMfF+gA5Q7EAc6bwAGGI2wCEy/QASVnPAEJK5wB3uOgAOEWTAKWi9wAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREREREREREREREREREREREREREREREYoRERERERM4UxEREQp5EzZhERGghlo4YxERRkMBiqARERERGoiBERERERGoaBERERERGGERERsRERERgRERIbERERERERERERERERERsRERERERERIbERERH//wAA//8AAP//AAD/+QAA/8AAAPgAAADgAQAAgAMAAAAHAACAPwAAwP8AAIPfAADHrwAA7/8AAP7/AAD9fwAA" rel="shortcut icon" type="image/x-icon" />
@@ -81,11 +82,17 @@
 		<div id="content">
 			{if $user->isLoggedIn()}
 				{if !$user->getIdentity()->email}
-					<div class="flash info"><a n:href="Profile:">{_"Please complete the missing email in your profile !"}</a></div>
+					<div class="alert alert-info">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<a n:href="Profile:">{_"Please complete the missing email in your profile !"}</a>
+					</div>
 				{/if}
 			{/if}
 			
-			<div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+			<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type}">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				{$flash->message}
+			</div>
 
 			{snippet radacctNewForm}
 				{if isset($showRadacctNewForm)}{control radacctNewForm}{/if}
@@ -115,11 +122,6 @@
 
 		<script src="{$basePath}/js/netteForms.js"></script>
 		
-		<script type="text/javascript">
-			$(document).ready(function() {
-			$('ul.sf-menu').sooperfish();
-			});
-		</script>
 		{/block}
 	</body>
 </html>
