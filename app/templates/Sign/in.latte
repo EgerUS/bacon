@@ -1,9 +1,11 @@
-{var $robots = noindex}
 
-{block #content}
+{block content}
 
-<h1 n:block=title>Sign in</h1>
+<div>
+	<div class="sign-in-form box">
+		<h1 n:block="title"><i class="icon-user"></i> {_"Login form"}</h1>
+		{include '../components/form.latte', form => $presenter[signInForm]}
+	</div>
+</div>
 
-{control signInForm}
-
-{* or use {include '../components/form.latte', form => $presenter[signInForm]} *}
+{/block}

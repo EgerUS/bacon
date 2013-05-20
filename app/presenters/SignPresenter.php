@@ -57,7 +57,7 @@ class SignPresenter extends BasePresenter
 			$user->login($values->username, $values->password);
 			$this->flashMessage($this->translator->translate('You have successfully signed in'), 'success');
 			$this->restoreRequest($this->backlink);
-			$this->redirect('Profile:');
+			$this->redirect('Homepage:');
 		} catch (Nette\Security\AuthenticationException $e) {
 			$this->flashMessage($this->translator->translate($e->getMessage()), 'error');
 		}

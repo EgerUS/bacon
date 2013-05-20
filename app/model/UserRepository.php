@@ -41,7 +41,7 @@ class UserRepository extends Nette\Object
 	public function setUserData($row, $value)
 	{
 		$this->userData = $this->db->select('*')
-									->from('radcheck')
+									->from('users')
 									->where($row.'=%s', $value)
 									->fetch();
 		return $this;
@@ -52,7 +52,7 @@ class UserRepository extends Nette\Object
 		$this->identity = $identity;
 		$this->update = $update;
 		try {
-			$this->db->update('radcheck', $update)
+			$this->db->update('users', $update)
 						->where('id=%i', $identity->getId())
 						->execute();
 			$this->updateIdentity();

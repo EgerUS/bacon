@@ -7,15 +7,11 @@ use Nette\Security,
  */
 class Authenticator extends Nette\Object implements Security\IAuthenticator
 {
-	/**	@var string	*/
-	public $salt;
-	
 	/** @var User\ProfileRepository */
 	private $userRepository;
 
-	public function __construct($salt, User\UserRepository $userRepository)
+	public function __construct(User\UserRepository $userRepository)
 	{
-		$this->salt = $salt;
 		$this->userRepository = $userRepository;
 	}
 
@@ -34,7 +30,7 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 			throw new Security\AuthenticationException('Wrong username', self::IDENTITY_NOT_FOUND);
 		}
 
-		if ($userData->value !== $password && $userData->value !== $this->calculateHash($password)) {
+		if ($userData->password !== $password && $userData->password !== $this->calculateHash($password)) {
 			throw new Security\AuthenticationException('Wrong password', self::INVALID_CREDENTIAL);
 		}
 		
@@ -42,13 +38,6 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 			throw new Security\AuthenticationException('Account disabled', self::INVALID_CREDENTIAL);
 		}
 
-		if (new DateTime($userData->datefrom) > new DateTime()) {
-			throw new Security\AuthenticationException('Account inactive', self::INVALID_CREDENTIAL);
-		}
-		if (new DateTime($userData->dateto) < new DateTime()) {
-			throw new Security\AuthenticationException('Account expired', self::INVALID_CREDENTIAL);
-		}
-			
 		return new Security\Identity($userData->id, $userData->role, $userData->toArray());
 	}
 
@@ -60,19 +49,8 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 	 */
 	public function calculateHash($password)
 	{
-		return crypt($password, $this->salt);
+		dump($password);
+		return md5($password);
 	}
-
-//	public function updateIdentity(Nette\Security\User $user)
-//	{
-//		if ($user->isLoggedIn())
-//		{
-//			try {
-//				$this->authenticate(array($user->getIdentity()->username, $user->getIdentity()->value));
-//			} catch (Nette\Security\AuthenticationException $e) {
-//				throw new Security\AuthenticationException($e->getMessage());
-//			}
-//		}
-//	}
 
 }
