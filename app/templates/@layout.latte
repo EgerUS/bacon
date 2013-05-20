@@ -19,7 +19,6 @@
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/datepicker.css{scache}">
 
 		<!-- Vzdy az na konec aby prepsali pripadne konflikty -->
-		<link rel="stylesheet" href="{$basePath}/css/menu.css{scache}">
 		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css{scache}">
 		<link rel="stylesheet" media="print" href="{$basePath}/css/print.css{scache}">
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAA7Q8QAAAAAAMfF+gA5Q7EAc6bwAGGI2wCEy/QASVnPAEJK5wB3uOgAOEWTAKWi9wAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREREREREREREREREREREREREREREREYoRERERERM4UxEREQp5EzZhERGghlo4YxERRkMBiqARERERGoiBERERERGoaBERERERGGERERsRERERgRERIbERERERERERERERERERsRERERERERIbERERH//wAA//8AAP//AAD/+QAA/8AAAPgAAADgAQAAgAMAAAAHAACAPwAAwP8AAIPfAADHrwAA7/8AAP7/AAD9fwAA" rel="shortcut icon" type="image/x-icon" />
@@ -32,60 +31,57 @@
 
 		<div id="banner">
 			<h1>bacon</h1>
-			<nav>
-				<div id="menu_container">
-					<ul class="sf-menu" id="nav">
-						{if $user->isInRole('admin')}
-						<li><a><i class="icon-user"></i> {_"Users"}</a>
-							<ul>
-								<li><a href="{link radacct:}"><i class="icon-tasks"></i> {_"Activity"}</a></li>
-								<li><a href="{link radcheck:}"><i class="icon-list"></i> {_"List and edit"}</a></li>
-								<li><a href="{link radcheck:add}"><i class="icon-plus-sign"></i> {_"New"}</a></li>
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<div class="nav-collapse collapse navbar-responsive-collapse">
+							<ul class="nav">
+								<li class="active"><a href="#">Home</a></li>
+								<li><a href="#">Link</a></li>
+								<li><a href="#">Link</a></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="#">Action</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li class="nav-header">Nav header</li>
+										<li><a href="#">Separated link</a></li>
+										<li><a href="#">One more separated link</a></li>
+									</ul>
+								</li>
 							</ul>
-						</li>
-						<li><a><i class="icon-th"></i> {_"Groups"}</a>
-							<ul>
-								<li><a href="{link radgroupcheck:}"><i class="icon-list"></i> {_"List and edit"}</a></li>
-								<li><a href="{link radgroupcheck:add}"><i class="icon-plus-sign"></i> {_"New"}</a></li>
+							<ul class="nav pull-right">
+								{if $user->isLoggedIn()}
+								<li class="divider-vertical"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> {$user->getIdentity()->username} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="{link Profile:}"><i class="icon-heart"></i> {_"Profile"}</a></li>
+										<li><a n:href="signOut!"><i class="icon-off"></i> {_"Sign out"}</a></li>
+									</ul>
+								</li>
+								{/if}
+								<li class="divider-vertical"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-flag"></i> {_"Language"} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a n:href="this, lang => cs"><i class="icon-flag"></i> {_"Česky"}</a></li>
+										<li><a n:href="this, lang => en"><i class="icon-flag"></i> {_"English"}</a></li>
+									</ul>
+								</li>
 							</ul>
-						</li>
-						<li><a><i class="icon-hdd"></i> {_"NAS"}</a>
-							<ul>
-								<li><a href="{link nas:}"><i class="icon-list"></i> {_"List and edit"}</a></li>
-								<li><a href="{link nas:add}"><i class="icon-plus-sign"></i> {_"New"}</a></li>
-							</ul>
-						</li>
-						{/if}
-					</ul>
-					<ul class="sf-menu" id="navLang">
-						<li><a href=""><i class="icon-flag"></i> {_"Language"}</a>
-							<ul>
-								<li><a n:href="this, lang => cs"><i class="icon-flag"></i> {_"Česky"}</a></li>
-								<li><a n:href="this, lang => en"><i class="icon-flag"></i> {_"English"}</a></li>
-							</ul>
-						</li>
-					</ul>
-					{if $user->isLoggedIn()}
-					<ul class="sf-menu" id="navUser">
-						<li><a href="{link Profile:}"><i class="icon-user"></i> {$user->getIdentity()->username}</a>
-							<ul>
-								<li><a href="{link Profile:}"><i class="icon-heart"></i> {_"Profile"}</a></li>
-								<li><a n:href="signOut!"><i class="icon-off"></i> {_"Sign out"}</a></li>
-							</ul>
-						</li>
-					</ul>
-					{/if}
-				</div>
-			</nav>
-		</div>
+						</div><!-- /.nav-collapse -->
+					</div>
+				</div><!-- /navbar-inner -->
+			</div><!-- /navbar -->
+		</div><!-- /banner -->
 
 		<div id="content">
 			{if $user->isLoggedIn()}
 				{if !$user->getIdentity()->email}
-					<div class="flash info"><a n:href="Profile:">{_"Please fill the missing email in your profile !"}</a></div>
-				{/if}
-				{if Nette\DateTime::from($user->getIdentity()->dateto)->getTimestamp() - Nette\DateTime::from(new DateTime())->getTimestamp() < 2592000}
-					<div class="flash error"><a n:href="Profile:">{_"Your account expires soon !"}</a></div>
+					<div class="flash info"><a n:href="Profile:">{_"Please complete the missing email in your profile !"}</a></div>
 				{/if}
 			{/if}
 			
@@ -116,10 +112,6 @@
         <script src="{$basePath}/js/bootstrap/bootstrap.min.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.cs.js"></script>
-
-		<!-- Menu -->
-		<script src="{$basePath}/js/menu/jquery.easing-sooper.js"></script>
-		<script src="{$basePath}/js/menu/jquery.sooperfish.js"></script>
 
 		<script src="{$basePath}/js/netteForms.js"></script>
 		

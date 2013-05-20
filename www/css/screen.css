@@ -14,10 +14,10 @@ h1, h2 {
 }
 
 #banner {
-	background: #d40900;  /* Show a solid color for older browsers */
-	background: -moz-linear-gradient(#d40900, #d45000);
-	background: -o-linear-gradient(#d40900, #d45000);
-	background: -webkit-linear-gradient(#d40900, #d45000);
+	background: #7e0000;  /* Show a solid color for older browsers */
+	background: -moz-linear-gradient(#7e0000, #d45000);
+	background: -o-linear-gradient(#7e0000, #d45000);
+	background: -webkit-linear-gradient(#7e0000, #d45000);
 	border-radius: 12px 12px 0 0;
 }
 
@@ -31,18 +31,15 @@ h1, h2 {
 	filter: shadow(color=#000000, direction=135, Strength=4);
 }
 
-nav { 
-	height: 20px;
-	background: #ddd; /* Show a solid color for older browsers */
-	background: -moz-linear-gradient(#fff, #ddd);
-	background: -o-linear-gradient(#fff, #ddd);
-	background: -webkit-linear-gradient(#fff, #ddd);
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd'); /* for IE */
-	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-	-moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-	border: 1px solid #eee;
+.navbar { 
+	margin-bottom: 0px;
 } 
+
+.navbar-inner {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
 
 #content {
 	background: white;
@@ -70,11 +67,33 @@ footer {
 }
 
 div.flash {
-	color: black;
+	color: green;
 	background: #FFF9D7;
 	border: 1px solid #E2C822;
 	padding: 1em;
 	margin: 1em 0;
+	border-radius: 12px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+	-moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+}
+
+div.flash.success {
+	background: #D1FF9F;
+	color: #264409;
+	border-color: #C6D880;
+}
+
+div.flash.info {
+	background: #FFF6BF;
+	color: #514721;
+	border-color: #FFD324;
+}
+
+div.flash.error {
+	background: #FFA6A6;
+	color: #8a1f11;
+	border-color: #FBC2C4;
 }
 
 a[href^="error:"] {
@@ -87,8 +106,8 @@ form tr, form td {
 	font-weight: normal;
 }
 
-form tr {
-	text-align: right;
+form label {
+	margin-top: 5px;
 }
 
 form .required label {
@@ -102,4 +121,59 @@ form .error {
 
 html.js .jshidden {
 	display: none;
+}
+
+.box {
+	font: 10px Verdana;
+	white-space: nowrap;
+	background: #f0f0f0;
+	margin-bottom: 10px;
+	padding: 3%;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+}
+
+
+.box img {
+	float: left;
+}
+
+.box p {
+	clear: both;
+}
+
+.box:nth-child(4n - 2) h2 {
+	color: #00a6e5;
+}
+
+.box:nth-child(4n - 2) img {
+	margin: -24px 0 0 -24px;
+}
+
+.box:nth-child(4n - 1) h2 a {
+	color: #db8e34;
+	background: transparent;
+}
+
+.box:nth-child(4n) {
+	margin: 0;
+}
+
+.box:nth-child(4n) h2 a {
+	color: #578404;
+	background: transparent;
+}
+
+.box th {
+	text-align: right;
+	padding-right: 20px;
+}
+
+.sign-in-form {
+	width: 400px;
+	margin: auto;
+}
+
+.sign-in-form h1 {
+	border-bottom: 1px solid;
 }
