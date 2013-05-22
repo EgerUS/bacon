@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-05-20 23:06:57
+# Created: 2013-05-21 21:32:47
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-05-20 23:06+0200\n"
+"PO-Revision-Date: 2013-05-21 21:32+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,11 +12,32 @@ msgstr ""
 msgid "Account disabled"
 msgstr "Účet je zablokován"
 
+msgid "Confirm password:"
+msgstr "Potvrďte heslo:"
+
+msgid "Current password:"
+msgstr "Současné heslo:"
+
+msgid "Description:"
+msgstr "Popis:"
+
+msgid "Email:"
+msgstr "Email:"
+
+msgid "Enter info about yourself..."
+msgstr "Zadejte info o své osobě..."
+
+msgid "Enter your email..."
+msgstr "Zadejte svůj email..."
+
 msgid "Enter your password..."
 msgstr "Zadejte své heslo..."
 
 msgid "Enter your username..."
 msgstr "Zadejte své uživatelské jméno..."
+
+msgid "Fill in for password change..."
+msgstr "Vyplňte pro změnu hesla..."
 
 msgid "Keep me signed in:"
 msgstr "Zůstat přihlášen/a:"
@@ -27,11 +48,23 @@ msgstr "Jazyk"
 msgid "Login form"
 msgstr "Přihlášení"
 
+msgid "New password:"
+msgstr "Nové heslo:"
+
 msgid "Password:"
 msgstr "Heslo:"
 
+msgid "Passwords must match"
+msgstr "Hesla se musí shodovat"
+
 msgid "Please complete the missing email in your profile !"
 msgstr "Vyplňte prosím chybějící e-mail ve vašem profilu !"
+
+msgid "Please, describe you"
+msgstr "Zadejte prosím info o své osobě"
+
+msgid "Please, enter your email address"
+msgstr "Zadejte prosím svůj email"
 
 msgid "Please, enter your password"
 msgstr "Zadejte prosím své heslo"
@@ -39,8 +72,23 @@ msgstr "Zadejte prosím své heslo"
 msgid "Please, enter your username"
 msgstr "Zadejte prosím své uživatelské jméno"
 
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Profile form"
+msgstr "Profil"
+
+msgid "Role:"
+msgstr "Oprávnění:"
+
+msgid "Save"
+msgstr "Uložit"
+
 msgid "Sign in"
 msgstr "Přihlásit"
+
+msgid "Sign out"
+msgstr "Odhlásit"
 
 msgid "Signed out due to inactivity"
 msgstr "Došlo k odhlášení z důvodu neaktivity"
@@ -48,8 +96,14 @@ msgstr "Došlo k odhlášení z důvodu neaktivity"
 msgid "Timeout occured, please try it again"
 msgstr "Vypršel časový limit, zkuste to prosím znovu"
 
+msgid "User profile successfully updated"
+msgstr "Profil uživatele byl úspěšně aktualizován"
+
 msgid "Username:"
 msgstr "Uživatelské jméno:"
+
+msgid "Wrong current password. Password was not changed."
+msgstr "Nesprávné současné heslo. Heslo nebylo změněno."
 
 msgid "Wrong password"
 msgstr "Nesprávné heslo"
@@ -57,21 +111,26 @@ msgstr "Nesprávné heslo"
 msgid "Wrong username"
 msgstr "Nesprávné uživatelské jméno"
 
+msgid "You do not have sufficient rights"
+msgstr "Nemáte dostatečná oprávnění"
+
 msgid "You have successfully signed in"
 msgstr "Byl/a jste úspěšně přihlášen/a"
 
 msgid "You have successfully signed out"
 msgstr "Byl/a jste úspěšně odhlášen/a"
 
-msgid "Profile"
-msgstr "Profil"
-
-msgid "Sign out"
-msgstr "Odhlásit"
+msgid "Passwords must be at least %d characters long."
+msgstr[0] "Heslo musí obsahovat alespoň %d znak."
+msgstr[1] "Heslo musí obsahovat alespoň %d znaky."
+msgstr[2] "Heslo musí obsahovat alespoň %d znaků."
 
 msgid "Česky"
 msgstr ""
 
 msgid "English"
+msgstr ""
+
+msgid "Please complete mandatory field."
 msgstr ""
 
