@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "8a5d23f32dd6e13b1b782857e889e648",
+    "hash": "3fc8426d41f81109a8ac63ee1db196a9",
     "packages": [
         {
             "name": "dibi/dibi",
@@ -128,49 +128,6 @@
             "time": "2013-03-08 15:44:35"
         },
         {
-            "name": "nextras/datagrid",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nextras/datagrid.git",
-                "reference": "4d2856b8466a44cbde63d7d8e491ce2fb1b436b1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nextras/datagrid/zipball/4d2856b8466a44cbde63d7d8e491ce2fb1b436b1",
-                "reference": "4d2856b8466a44cbde63d7d8e491ce2fb1b436b1",
-                "shasum": ""
-            },
-            "require": {
-                "nette/nette": ">=2.0.0",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Nextras\\Datagrid": ""
-                }
-            },
-            "notification-url": "http://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Skrasek",
-                    "email": "jan@skrasek.com",
-                    "homepage": "http://jan.skrasek.com"
-                }
-            ],
-            "description": "Datagrid component for Nette Framework.",
-            "keywords": [
-                "datagrid",
-                "nette",
-                "nextras"
-            ],
-            "time": "2013-04-25 15:01:58"
-        },
-        {
             "name": "nextras/forms",
             "version": "dev-master",
             "source": {
@@ -216,6 +173,56 @@
                 "nette"
             ],
             "time": "2013-04-09 14:26:20"
+        },
+        {
+            "name": "o5/grido",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/o5/grido.git",
+                "reference": "a153f9aa671bbf808af63671b0ae6502537ad290"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/o5/grido/zipball/a153f9aa671bbf808af63671b0ae6502537ad290",
+                "reference": "a153f9aa671bbf808af63671b0ae6502537ad290",
+                "shasum": ""
+            },
+            "require": {
+                "nette/nette": "2.0.*",
+                "php": ">=5.3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Grido": ""
+                }
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "BSD-3",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Petr Bugyík",
+                    "homepage": "http://petr.bugyik.cz/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Grido - DataGrid for Nette Framework",
+            "homepage": "http://o5.github.io/grido-sandbox/",
+            "keywords": [
+                "datagrid",
+                "datalist",
+                "grid",
+                "list",
+                "nette",
+                "table",
+                "tablegrid"
+            ],
+            "time": "2013-05-16 17:23:01"
         },
         {
             "name": "schmutzka/gettexttranslator",
@@ -271,12 +278,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "b7680a1ab6ee5e7eca44097340f7058fe0bf07de"
+                "reference": "dfd266ff2956638716fe338c1816e745baf249d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/b7680a1ab6ee5e7eca44097340f7058fe0bf07de",
-                "reference": "b7680a1ab6ee5e7eca44097340f7058fe0bf07de",
+                "url": "https://api.github.com/repos/nette/tester/zipball/dfd266ff2956638716fe338c1816e745baf249d8",
+                "reference": "dfd266ff2956638716fe338c1816e745baf249d8",
                 "shasum": ""
             },
             "require": {
@@ -314,7 +321,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2013-05-17 12:49:59"
+            "time": "2013-05-17 14:57:08"
         }
     ],
     "aliases": [
@@ -323,7 +330,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "nextras/forms": 20,
-        "nextras/datagrid": 20,
+        "o5/grido": 20,
         "nette/tester": 20
     },
     "platform": {

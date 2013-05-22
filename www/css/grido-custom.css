@@ -1,0 +1,130 @@
+.btn.search, .btn.reset {
+	line-height: 15px;
+	font-size: 10.5px;
+	font-family: verdana;
+}
+
+.grido {
+	font: 10px Verdana;
+}
+
+.grido th,
+.grido td
+ {
+    padding: 0 5px 0 5px;
+    border:solid #CACACA;
+    border-width: 0 1px 1px 0;
+    height: 30px;
+	vertical-align: middle;
+	word-wrap: break-word;
+	word-break: break-all;
+	table-layout: fixed;
+}
+
+.grido.filter.outer .items {
+    width: 87%;
+    float: left;
+}
+
+.grido input.date {background: url('../images/grido/cal.jpg') #fff no-repeat right center}
+
+.grido .right {text-align: right}
+.grido .empty {background: #FBFBFB url(../images/grido/bg.jpg) 0 0 repeat}
+
+
+.grido td.actions {
+	padding: 0 1px 0 1px;
+	white-space: nowrap;
+}
+
+.grido th.actions {
+	min-width: 120px;
+}
+
+/*radacct - sirka sloupcu*/
+.grido td.grid-cell-username {
+	min-width: 100px;
+}
+
+.grido td.grid-cell-description {
+	min-width: 100px;
+}
+
+.grido td.grid-cell-nasipaddress {
+	min-width: 100px;
+}
+
+.grido td.grid-cell-nasportid {
+	min-width: 40px;
+	text-align: center;
+}
+
+.grido td.grid-cell-acctstarttime, td.grid-cell-acctstoptime{
+	min-width: 155px;
+}
+
+.grido td.grid-cell-acctsessiontime {
+	min-width: 100px;
+}
+
+.grido td.grid-cell-callingstationid {
+	min-width: 120px;
+}
+
+.grido td.grid-cell-acctinputoctets {
+	min-width: 50px;
+}
+
+.grido td.grid-cell-acctoutputoctets {
+	min-width: 50px;
+}
+
+/*radcheck - sirka sloupcu*/
+.grido td.grid-cell-datefrom {
+	min-width: 95px;
+}
+
+.grido td.grid-cell-dateto {
+	min-width: 95px;
+}
+
+.grido td.grid-cell-disabled {
+	min-width: 50px;
+}
+
+.grido td.grid-cell-email {
+	min-width: 200px;
+}
+
+.grido td.grid-cell-role {
+	min-width: 20px;
+	width: 20px;
+}
+
+
+/*radgroupcheck - sirka sloupcu*/
+.grido td.grid-cell-groupname {
+	min-width: 20px;
+	width: 20px;
+}
+
+.grido td.grid-cell-attribute {
+	min-width: 120px;
+	width: 120px;
+}
+
+.grido td.grid-cell-op {
+	min-width: 75px;
+	width: 75px;
+}
+
+.grido td.grid-cell-value {
+	min-width: 525px;
+	width: 525px;
+}
+
+/*nas - sirka sloupcu*/
+.grido td.grid-cell-shortname {
+	min-width: 120px;
+}
+
