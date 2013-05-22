@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-05-21 21:32:47
+# Created: 2013-05-22 17:30:34
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-05-21 21:32+0200\n"
+"PO-Revision-Date: 2013-05-22 17:30+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -53,6 +53,11 @@ msgstr "Nové heslo:"
 
 msgid "Password:"
 msgstr "Heslo:"
+
+msgid "Passwords must be at least %d characters long."
+msgstr[0] "Heslo musí obsahovat alespoň %d znak."
+msgstr[1] "Heslo musí obsahovat alespoň %d znaky."
+msgstr[2] "Heslo musí obsahovat alespoň %d znaků."
 
 msgid "Passwords must match"
 msgstr "Hesla se musí shodovat"
@@ -120,10 +125,11 @@ msgstr "Byl/a jste úspěšně přihlášen/a"
 msgid "You have successfully signed out"
 msgstr "Byl/a jste úspěšně odhlášen/a"
 
-msgid "Passwords must be at least %d characters long."
-msgstr[0] "Heslo musí obsahovat alespoň %d znak."
-msgstr[1] "Heslo musí obsahovat alespoň %d znaky."
-msgstr[2] "Heslo musí obsahovat alespoň %d znaků."
+msgid "Administration"
+msgstr "Správa"
+
+msgid "Users"
+msgstr "Uživatelé"
 
 msgid "Česky"
 msgstr ""
