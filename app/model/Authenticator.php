@@ -36,7 +36,8 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 	{
 		list($username, $password) = $credentials;
 		
-		$userData = $this->userRepository->getUserData('username', $username);
+		$query = array('where'=>'username=\''.$username.'\'');
+		$userData = $this->userRepository->getUserData($query)->fetch();
 
 		if (!$userData) {
 			throw new Security\AuthenticationException('Wrong username', self::IDENTITY_NOT_FOUND);
