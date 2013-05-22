@@ -29,6 +29,16 @@
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/bootstrap-responsive.min.css{scache}">
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/datepicker.css{scache}">
 
+		<!-- Grido -->
+		<link rel="stylesheet" href="{$basePath}/css/grido/gh-fork-ribbon.css">
+		<!--[if IE]>
+		<link rel="stylesheet" href="{$basePath}/css/grido/gh-fork-ribbon.ie.css{scache}">
+		<![endif]-->
+		<link rel="stylesheet" href="{$basePath}/css/grido/style.css{scache}">
+		<link rel="stylesheet" href="{$basePath}/css/grido/grido.css{scache}">
+
+		<link rel="stylesheet" href="{$basePath}/css/grido-custom.css{scache}">
+
 		<link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css{scache}">
 		<link rel="stylesheet" media="print" href="{$basePath}/css/print.css{scache}">
 		<link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAA7Q8QAAAAAAMfF+gA5Q7EAc6bwAGGI2wCEy/QASVnPAEJK5wB3uOgAOEWTAKWi9wAAAAAAAAAAAAAAAAAAAAAAEREREREREREREREREREREREREREREREREREREREREREREREREREYoRERERERM4UxEREQp5EzZhERGghlo4YxERRkMBiqARERERGoiBERERERGoaBERERERGGERERsRERERgRERIbERERERERERERERERERsRERERERERIbERERH//wAA//8AAP//AAD/+QAA/8AAAPgAAADgAQAAgAMAAAAHAACAPwAAwP8AAIPfAADHrwAA7/8AAP7/AAD9fwAA" rel="shortcut icon" type="image/x-icon" />
@@ -63,6 +73,15 @@
 								</li>
 							</ul>
 							<ul class="nav pull-right">
+								{if $user->isInRole('admin')}
+								<li class="divider-vertical"></li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i> {_"Administration"} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="{link Users:}"><i class="icon-user"></i> {_"Users"}</a></li>
+									</ul>
+								</li>
+								{/if}
 								{if $user->isLoggedIn()}
 								<li class="divider-vertical"></li>
 								<li class="dropdown">
@@ -119,6 +138,10 @@
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.cs.js"></script>
 
+		<!-- Grido -->
+        <script src="{$basePath}/js/grido/jquery.grido.js{scache}"></script>
+        <script src="{$basePath}/js/grido/utils.js{scache}"></script>
+		
 		<script src="{$basePath}/js/netteForms.js"></script>
 		<script src="{$basePath}/js/nette.ajax.js"></script>
 
