@@ -112,7 +112,7 @@ class ProfilePresenter extends BasePresenter {
 			$update['email'] = $values->email ?: FALSE;
 			
 			/** Description */
-			$update['description'] = (isset($values->description) && $values->description && !$this->userData->description) ? $values->description : $this->userData->description;
+			$update['description'] = (isset($values->description) && !$this->userData->description) ? $values->description : $this->userData->description;
 			
 			/** Change password */
 			if ($values->oldPassword)
