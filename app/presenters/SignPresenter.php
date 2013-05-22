@@ -1,10 +1,20 @@
 <?php
+/**
+ * @author      Jiri Eger <jiri@eger.us>
+ * @link        http://github.com/EgerUS/bacon
+ * 
+ * Project:     bacon 
+ * File:        SignPresenter.php 
+ * Created:     21.5.2013 
+ * Encoding:    UTF-8 
+ * 
+ * Description: Sign-in presenter
+ * 
+ * 
+ */
 
 use Nette\Application\UI\Form;
 
-/**
- * Sign in/out presenters.
- */
 class SignPresenter extends BasePresenter
 {
 

@@ -1,12 +1,21 @@
 <?php
+/**
+ * @author      Jiri Eger <jiri@eger.us>
+ * @link        http://github.com/EgerUS/bacon
+ * 
+ * Project:     bacon 
+ * File:        UserRepository.php 
+ * Created:     21.5.2013 
+ * Encoding:    UTF-8 
+ * 
+ * Description: Class for user data manipulation
+ * 
+ * 
+ */
+
 namespace User;
 use Nette;
 
-/**
- * Operuje s uzivatelskymi daty.
- * 
- * @author Jiri Eger <jiri@eger.us>
- */
 class UserRepository extends Nette\Object
 {
 	/**	@var \Nette\Security\IIdentity */
@@ -26,8 +35,11 @@ class UserRepository extends Nette\Object
         $this->db = $connection;
     }
 	
-	/**
-	 * Vraci data uzivatele
+	/** 
+	 * User data getter
+	 * @param string row Database row for select
+	 * @param string value Value for select
+	 * @return array User data
 	 */
     public function getUserData($row, $value)
     {
@@ -38,6 +50,12 @@ class UserRepository extends Nette\Object
         return $this->userData;
 	}
 
+	/**
+	 * User data setter
+	 * @param string row Database row for select
+	 * @param string value Value for select
+	 * @return array User data
+	 */
 	public function setUserData($row, $value)
 	{
 		$this->userData = $this->db->select('*')
@@ -47,6 +65,12 @@ class UserRepository extends Nette\Object
 		return $this;
 	}
 	
+	/**
+	 * Update user data in database
+	 * @param \Nette\Security\IIdentity identity User identity data
+	 * @param array update Updated data
+	 * @return bool
+	 */
 	public function saveProfile(\Nette\Security\IIdentity $identity, $update)
 	{
 		$this->identity = $identity;
@@ -62,6 +86,10 @@ class UserRepository extends Nette\Object
 		}
 	}
 
+	/**
+	 * Update user identity
+	 * @return bool
+	 */
 	private function updateIdentity() {
 		foreach ($this->update as $key => $val) {
 			$this->identity->{$key} = $val;

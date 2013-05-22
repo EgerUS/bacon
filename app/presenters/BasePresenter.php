@@ -1,10 +1,20 @@
 <?php
+/**
+ * @author      Jiri Eger <jiri@eger.us>
+ * @link        http://github.com/EgerUS/bacon
+ * 
+ * Project:     bacon 
+ * File:        BasePresenter.php 
+ * Created:     21.5.2013 
+ * Encoding:    UTF-8 
+ * 
+ * Description: Base presenter for all application presenters
+ * 
+ * 
+ */
 
 use Nette\Security\User;
 
-/**
- * Base presenter for all application presenters.
- */
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
     /** @var GettextTranslator\Gettext */
@@ -29,8 +39,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     {
         parent::startup();
 
-		// Nastavime jazyk
-        if (!isset($this->lang)) {
+		/** Set language */
+		if (!isset($this->lang)) {
             $this->lang = $this->translator->getLang();
         } else {
             $this->translator->setLang($this->lang);
@@ -38,9 +48,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		
 		$this->auth = $this->context->authenticator;
 		
-		/**
-		 * Otestujeme prihlaseni uzivatele a jeho identitu
-		 */
+		/** Check user login status */
 		$this->checkUser();
     }
 
@@ -61,14 +69,14 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     }
 
 	/**
-	 * Overeni stavu uzivatele a identity
+	 * Check user status and identity
 	 */
 	public function checkUser()
     { 
 		/**
-		 * Zkontrolujeme zda je uzivatel prihlasen
-		 * Pokud ne, tak jej presmerujeme na prihlasovaci formular
-		 * Pokud byl odhlasen z duvodu neaktivity, tak mu to oznamime
+		 * If user is not logged in ...
+		 * ... show logout reason if exists
+		 * ... and redirect to sign form
 		 */
 		if ($this->name != 'Sign') {
 			if (!$this->getUser()->isLoggedIn() && $this->getUser()->getLogoutReason() === User::INACTIVITY) {
@@ -81,9 +89,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 			}
 		}
 
-		/**
-		 * Pokud je uzivatel prihlasen, tak overime zda souhlasi identita s udaji v db
-		 */
+		/** Check if user identity is correct */
 		if ($this->getUser()->isLoggedIn())
 		{
 			try {
@@ -95,7 +101,10 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	}
 
 	/**
-	 * Overi opravneni
+	 * Check user role
+	 * @param string role
+	 * @param string msgType
+	 * @return bool
 	 */
 	public function isInRole($role = 'admin', $msgType = 'error')
     {
@@ -108,7 +117,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     }
 
 	/**
-	 * Zpracovava odhlaseni uzivatele s pripadnym hlasenim
+	 * Handle user sign out with message
+	 * @param string msg
+	 * @param string type
 	 */
 	public function handleSignOut($msg = 'You have successfully signed out', $type = 'success')
     {

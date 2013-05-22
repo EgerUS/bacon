@@ -1,10 +1,21 @@
 <?php
+/**
+ * @author      Jiri Eger <jiri@eger.us>
+ * @link        http://github.com/EgerUS/bacon
+ * 
+ * Project:     bacon 
+ * File:        Authenticator.php 
+ * Created:     21.5.2013 
+ * Encoding:    UTF-8 
+ * 
+ * Description: User authentication class
+ * 
+ * 
+ */
 
 use Nette\Security,
 	Nette\Utils\Strings;
-/**
- * Users authenticator.
- */
+
 class Authenticator extends Nette\Object implements Security\IAuthenticator
 {
 	/** @var User\ProfileRepository */
@@ -24,6 +35,7 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 	public function authenticate(array $credentials)
 	{
 		list($username, $password) = $credentials;
+		
 		$userData = $this->userRepository->getUserData('username', $username);
 
 		if (!$userData) {
@@ -42,9 +54,8 @@ class Authenticator extends Nette\Object implements Security\IAuthenticator
 	}
 
 	/**
-	 * Computes salted password hash.
+	 * Computes md5 password hash.
 	 * @param  string password
-	 * @param  string salt
 	 * @return string
 	 */
 	public function calculateHash($password)
