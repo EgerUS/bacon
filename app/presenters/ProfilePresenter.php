@@ -1,33 +1,37 @@
 <?php
+/**
+ * @author      Jiri Eger <jiri@eger.us>
+ * @link        http://github.com/EgerUS/bacon
+ * 
+ * Project:     bacon 
+ * File:        ProfilePresenter.php 
+ * Created:     21.5.2013 
+ * Encoding:    UTF-8 
+ * 
+ * Description: Profile presenter
+ * 
+ * 
+ */
 
 use Nette\Application\UI\Form,
 	Nette\DateTime;
 
-/**
- * Presenter pro spravu profilu uzivatele
- *
- * @author Jiri Eger <jiri@eger.us>
- */
 class ProfilePresenter extends BasePresenter {
 
 	/** @var array */
 	private $userData;
 
-	/** @var Nette\DateTime */
-	private $dateNow;
-	
-	/** @var Nette\DateTime */
-	private $userDataDateTo;
-
-	/** @var Nette\DateTime */
-	private $renewDate;
-	
 	/** @var User\ProfileRepository */
 	private $userRepository;
 
 	/** @var Authenticator */
 	private $auth;
 	
+
+	/**
+	 * @param User\UserRepository userRepository
+	 * @param Authenticator auth
+	 */
 	public function __construct(User\UserRepository $userRepository, Authenticator $auth)
 	{
 		parent::__construct();
@@ -39,17 +43,8 @@ class ProfilePresenter extends BasePresenter {
 	{
 		parent::startup();
 		
-		/** Nacteme si data uzivatele */
+		/** Get user data */
 		$this->userData = $this->userRepository->getUserData('id', $this->getUser()->getId());
-
-		/** Ulozime si aktualni datum */
-		$this->dateNow = new DateTime();
-
-		/** Ulozime si konecne datum platnosti uzivatelskeho uctu */
-		$this->userDataDateTo = new DateTime($this->userData->dateto);
-
-		/** Pripravime si datum prodlouzeni */
-		$this->renewDate = DateTime::from($this->userDataDateTo->getTimestamp()+$this->context->params['user']['renew']);
 	}
 	
 
@@ -89,18 +84,6 @@ class ProfilePresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter your email...'));
 		!$this->userData->email ? $form['email']->setAttribute('class', 'alert')->setAttribute('autofocus','TRUE') : NULL;
 		
-		$form->addText('_datefrom', 'Valid from:')
-				->setDefaultValue($this->userData->datefrom)
-				->setDisabled();
-
-		$form->addText('_dateto', 'Valid to:')
-				->setDefaultValue($this->userData->dateto)
-				->setDisabled();
-		
-		($this->userDataDateTo->getTimestamp() - $this->dateNow->getTimestamp() <= $this->context->params['user']['renewExpire'])
-			? $form->addCheckbox('renew', 'Renew to:') && $this->template->renew = $this->renewDate->format('j.n.Y')
-			: FALSE;
-
 		$form->addText('desc', 'Description:', 20, 255)
 				->setDefaultValue($this->userData->desc)
 				->setRequired('Please, describe you')
@@ -114,14 +97,15 @@ class ProfilePresenter extends BasePresenter {
 		return $form;
 	}
 	
+	/**
+	 * Save user profile
+	 * @param Form form
+	 */
 	public function profileFormSubmitted(Form $form)
 	{
 		if ($this->getUser()->isLoggedIn()) {
 			$values = $form->getValues();
 			$update = array();
-			
-			/** Renew account */
-			$update['dateto'] = (isset($values->renew) && $values->renew) ? $this->renewDate->format('Y-m-d') : $this->userData->dateto ;
 			
 			/** Email */
 			$update['email'] = $values->email ?: FALSE;
@@ -133,20 +117,17 @@ class ProfilePresenter extends BasePresenter {
 			if ($values->oldPassword)
 			{
 				try {
-					/** Zkontrolujeme soucasne heslo */
+					/** Check old password */
 					$this->auth->authenticate(array(
 													$this->userData->username,
 													$values->oldPassword
 					));
 
-					/** Zkontrolujeme zda se hesla shoduji a zda ma nove heslo spravnou delku */
+					/** Checks whether the passwords match and have the correct length */
 					if ($values->newPassword == $values->confirmPassword &&
 						strlen($values->newPassword) >= $this->context->params['user']['minPasswordLength']
-					)
-					{
-						$update['value'] = ($this->userData->attribute == 'Crypt-Password') ?
-											$this->auth->calculateHash($values->newPassword) :
-											$values->newPassword;
+					) {
+						$update['password'] = $this->auth->calculateHash($values->newPassword);
 					} else {
 						$this->flashMessage($this->translator->translate('Passwords must be at least %d characters long.',$this->context->params['user']['minPasswordLength']),'error');
 					}
@@ -158,23 +139,13 @@ class ProfilePresenter extends BasePresenter {
 			try {
 				if ($this->userRepository->saveProfile($this->getUser()->getIdentity(), $update))
 				{
-					$this->flashMessage($this->translator->translate('User profile updated'),'success');
+					$this->flashMessage($this->translator->translate('User profile successfully updated'),'success');
 				}
 			} catch (Exception $e) {
 				$this->flashMessage($this->translator->translate('User profile update failed'),'error');
 			}
 		}
-		
 		$this->redirect('this');
 	}
-	
-//	public function isDateValid($date) {
-//		try {
-//			DateTime::from($date)->getTimestamp();
-//		} catch (Exception $e) {
-//			throw new \InvalidArgumentException('Neplatné datum \'%c\'.',$date);
-//		}
-//		return true;
-//	}
 	
 }
