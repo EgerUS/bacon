@@ -41,28 +41,22 @@ class UserRepository extends Nette\Object
 	 * @param string value Value for select
 	 * @return array User data
 	 */
-    public function getUserData($row, $value)
+	
+    public function getUserData(array $query=array())
     {
-        if ($this->userData === NULL) {
-            $this->setUserData($row, $value);
-        }
-
-        return $this->userData;
-	}
-
-	/**
-	 * User data setter
-	 * @param string row Database row for select
-	 * @param string value Value for select
-	 * @return array User data
-	 */
-	public function setUserData($row, $value)
-	{
-		$this->userData = $this->db->select('*')
-									->from('users')
-									->where($row.'=%s', $value)
-									->fetch();
-		return $this;
+		if(!isset($query['select']))
+		{
+			$query['select'] = '*';
+		}
+		$fluent = $this->db->select($query['select'])->from('users');
+		if(isset($query['where']))
+		{
+			$fluent = $fluent->where($query['where']);
+		}
+		foreach ($fluent as $key) {
+			$key->hash = md5(serialize($key));
+		}
+		return $fluent;
 	}
 	
 	/**
