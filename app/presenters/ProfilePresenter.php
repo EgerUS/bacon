@@ -44,7 +44,8 @@ class ProfilePresenter extends BasePresenter {
 		parent::startup();
 		
 		/** Get user data */
-		$this->userData = $this->userRepository->getUserData('id', $this->getUser()->getId());
+		$query = array('where'=>'id=\''.$this->getUser()->getId().'\'');
+		$this->userData = $this->userRepository->getUserData($query)->fetch();
 	}
 	
 
@@ -84,11 +85,11 @@ class ProfilePresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter your email...'));
 		!$this->userData->email ? $form['email']->setAttribute('class', 'alert')->setAttribute('autofocus','TRUE') : NULL;
 		
-		$form->addText('desc', 'Description:', 20, 255)
-				->setDefaultValue($this->userData->desc)
+		$form->addText('description', 'Description:', 20, 255)
+				->setDefaultValue($this->userData->description)
 				->setRequired('Please, describe you')
 				->setAttribute('placeholder', $this->translator->translate('Enter info about yourself...'));
-		$this->userData->desc ? $form['desc']->setDisabled() : FALSE;
+		$this->userData->description ? $form['description']->setDisabled() : FALSE;
 		
 		$form->addSubmit('save', 'Save')
 				->setAttribute('class','btn btn-small btn-block btn-primary');
@@ -111,7 +112,7 @@ class ProfilePresenter extends BasePresenter {
 			$update['email'] = $values->email ?: FALSE;
 			
 			/** Description */
-			$update['desc'] = (isset($values->desc) && $values->desc && !$this->userData->desc) ? $values->desc : $this->userData->desc;
+			$update['description'] = (isset($values->description) && $values->description && !$this->userData->description) ? $values->description : $this->userData->description;
 			
 			/** Change password */
 			if ($values->oldPassword)
