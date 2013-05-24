@@ -29,7 +29,12 @@
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/bootstrap-responsive.min.css{scache}">
 		<link rel="stylesheet" href="{$basePath}/css/bootstrap/datepicker.css{scache}">
 
-		<!-- Grido -->
+		<link rel="stylesheet" href="{$basePath}/css/font-awesome/css/font-awesome.min.css">
+		<!--[if IE 7]>
+		<link rel="stylesheet" href="{$basePath}/css/font-awesome/css/font-awesome-ie7.min.css">
+		<![endif]-->
+		
+		<!-- Grido --> 
 		<link rel="stylesheet" href="{$basePath}/css/grido/gh-fork-ribbon.css">
 		<!--[if IE]>
 		<link rel="stylesheet" href="{$basePath}/css/grido/gh-fork-ribbon.ie.css{scache}">
@@ -76,9 +81,9 @@
 								{if $user->isInRole('admin')}
 								<li class="divider-vertical"></li>
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog"></i> {_"Administration"} <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cog icon-spin"></i> {_"Administration"} <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="{link Users:}"><i class="icon-user"></i> {_"Users"}</a></li>
+										<li><a href="{link Users:}"><i class="icon-group"></i> {_"Users"}</a></li>
 									</ul>
 								</li>
 								{/if}
@@ -138,19 +143,19 @@
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.cs.js"></script>
 
-		<!-- Grido -->
+		<!-- Grido --> 
         <script src="{$basePath}/js/grido/jquery.grido.js{scache}"></script>
         <script src="{$basePath}/js/grido/utils.js{scache}"></script>
-		<script src="{$basePath}/js/grido/ajax.js"></script>
+		<!--<script src="{$basePath}/js/grido/ajax.js"></script>-->
 		
 		<script src="{$basePath}/js/netteForms.js"></script>
-		<script src="{$basePath}/js/nette.ajax.js"></script>
+<!--		<script src="{$basePath}/js/nette.ajax.js"></script>
 
 		<script type="text/javascript">
 			$(function () {
 				$.nette.init();
 			});
-		</script>
+		</script>-->
 		{/block}
 	</body>
 </html>
