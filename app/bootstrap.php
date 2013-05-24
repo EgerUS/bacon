@@ -32,6 +32,8 @@ $configurator->onCompile[] = function ($configurator, $compiler) {
     $compiler->addExtension('gettextTranslator', new GettextTranslator\DI\Extension);
 };
 
+Kdyby\BootstrapFormRenderer\DI\RendererExtension::register($configurator);
+
 $container = $configurator->createContainer();
 
 //Nextras
