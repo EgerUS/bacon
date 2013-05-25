@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "efdad46067336eecb9e17adf869fb95e",
+    "hash": "3fc8426d41f81109a8ac63ee1db196a9",
     "packages": [
         {
             "name": "dibi/dibi",
@@ -52,54 +52,6 @@
                 "sqlite"
             ],
             "time": "2013-04-03 12:40:16"
-        },
-        {
-            "name": "kdyby/bootstrap-form-renderer",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Kdyby/BootstrapFormRenderer.git",
-                "reference": "213c70a4a208304ddba731ce0c2e8d04a1a49c2f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Kdyby/BootstrapFormRenderer/zipball/213c70a4a208304ddba731ce0c2e8d04a1a49c2f",
-                "reference": "213c70a4a208304ddba731ce0c2e8d04a1a49c2f",
-                "shasum": ""
-            },
-            "require": {
-                "nette/nette": "@dev"
-            },
-            "require-dev": {
-                "nette/tester": "@dev"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Kdyby\\BootstrapFormRenderer\\": "src/"
-                }
-            },
-            "notification-url": "http://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Filip Procházka",
-                    "homepage": "http://filip-prochazka.com"
-                }
-            ],
-            "description": "Nette forms renderer with bootstrap",
-            "homepage": "http://kdyby.org",
-            "keywords": [
-                "Forms",
-                "bootstrap",
-                "kdyby",
-                "nette"
-            ],
-            "time": "2013-04-08 23:49:36"
         },
         {
             "name": "nette/nette",
@@ -378,7 +330,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "nextras/forms": 20,
-        "kdyby/bootstrap-form-renderer": 20,
         "o5/grido": 20,
         "nette/tester": 20
     },

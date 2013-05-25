@@ -22,7 +22,6 @@
 		"dibi/dibi": ">= 2.0.3",
 		"schmutzka/gettexttranslator": "2.0.2",
 		"nextras/forms": "dev-master",
-		"kdyby/bootstrap-form-renderer": "dev-master",
 		"o5/grido": "dev-master"
 	},
     "require-dev": {
