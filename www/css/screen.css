@@ -1,5 +1,5 @@
 body {
-	font: 10px Verdana;
+	font: 14px Verdana;
 	background: #3484d2;
 	color: #333;
 	margin: 40px;
@@ -7,10 +7,15 @@ body {
 	/*width: 91%;*/
 }
 
+i { font-size: 1em; }
+
 h1, h2 {
-	font: 15px Verdana;
+	font: 14px Verdana;
 	color: #1e5eb6;
 	-webkit-text-stroke: 1px rgba(0,0,0,0);
+}
+h1 i {
+	color: #000000;
 }
 
 #banner {
@@ -76,10 +81,6 @@ form tr, form td {
 	font-weight: normal;
 }
 
-form label {
-	margin-top: 5px;
-}
-
 form .required label {
 	font-weight: bold;
 }
@@ -140,10 +141,6 @@ html.js .jshidden {
 }
 
 .sign-in-form {
-	width: 400px;
+	width: 500px;
 	margin: auto;
-}
-
-.box h1 {
-	border-bottom: 1px solid;
 }

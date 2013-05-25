@@ -13,7 +13,8 @@
  * 
  */
 
-use Nette\Application\UI\Form;
+use Nette\Application\UI\Form,
+	Nette\Utils\Html;
 
 class SignPresenter extends BasePresenter
 {
@@ -37,17 +38,19 @@ class SignPresenter extends BasePresenter
 	{
 		$form = new Form();
 		$form->setTranslator($this->translator);
-		$form->addText('username', 'Username:', 30, 64)
+		$form->addText('username', 'Username', 30, 64)
 				->setRequired('Please, enter your username')
 				->setAttribute('placeholder', $this->translator->translate('Enter your username...'))
-				->setAttribute('autofocus','TRUE');
-		$form->addPassword('password', 'Password:', 30)
+				->setAttribute('autofocus','TRUE')
+				->setOption('input-prepend', Html::el('i')->class('icon-user'));
+		$form->addPassword('password', 'Password', 30)
+				->setRequired('Please, enter your password')
 				->setAttribute('placeholder', $this->translator->translate('Enter your password...'))
-				->setRequired('Please, enter your password');
-		$form->addCheckbox('persistent', 'Keep me signed in:')
+				->setOption('input-prepend', Html::el('i')->class('icon-key'));
+		$form->addCheckbox('persistent', 'Keep me signed in')
 				->setAttribute('class','checkbox');
 		$form->addSubmit('signin', 'Sign in')
-				->setAttribute('class','btn btn-small btn-block btn-primary');
+				->setAttribute('class','btn btn-primary');
 		$form->addProtection('Timeout occured, please try it again');
 		$form->onSuccess[] = $this->signInFormSubmitted;
 		return $form;

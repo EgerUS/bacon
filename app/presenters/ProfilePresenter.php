@@ -14,7 +14,8 @@
  */
 
 use Nette\Application\UI\Form,
-	Nette\DateTime;
+	Nette\DateTime,
+	Nette\Utils\Html;
 
 class ProfilePresenter extends BasePresenter {
 
@@ -58,41 +59,47 @@ class ProfilePresenter extends BasePresenter {
 		$form = new Form();
 		$form->setTranslator($this->translator);
 		
-		$form->addText('_username', 'Username:')
+		$form->addText('_username', 'Username')
 				->setDefaultValue($this->userData->username)
 				->setRequired()
-				->setDisabled();
+				->setDisabled()
+				->setOption('input-prepend', Html::el('i')->class('icon-user'));
 		
-		$form->addText('_role', 'Role:')
+		$form->addText('_role', 'Role')
 				->setDefaultValue($this->userData->role)
-				->setDisabled();
+				->setDisabled()
+				->setOption('input-prepend', Html::el('i')->class('icon-briefcase'));
 		
-		$form->addGroup('Change email');
-		$form->addPassword('oldPassword', 'Current password:', 20, 100)
-				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'));
-		
-		$form->addPassword('newPassword', 'New password:', 20, 100)
-				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'));
-		
-		$form->addPassword('confirmPassword', 'Confirm password:', 20, 100)
+		$form->addPassword('oldPassword', 'Current password', 20, 100)
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
-				->addRule(Form::EQUAL, 'Passwords must match', $form['newPassword']);
+				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		
-		$form->addText('email', 'Email:', 20, 255)
+		$form->addPassword('newPassword', 'New password', 20, 100)
+				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
+				->setOption('input-prepend', Html::el('i')->class('icon-key'));
+		
+		$form->addPassword('confirmPassword', 'Confirm password', 20, 100)
+				->addRule(Form::EQUAL, 'Passwords must match', $form['newPassword'])
+				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
+				->setOption('input-prepend', Html::el('i')->class('icon-key'));
+		
+		$form->addText('email', 'Email', 20, 255)
 				->setDefaultValue($this->userData->email)
 				->setRequired('Please, enter your email address')
 				->addRule(Form::EMAIL, 'Please, enter your email address')
-				->setAttribute('placeholder', $this->translator->translate('Enter your email...'));
+				->setAttribute('placeholder', $this->translator->translate('Enter your email...'))
+				->setOption('input-prepend', Html::el('i')->class('icon-envelope-alt'));
 		!$this->userData->email ? $form['email']->setAttribute('class', 'alert')->setAttribute('autofocus','TRUE') : NULL;
 		
-		$form->addText('description', 'Description:', 20, 255)
+		$form->addText('description', 'Description', 20, 255)
 				->setDefaultValue($this->userData->description)
 				->setRequired('Please, describe you')
-				->setAttribute('placeholder', $this->translator->translate('Enter info about yourself...'));
+				->setAttribute('placeholder', $this->translator->translate('Enter info about yourself...'))
+				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
 		$this->userData->description ? $form['description']->setDisabled() : FALSE;
 		
 		$form->addSubmit('save', 'Save')
-				->setAttribute('class','btn btn-small btn-block btn-primary');
+				->setAttribute('class','btn btn-primary');
 		$form->addProtection('Timeout occured, please try it again');
 		$form->onSuccess[] = $this->profileFormSubmitted;
 		return $form;
