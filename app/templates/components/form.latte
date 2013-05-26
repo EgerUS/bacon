@@ -1,4 +1,7 @@
 {form $form class=>"form-horizontal"}
+<div n:if="$form->errors">
+	<pre class="text-error"><div n:foreach="$form->errors as $error"><i class="icon-exclamation-sign"></i> {$error}</div></pre><br />
+</div>
 	{foreach $form->controls as $input }
 		{var $prepend = $input->getOption('input-prepend'), $append = $input->getOption('input-append')}
 		<div class="control-group">
