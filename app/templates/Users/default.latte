@@ -1,0 +1,16 @@
+
+{block content}
+
+<div>
+	<div class="box">
+		<legend><i class="icon-plus-sign"></i> {_"Create new user"}</legend>
+		{include '../components/form.latte', form => $presenter[userAddForm]}
+	</div>
+
+	<div>
+		<h1><i class="icon-group"></i> {_"Users"}</h1>
+		{control grid}
+	</div>
+</div>
+	
+{/block}
