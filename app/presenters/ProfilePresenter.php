@@ -87,16 +87,17 @@ class ProfilePresenter extends BasePresenter {
 				->setDefaultValue($this->userData->email)
 				->setRequired('Please, enter your email address')
 				->addRule(Form::EMAIL, 'Please, enter your email address')
+				->addRule(Form::MAX_LENGTH, 'Email must be at max %d characters long', 255)
 				->setAttribute('placeholder', $this->translator->translate('Enter your email...'))
 				->setOption('input-prepend', Html::el('i')->class('icon-envelope-alt'));
 		!$this->userData->email ? $form['email']->setAttribute('class', 'alert')->setAttribute('autofocus','TRUE') : NULL;
 		
-		$form->addText('description', 'Description', 20, 255)
+		$form->addTextArea('description', 'Description')
 				->setDefaultValue($this->userData->description)
-				->setRequired('Please, describe you')
+				->setRequired('Please enter your informations')
+				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
 				->setAttribute('placeholder', $this->translator->translate('Enter info about yourself...'))
 				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
-		$this->userData->description ? $form['description']->setDisabled() : FALSE;
 		
 		$form->addSubmit('save', 'Save')
 				->setAttribute('class','btn btn-primary');
