@@ -91,4 +91,30 @@ class UserRepository extends Nette\Object
 		return TRUE;
 	}
 
+	/**
+	 * Add new user
+	 * @return bool
+	 */
+	public function addUser($values) {
+		try {
+			if ($this->db->insert('users', $values)->execute()) {
+				return true;
+			}
+		} catch (\DibiException $e) {
+			return false;
+		} 
+	}
+	
+	/**
+	 * Delete user
+	 * @return bool
+	 */
+	public function deleteUser($id) {
+		try {
+			$this->db->delete("users")->where("id = %i", $id)->execute();
+			return $this->db->affectedRows();
+		} catch (\DibiException $e) {
+			return false;
+		} 
+	}
 }
