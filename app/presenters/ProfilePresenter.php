@@ -61,7 +61,6 @@ class ProfilePresenter extends BasePresenter {
 		
 		$form->addText('_username', 'Username')
 				->setDefaultValue($this->userData->username)
-				->setRequired()
 				->setDisabled()
 				->setOption('input-prepend', Html::el('i')->class('icon-user'));
 		
@@ -70,20 +69,23 @@ class ProfilePresenter extends BasePresenter {
 				->setDisabled()
 				->setOption('input-prepend', Html::el('i')->class('icon-briefcase'));
 		
-		$form->addPassword('oldPassword', 'Current password', 20, 100)
+		$form->addPassword('oldPassword', 'Current password', 30, 255)
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
+				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		
-		$form->addPassword('newPassword', 'New password', 20, 100)
+		$form->addPassword('newPassword', 'New password', 30, 255)
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
+				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		
-		$form->addPassword('confirmPassword', 'Confirm password', 20, 100)
+		$form->addPassword('confirmPassword', 'Confirm password', 30, 255)
 				->addRule(Form::EQUAL, 'Passwords must match', $form['newPassword'])
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
+				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		
-		$form->addText('email', 'Email', 20, 255)
+		$form->addText('email', 'Email', 30, 255)
 				->setDefaultValue($this->userData->email)
 				->setRequired('Please, enter your email address')
 				->addRule(Form::EMAIL, 'Please, enter your email address')
@@ -102,8 +104,44 @@ class ProfilePresenter extends BasePresenter {
 		$form->addSubmit('save', 'Save')
 				->setAttribute('class','btn btn-primary');
 		$form->addProtection('Timeout occured, please try it again');
+		$form->onValidate[] = callback($this, 'validateProfileForm');
 		$form->onSuccess[] = $this->profileFormSubmitted;
 		return $form;
+	}
+
+	public function validateProfileForm($form)
+	{
+		$values = $form->getValues();
+
+		if ($values->oldPassword || $values->newPassword || $values->confirmPassword) {
+			try {
+				$this->auth->authenticate(array($this->userData->username, $values->oldPassword));
+			} catch (Exception $e) {
+				$form->addError($this->translator->translate('Wrong current password'));
+			}
+			if ($values->newPassword != $values->confirmPassword) {
+				$form->addError($this->translator->translate('Passwords must match'));
+			}
+			if (strlen($values->newPassword) < $this->context->params['user']['minPasswordLength']) {
+				$form->addError($this->translator->translate('New password must be at least %d characters long', $this->context->params['user']['minPasswordLength']));
+			} elseif (strlen($values->newPassword) > 255) {
+				$form->addError($this->translator->translate('New password must be at max %d characters long', 255));
+			}
+		}
+		
+		if (!$values->email) {
+			$form->addError($this->translator->translate('Please, enter your email address'));
+		} elseif (strlen($values->email) > 255) {
+			$form->addError($this->translator->translate('Email must be at max %d characters long', 255));
+		} elseif (!filter_var($values->email, FILTER_VALIDATE_EMAIL)) {
+			$form->addError($this->translator->translate('Email \'%s\' is not valid', $values->email));
+		}
+
+		if (!$values->description) {
+			$form->addError($this->translator->translate('Please enter your informations'));
+		} elseif (strlen($values->description) > 255) {
+			$form->addError($this->translator->translate('Description must be at max %d characters long', 255));
+		}
 	}
 	
 	/**
@@ -125,24 +163,7 @@ class ProfilePresenter extends BasePresenter {
 			/** Change password */
 			if ($values->oldPassword)
 			{
-				try {
-					/** Check old password */
-					$this->auth->authenticate(array(
-													$this->userData->username,
-													$values->oldPassword
-					));
-
-					/** Checks whether the passwords match and have the correct length */
-					if ($values->newPassword == $values->confirmPassword &&
-						strlen($values->newPassword) >= $this->context->params['user']['minPasswordLength']
-					) {
-						$update['password'] = $this->auth->calculateHash($values->newPassword);
-					} else {
-						$this->flashMessage($this->translator->translate('Passwords must be at least %d characters long.',$this->context->params['user']['minPasswordLength']),'error');
-					}
-				} catch (Exception $e) {
-					$this->flashMessage($this->translator->translate('Wrong current password. Password was not changed.'),'error');
-				}
+				$update['password'] = $this->auth->calculateHash($values->newPassword);
 			}
 						
 			try {
@@ -156,5 +177,4 @@ class ProfilePresenter extends BasePresenter {
 		}
 		$this->redirect('this');
 	}
-	
 }
