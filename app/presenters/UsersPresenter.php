@@ -69,28 +69,28 @@ class UsersPresenter extends BasePresenter {
 
         $grid->addColumn('username', 'Username')
 				->setSortable()
-				->setFilter()
-				->setSuggestion();
+				->setFilterText()
+					->setSuggestion();
 
         $grid->addColumn('description', 'Description')
 				->setSortable()
-				->setFilter()
-                ->setSuggestion();
+				->setFilterText()
+					->setSuggestion();
 
         $grid->addColumn('disabled', 'Disabled')
 				->setSortable()
-				->setFilter()
-                ->setSuggestion();
+				->setFilterNumber()
+					->setSuggestion();
 		
         $grid->addColumn('email', 'Email')
 				->setSortable()
-				->setFilter()
-                ->setSuggestion();
+				->setFilterText()
+					->setSuggestion();
 		
         $grid->addColumn('role', 'Role')
 				->setSortable()
-				->setFilter()
-                ->setSuggestion();
+				->setFilterText()
+					->setSuggestion();
 
 		$grid->addAction('edit', 'Edit')
 				->setIcon('pencil');
@@ -138,13 +138,18 @@ class UsersPresenter extends BasePresenter {
     {
         $id = $this->getParam('id');
         $id = explode(',', $id);
-		foreach ($id as $key => $value) {
-			$user = $this->userRepository->getUserData(array('select'=>'username', 'where'=>'id=\''.$value.'\''))->fetch();
-			if ($this->userRepository->deleteUser($value))
+		foreach ($id as $key => $user_id) {
+			if ($user_id == $this->getUser()->getId())
 			{
-				$this->flashMessage($this->translator->translate('User \'%s\' successfully deleted', $user->username), 'success');
+				$this->flashMessage($this->translator->translate('You can not delete your user account'), 'error');
 			} else {
-				$this->flashMessage($this->translator->translate('User failed to delete'), 'error');
+				$user = $this->userRepository->getUserData(array('select'=>'username', 'where'=>'id=\''.$user_id.'\''))->fetch();
+				if ($this->userRepository->deleteUser($user_id))
+				{
+					$this->flashMessage($this->translator->translate('User \'%s\' successfully deleted', $user->username), 'success');
+				} else {
+					$this->flashMessage($this->translator->translate('User failed to delete'), 'error');
+				}
 			}
 		}
         $this->redirect('default');
