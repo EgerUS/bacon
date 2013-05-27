@@ -4,30 +4,33 @@
 </div>
 	{foreach $form->controls as $input }
 		{var $prepend = $input->getOption('input-prepend'), $append = $input->getOption('input-append')}
-		<div class="control-group">
-			{label $input class=>"control-label" /}
-			<div class="controls">
 			{if ($input->controlPrototype->type != submit) && ($input->controlPrototype->type !== hidden) && ($input->controlPrototype->type !== checkbox)}
-				<div n:class="$prepend? input-prepend, $append? input-append" n:tag-if="$prepend || $append">
-					{if $prepend}<span class="add-on">{$prepend}</span>{/if}{input $input}{if $append}<span class="add-on">{$append}</span>{/if}
+				<div class="control-group">
+					{label $input class=>"control-label" /}
+					<div class="controls">
+						<div n:class="$prepend? input-prepend, $append? input-append" n:tag-if="$prepend || $append">
+							{if $prepend}<span class="add-on">{$prepend}</span>{/if}{input $input}{if $append}<span class="add-on">{$append}</span>{/if}
+						</div>
+					</div>
 				</div>
 			{/if}
 			{if $input->controlPrototype->type == checkbox}
-				<div>
-					<div>{input $input}</div>
+				<div class="control-group">
+				{label $input class=>"control-label" /}
+					<div class="controls">
+						<div>{input $input}</div>
+					</div>
 				</div>
 			{/if}
-			</div>
-		</div>
-		{if $input->controlPrototype->type == submit}
-		<div class="form-actions">
-			{input $input}
-		</div>
-		{/if}
-		{if $input->controlPrototype->type == hidden}
-		<div>
-			{input $input}
-		</div>
-		{/if}
+			{if $input->controlPrototype->type == submit}
+				<div class="form-actions">
+					{input $input}
+				</div>
+			{/if}
+			{if $input->controlPrototype->type == hidden}
+				<div>
+					{input $input}
+				</div>
+			{/if}
 	{/foreach}
 {/form}
