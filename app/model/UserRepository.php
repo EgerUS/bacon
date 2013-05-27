@@ -53,9 +53,6 @@ class UserRepository extends Nette\Object
 		{
 			$fluent = $fluent->where($query['where']);
 		}
-		foreach ($fluent as $key) {
-			$key->hash = md5(serialize($key));
-		}
 		return $fluent;
 	}
 	
@@ -100,6 +97,19 @@ class UserRepository extends Nette\Object
 			if ($this->db->insert('users', $values)->execute()) {
 				return true;
 			}
+		} catch (\DibiException $e) {
+			return false;
+		} 
+	}
+	
+	/**
+	 * Update user
+	 * @return bool
+	 */
+	public function updateUser($id, $values) {
+		try {
+			$this->db->update('users', $values)->where('id = %i', $id)->execute();
+			return $this->db->affectedRows();
 		} catch (\DibiException $e) {
 			return false;
 		} 

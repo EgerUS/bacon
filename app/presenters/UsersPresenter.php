@@ -21,9 +21,6 @@ use Grido\Grid,
 
 class UsersPresenter extends BasePresenter {
 
-	/** @var DibiConnection */
-    private $db;
-
 	/** @var User\ProfileRepository */
 	private $userRepository;
 
@@ -49,8 +46,6 @@ class UsersPresenter extends BasePresenter {
 		{
 			$this->redirect('Profile:');
 		}
-		
-		$this->db = $this->context->dibi->connection;
 	}
 
 	/**
@@ -67,35 +62,35 @@ class UsersPresenter extends BasePresenter {
 		
         $grid->setModel($fluent);
 
-        $grid->addColumn('username', 'Username')
+        $grid->addColumnText('username', 'Username')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
 
-        $grid->addColumn('description', 'Description')
+        $grid->addColumnText('description', 'Description')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
 
-        $grid->addColumn('disabled', 'Disabled')
+        $grid->addColumnText('disabled', 'Disabled')
 				->setSortable()
 				->setFilterNumber()
 					->setSuggestion();
 		
-        $grid->addColumn('email', 'Email')
+        $grid->addColumnMail('email', 'Email')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
 		
-        $grid->addColumn('role', 'Role')
+        $grid->addColumnText('role', 'Role')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
 
-		$grid->addAction('edit', 'Edit')
+		$grid->addActionHref('edit', 'Edit')
 				->setIcon('pencil');
 
-		$grid->addAction('delete', 'Delete')
+		$grid->addActionHref('delete', 'Delete')
 				->setIcon('trash')
 				->setConfirm(function($item) use ($translator) {
 					return $translator->translate('Are you sure you want to delete \'%s\' ?',$item->username);
@@ -128,9 +123,9 @@ class UsersPresenter extends BasePresenter {
 
     public function actionEdit($id)
     {
-		$query = array('id' => $id);
-		!count($this->getRadcheckData($query))
-			? $this->redirect('default')
+		$query = array('select' => 'id', 'where' => 'id=\''.$id.'\'');
+		!count($this->userRepository->getUserData($query))
+			? $this->flashMessage($this->translator->translate('User does not exist'), 'error') && $this->redirect('default')
 			: $this->setView('edit');
     }
 	
@@ -143,7 +138,7 @@ class UsersPresenter extends BasePresenter {
 			{
 				$this->flashMessage($this->translator->translate('You can not delete your user account'), 'error');
 			} else {
-				$user = $this->userRepository->getUserData(array('select'=>'username', 'where'=>'id=\''.$user_id.'\''))->fetch();
+				$user = $this->userRepository->getUserData(array('select' => 'username', 'where' => 'id=\''.$user_id.'\''))->fetch();
 				if ($this->userRepository->deleteUser($user_id))
 				{
 					$this->flashMessage($this->translator->translate('User \'%s\' successfully deleted', $user->username), 'success');
@@ -170,14 +165,14 @@ class UsersPresenter extends BasePresenter {
 				->setDefaultValue('admin')
 				->setRequired('Please, select user role')
 				->setOption('input-prepend', Html::el('i')->class('icon-briefcase'));
-		$form->addText('password', 'Password', 30, 255)
+		$form->addPassword('password', 'Password', 30, 255)
 				->setRequired('Please, enter user password')
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		$form->addText('email', 'Email', 30, 255)
 				->setRequired('Please, enter user email')
-				//->addRule(Form::EMAIL, 'Please, enter user email')
+				->addRule(Form::EMAIL, 'Please, enter user email')
 				->setAttribute('placeholder', $this->translator->translate('Enter user email...'))
 				->addRule(Form::MAX_LENGTH, 'Email must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-envelope-alt'));
@@ -202,7 +197,7 @@ class UsersPresenter extends BasePresenter {
 			$form->addError($this->translator->translate('Please, enter username'));
 		} elseif (strlen($values->username) > 64) {
 			$form->addError($this->translator->translate('Username must be at max %d characters long', 64));
-		} elseif ($this->userRepository->getUserData(array('select'=>'username', 'where'=>'username=\''.$values->username.'\''))->fetch()) {
+		} elseif ($this->userRepository->getUserData(array('select' => 'username', 'where' => 'username=\''.$values->username.'\''))->fetch()) {
 			$form->addError($this->translator->translate('User \'%s\' already exists', $values->username));
 		}
 		if (!$values->role) {
@@ -246,108 +241,107 @@ class UsersPresenter extends BasePresenter {
 	protected function createComponentUserEditForm()
 	{
 		$id = $this->getParam('id');
-		$query = array('id' => $id);
-		$radcheckData = $this->getRadcheckData($query);
-		$radcheckData = $radcheckData[0];
+		$query = array('where' => 'id=\''.$id.'\'');
+		$userData = $this->userRepository->getUserData($query)->fetch();
+		$userData->hash = md5(serialize($userData));
 		$form = new Form();
 		$form->setTranslator($this->translator);
-		$form->addHidden('id', $radcheckData->id);
-		$form->addHidden('hash', $radcheckData->hash);
-		$form->addText('username', 'Username:', 30, 64)
-				->setValue($radcheckData->username)
-				->setRequired('Please, enter username')
+		$form->addHidden('id', $userData->id);
+		$form->addHidden('hash', $userData->hash);
+		$form->addText('username', 'Username', 30, 64)
+				->setValue($userData->username)
+				->setOption('input-prepend', Html::el('i')->class('icon-user'))
 				->setDisabled();
-		$form->addSelect('role','Role:', array('admin'=>'admin', 'user'=>'user'))
-				->setValue($radcheckData->role)
-				->setRequired('Please, select role');
-		$form->addCheckbox('disabled','Disabled:')
-				->setValue($radcheckData->disabled);
-		$form->addText('desc', 'Description:', 30, 255)
-				->setValue($radcheckData->description)
-				->setRequired('Please, enter description')
-				->setAttribute('placeholder', $this->translator->translate('Enter user description...'))
-				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255);
-		$form->addText('email', 'Email:', 30, 255)
-				->setValue($radcheckData->email)
-				->setRequired('Please, enter email')
-				->setAttribute('placeholder', $this->translator->translate('Enter user email...'))
-				->addRule(Form::MAX_LENGTH, 'Email must be at max %d characters long', 255);
-		$form->addText('value', 'Password:', 30, 253)
+		$form->addCheckbox('disabled','Disabled')
+				->setValue($userData->disabled);
+		$form->addSelect('role','Role', array('admin'=>'admin', 'user'=>'user'))
+				->setValue($userData->role)
+				->setRequired('Please, select user role')
+				->setOption('input-prepend', Html::el('i')->class('icon-briefcase'));
+		$form->addPassword('newPassword', 'New password', 30, 255)
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
-				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 253);
-		$radcheckData->attribute === 'Crypt-Password'
-				? $crypt = TRUE
-				: $crypt = FALSE;
-		$form->addCheckbox('crypt', 'Crypt password:')
-				->setValue($crypt);
-		$groupsData = $this->db->select('groupname')->from('radgroupcheck')->groupBy('groupname')->fetchPairs();
-		$groups = array();
-		foreach ($groupsData as $id => $value) {
-			$groups[$value] = $value;
-		}
-		$prompt = Html::el('option')->setText($this->translator->translate('Select:'))->class('prompt');
-		$form->addSelect('groupname', 'Group:', $groups)
-				->setValue($radcheckData->groupname)
-				->setPrompt($prompt)
-				->setRequired('Please, select group');
-		$form->addDatePicker('datefrom', 'Active from:')
-				->setValue($radcheckData->datefrom)
-				->addRule($form::FILLED, 'You must pick some date');
-		$form->addDatePicker('dateto', 'Active to:')
-				->setValue($radcheckData->dateto)
-				->addRule($form::FILLED, 'You must pick some date');
+				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
+				->setOption('input-prepend', Html::el('i')->class('icon-key'));
+		$form->addPassword('confirmPassword', 'Confirm password', 20, 100)
+				->addRule(Form::EQUAL, 'Passwords must match', $form['newPassword'])
+				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
+				->setOption('input-prepend', Html::el('i')->class('icon-key'));
+		$form->addText('email', 'Email', 30, 255)
+				->setValue($userData->email)
+				->setRequired('Please, enter user email')
+				->addRule(Form::EMAIL, 'Please, enter user email')
+				->setAttribute('placeholder', $this->translator->translate('Enter user email...'))
+				->addRule(Form::MAX_LENGTH, 'Email must be at max %d characters long', 255)
+				->setOption('input-prepend', Html::el('i')->class('icon-envelope-alt'));
+		$form->addTextArea('description', 'Description')
+				->setValue($userData->description)
+				->setRequired('Please, enter user description')
+				->setAttribute('placeholder', $this->translator->translate('Enter user description...'))
+				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
+				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
 		$form->addSubmit('save', 'Save')
-				->setAttribute('class','btn btn-small btn-block btn-primary');
+				->setAttribute('class','btn btn-primary');
 		$form->addProtection('Timeout occured, please try it again');
-		$form->onSuccess[] = $this->radcheckEditFormSubmitted;
+		$form->onValidate[] = callback($this, 'validateUserEditForm');
+		$form->onSuccess[] = $this->UserEditFormSubmitted;
 		return $form;
 	}
 
-	public function radcheckEditFormSubmitted(Form $form)
+	public function validateUserEditForm($form)
 	{
 		$values = $form->getValues();
-		$query = array('id' => $values->id);
-		$userData = $this->getRadcheckData($query);
-		$userData = $userData[0];
+
+		if (!$values->role) {
+			$form->addError($this->translator->translate('Please, select user role'));
+		} elseif (strlen($values->role) > 20) {
+			$form->addError($this->translator->translate('Role must be at max %d characters long', 20));
+		}
+		if (($values->newPassword || $values->confirmPassword) && ($values->newPassword != $values->confirmPassword)) {
+			$form->addError($this->translator->translate('Passwords must match'));
+		} elseif (strlen($values->newPassword) > 255) {
+			$form->addError($this->translator->translate('Password must be at max %d characters long', 255));
+		}
+		if (!$values->email) {
+			$form->addError($this->translator->translate('Please, enter user email'));
+		} elseif (strlen($values->email) > 255) {
+			$form->addError($this->translator->translate('Email must be at max %d characters long', 255));
+		} elseif (!filter_var($values->email, FILTER_VALIDATE_EMAIL)) {
+			$form->addError($this->translator->translate('Email \'%s\' is not valid', $values->email));
+		}
+		if (!$values->description) {
+			$form->addError($this->translator->translate('Please, enter user description'));
+		} elseif (strlen($values->description) > 255) {
+			$form->addError($this->translator->translate('Description must be at max %d characters long', 255));
+		}
+
+	}
+
+	public function UserEditFormSubmitted(Form $form)
+	{
+		$values = $form->getValues();
+		$query = array('where' => 'id=\''.$values->id.'\'');
+		$userData = $this->userRepository->getUserData($query)->fetch();
+		$userData->hash = md5(serialize($userData));
+		
 		if ($userData->hash === $values->hash)
 		{
-			$userValues = array('op'       => ':=',
-								'datefrom' => $values->datefrom,
-								'dateto'   => $values->dateto,
-								'desc'     => $values->desc,
-								'email'    => $values->email,
-								'disabled' => $values->disabled,
-								'role'     => $values->role);
+			$userValues = array('role'			=> $values->role,
+								'disabled'		=> $values->disabled,
+								'email'			=> $values->email,
+								'description'	=> $values->description);
 
-			if ($values->value)
+			if ($values->newPassword)
 			{
-				$values->crypt === TRUE
-						? $userValues['attribute'] = 'Crypt-Password'
-						: $userValues['attribute'] = 'Cleartext-Password';
-
-				$values->crypt === TRUE
-						? $userValues['value'] = $this->auth->calculateHash($values->value)
-						: $userValues['value'] = $values->value;
+				$userValues['password'] = $this->auth->calculateHash($values->newPassword);
 			}
 
-			try {
-				$this->db->update('radcheck', $userValues)->where(array('id'=>$userData->id))->execute();
-				if ($this->db->affectedRows())
-				{
-					if ($values->groupname != $userData->groupname)
-					{
-						$this->db->update('radusergroup', array('groupname' => $values->groupname))
-									->where(array('username'=>$userData->username, 'groupname'=>$userData->groupname))
-									->execute();
-					}
-					$this->flashMessage($this->translator->translate('Succesfully modified'), 'success');
-				} else {
-					$this->flashMessage($this->translator->translate('Modification failed'), 'error');
-				}
-			} catch (\DibiException $e) {
-				$this->flashMessage($this->translator->translate('Modification failed'), 'error');
+			if ($this->userRepository->updateUser($values->id, $userValues))
+			{
+				$this->flashMessage($this->translator->translate('User \'%s\' succesfully updated', $userData->username), 'success');
+				$this->redirect('default');
+			} else {
+				$this->flashMessage($this->translator->translate('Update of user \'%s\' failed', $userData->username), 'error');
 			}
-			$this->redirect('default');
 		} else {
 			$this->flashMessage($this->translator->translate('Database data changes during modification. Please modify data again.'),'error');
 			$this->redirect('this');
