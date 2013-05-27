@@ -168,6 +168,7 @@ class UsersPresenter extends BasePresenter {
 		$form->addPassword('password', 'Password', 30, 255)
 				->setRequired('Please, enter user password')
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
+				->addRule(Form::MIN_LENGTH, 'Passwords must be at least %d characters long.', $this->context->params['user']['minPasswordLength'])
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		$form->addText('email', 'Email', 30, 255)
@@ -207,6 +208,8 @@ class UsersPresenter extends BasePresenter {
 		}
 		if (!$values->password) {
 			$form->addError($this->translator->translate('Please, enter user password'));
+		} elseif (strlen($values->password) < $this->context->params['user']['minPasswordLength']) {
+			$form->addError($this->translator->translate('Passwords must be at least %d characters long.', $this->context->params['user']['minPasswordLength']));
 		} elseif (strlen($values->password) > 255) {
 			$form->addError($this->translator->translate('Password must be at max %d characters long', 255));
 		}
@@ -260,6 +263,7 @@ class UsersPresenter extends BasePresenter {
 				->setOption('input-prepend', Html::el('i')->class('icon-briefcase'));
 		$form->addPassword('newPassword', 'New password', 30, 255)
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
+				->addRule(Form::MIN_LENGTH, 'Passwords must be at least %d characters long.', $this->context->params['user']['minPasswordLength'])
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		$form->addPassword('confirmPassword', 'Confirm password', 20, 100)
@@ -298,6 +302,8 @@ class UsersPresenter extends BasePresenter {
 		}
 		if (($values->newPassword || $values->confirmPassword) && ($values->newPassword != $values->confirmPassword)) {
 			$form->addError($this->translator->translate('Passwords must match'));
+		} elseif ($values->newPassword && strlen($values->newPassword) < $this->context->params['user']['minPasswordLength']) {
+			$form->addError($this->translator->translate('Passwords must be at least %d characters long.', $this->context->params['user']['minPasswordLength']));
 		} elseif (strlen($values->newPassword) > 255) {
 			$form->addError($this->translator->translate('Password must be at max %d characters long', 255));
 		}
