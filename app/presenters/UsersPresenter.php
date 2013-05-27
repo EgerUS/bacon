@@ -263,7 +263,6 @@ class UsersPresenter extends BasePresenter {
 				->setOption('input-prepend', Html::el('i')->class('icon-briefcase'));
 		$form->addPassword('newPassword', 'New password', 30, 255)
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
-				->addRule(Form::MIN_LENGTH, 'Passwords must be at least %d characters long.', $this->context->params['user']['minPasswordLength'])
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
 		$form->addPassword('confirmPassword', 'Confirm password', 30, 100)
@@ -295,6 +294,15 @@ class UsersPresenter extends BasePresenter {
 	{
 		$values = $form->getValues();
 
+		if ($values->id == $this->getUser()->getId())
+		{
+			if ($values->disabled) {
+				$form->addError($this->translator->translate('You can not disable your user account'));
+			}
+			if ($values->role != $this->getUser()->getRoles()) {
+				$form->addError($this->translator->translate('You can not change role of your user account'));
+			}
+		}
 		if (!$values->role) {
 			$form->addError($this->translator->translate('Please, select user role'));
 		} elseif (strlen($values->role) > 20) {
