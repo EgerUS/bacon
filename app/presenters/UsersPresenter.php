@@ -266,7 +266,7 @@ class UsersPresenter extends BasePresenter {
 				->addRule(Form::MIN_LENGTH, 'Passwords must be at least %d characters long.', $this->context->params['user']['minPasswordLength'])
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
-		$form->addPassword('confirmPassword', 'Confirm password', 20, 100)
+		$form->addPassword('confirmPassword', 'Confirm password', 30, 100)
 				->addRule(Form::EQUAL, 'Passwords must match', $form['newPassword'])
 				->setAttribute('placeholder', $this->translator->translate('Fill in for password change...'))
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
