@@ -299,7 +299,7 @@ class UsersPresenter extends BasePresenter {
 			if ($values->disabled) {
 				$form->addError($this->translator->translate('You can not disable your user account'));
 			}
-			if ($values->role != $this->getUser()->getRoles()) {
+			if (!$this->isInRole($values->role, FALSE)) {
 				$form->addError($this->translator->translate('You can not change role of your user account'));
 			}
 		}
