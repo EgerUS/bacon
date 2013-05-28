@@ -21,7 +21,7 @@ use Grido\Grid,
 
 class UsersPresenter extends BasePresenter {
 
-	/** @var User\ProfileRepository */
+	/** @var User\UserRepository */
 	private $userRepository;
 
 	/** @var Authenticator */
