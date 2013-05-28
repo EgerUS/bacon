@@ -41,10 +41,11 @@ common:
 
 
 	services:
-		authenticator: Authenticator
-		userRepository: User\UserRepository
 		routerFactory: RouterFactory
 		router: @routerFactory::createRouter
+		authenticator: Authenticator
+		userRepository: User\UserRepository
+		authenticationGroupRepository: Group\AuthenticationGroupRepository
 
 
 	factories:

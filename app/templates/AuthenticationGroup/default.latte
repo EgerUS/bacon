@@ -1,0 +1,16 @@
+
+{block content}
+
+<div>
+	<div class="box">
+		<legend><i class="icon-plus-sign"></i> {_"Create new authentication group"}</legend>
+		{include '../components/form.latte', form => $presenter[authenticationGroupAddForm]}
+	</div>
+
+	<div>
+		<h1><i class="icon-key"></i> {_"List of authentication groups"}</h1>
+		{control grid}
+	</div>
+</div>
+	
+{/block}
