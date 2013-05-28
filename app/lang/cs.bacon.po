@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-05-27 15:20:49
+# Created: 2013-05-28 15:50:00
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-05-27 15:20+0200\n"
+"PO-Revision-Date: 2013-05-28 15:50+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -26,17 +26,26 @@ msgstr[2] "Opravdu chcete smazat %i záznamů ?"
 msgid "Are you sure you want to delete '%s' ?"
 msgstr "Opravdu chcete smazat '%s' ?"
 
+msgid "Authentication groups"
+msgstr "Autentizační skupiny"
+
 msgid "Confirm password"
 msgstr "Potvrďte heslo"
 
 msgid "Create"
 msgstr "Vytvořit"
 
+msgid "Create new authentication group"
+msgstr "Vytvořit novou autentizační skupinu"
+
 msgid "Create new user"
 msgstr "Vytvořit nového uživatele"
 
 msgid "Current password"
 msgstr "Současné heslo"
+
+msgid "Database data changes during modification. Please modify data again."
+msgstr "Během editace došlo ke změně dat v databázi. Prověďte prosím editaci znovu."
 
 msgid "Delete"
 msgstr "Smazat"
@@ -69,6 +78,12 @@ msgstr[0] "Email může obsahovat maximálně %d znak"
 msgstr[1] "Email může obsahovat maximálně %d znaky"
 msgstr[2] "Email může obsahovat maximálně %d znaků"
 
+msgid "Enter description..."
+msgstr "Zadejte popis"
+
+msgid "Enter group name..."
+msgstr "Zadejte název skupiny..."
+
 msgid "Enter info about yourself..."
 msgstr "Zadejte informace o své osobě..."
 
@@ -99,6 +114,29 @@ msgstr "Exportovat všechny záznamy"
 msgid "Fill in for password change..."
 msgstr "Vyplňte pro změnu hesla..."
 
+msgid "Group '%s' already exists"
+msgstr "Skupina '%s' již existuje"
+
+msgid "Group '%s' succesfully updated"
+msgstr "Skupina '%s' byla úspěšně aktualizována"
+
+msgid "Group '%s' successfully created"
+msgstr "Skupina '%s' byla úspěšně vytvořena"
+
+msgid "Group '%s' successfully deleted"
+msgstr "Skupina '%s' byla úspěšně smazána"
+
+msgid "Group does not exist"
+msgstr "Skupina neexistuje"
+
+msgid "Group name"
+msgstr "Název skupiny"
+
+msgid "Group name must be at max %d characters long"
+msgstr[0] "Název skupiny může obsahovat maximálně %d znak"
+msgstr[1] "Název skupiny může obsahovat maximálně %d znaky"
+msgstr[2] "Název skupiny může obsahovat maximálně %d znaků"
+
 msgid "Invert"
 msgstr "Invertovat výběr"
 
@@ -114,11 +152,24 @@ msgstr "Pamatovat si mě"
 msgid "Language"
 msgstr "Jazyk"
 
+msgid "List of authentication groups"
+msgstr "Seznam autentizačních skupin"
+
 msgid "Login form"
 msgstr "Přihlášení"
 
 msgid "New password"
 msgstr "Nové heslo"
+
+msgid "New password must be at least %d characters long"
+msgstr[0] "Nové heslo musí obsahovat alespoň %d znak"
+msgstr[1] "Nové heslo musí obsahovat alespoň %d znaky"
+msgstr[2] "Nové heslo musí obsahovat alespoň %d znaků"
+
+msgid "New password must be at max %d characters long"
+msgstr[0] "Nové heslo může obsahovat maximálně %d znak"
+msgstr[1] "Nové heslo může obsahovat maximálně %d znaky"
+msgstr[2] "Nové heslo může obsahovat maximálně %d znaků"
 
 msgid "No results."
 msgstr "Žádné záznamy."
@@ -144,6 +195,9 @@ msgstr "Vyplňte prosím chybějící e-mail ve vašem profilu !"
 
 msgid "Please enter your informations"
 msgstr "Zadejte prosím informace o své osobě"
+
+msgid "Please, enter group name"
+msgstr "Zadejte prosím název skupiny"
 
 msgid "Please, enter user description"
 msgstr "Zadejte prosím informace o uživateli"
@@ -216,6 +270,9 @@ msgstr "Aktualizace uživatele '%s' selhala"
 msgid "User '%s' already exists"
 msgstr "Uživatel '%s' již existuje"
 
+msgid "User '%s' succesfully updated"
+msgstr "Uživatel '%s' byl úspěšně aktualizován"
+
 msgid "User '%s' successfully created"
 msgstr "Uživatel '%s' byl úspěšně vytvořen"
 
@@ -242,6 +299,9 @@ msgstr[2] "Uživatelské jméno může obsahovat maximálně %d znaků"
 msgid "Users"
 msgstr "Uživatelé"
 
+msgid "Wrong current password"
+msgstr "Nesprávné současné heslo"
+
 msgid "Wrong current password. Password was not changed."
 msgstr "Nesprávné současné heslo. Heslo nebylo změněno."
 
@@ -251,8 +311,14 @@ msgstr "Nesprávné heslo"
 msgid "Wrong username"
 msgstr "Nesprávné uživatelské jméno"
 
+msgid "You can not change role of your user account"
+msgstr "Nemůžete změnit oprávnění svého uživatelského účtu"
+
 msgid "You can not delete your user account"
 msgstr "Nemůžete smazat svůj uživatelský účet"
+
+msgid "You can not disable your user account"
+msgstr "Nemůžete zablokovat svůj uživatelský účet"
 
 msgid "You can use <, <=, >, >=, <>. e.g. \">= %d\""
 msgstr "Můžete použít <, <=, >, >=, <>. Např. \">= %d\""
@@ -266,6 +332,48 @@ msgstr "Byl/a jste úspěšně přihlášen/a"
 msgid "You have successfully signed out"
 msgstr "Byl/a jste úspěšně odhlášen/a"
 
-msgid "User '%s' succesfully updated"
-msgstr "Uživatel '%s' byl úspěšně aktualizován"
+msgid "Edit authentication group"
+msgstr "Upravit autentizační skupinu"
+
+msgid "Devices"
+msgstr ""
+
+msgid "Groups"
+msgstr ""
+
+msgid "Device groups"
+msgstr ""
+
+msgid "Česky"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "10"
+msgstr ""
+
+msgid "20"
+msgstr ""
+
+msgid "30"
+msgstr ""
+
+msgid "50"
+msgstr ""
+
+msgid "100"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Cisco' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Mikrotik-L2' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Mikrotik-L3' ?"
+msgstr ""
 
