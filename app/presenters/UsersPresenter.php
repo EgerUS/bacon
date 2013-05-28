@@ -177,7 +177,7 @@ class UsersPresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user email...'))
 				->addRule(Form::MAX_LENGTH, 'Email must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-envelope-alt'));
-		$form->addTextArea('description', 'Description')
+		$form->addTextArea('description', 'Description', 30, 3)
 				->setRequired('Please, enter user description')
 				->setAttribute('placeholder', $this->translator->translate('Enter user description...'))
 				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
@@ -276,7 +276,7 @@ class UsersPresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user email...'))
 				->addRule(Form::MAX_LENGTH, 'Email must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-envelope-alt'));
-		$form->addTextArea('description', 'Description')
+		$form->addTextArea('description', 'Description', 30, 3)
 				->setValue($userData->description)
 				->setRequired('Please, enter user description')
 				->setAttribute('placeholder', $this->translator->translate('Enter user description...'))

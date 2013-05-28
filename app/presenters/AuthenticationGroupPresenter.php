@@ -166,7 +166,7 @@ class AuthenticationGroupPresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
-		$form->addTextArea('description', 'Description')
+		$form->addTextArea('description', 'Description', 30, 3)
 				->setAttribute('placeholder', $this->translator->translate('Enter description...'))
 				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
@@ -241,7 +241,7 @@ class AuthenticationGroupPresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
-		$form->addTextArea('description', 'Description')
+		$form->addTextArea('description', 'Description', 30, 3)
 				->setValue($groupData->description)
 				->setAttribute('placeholder', $this->translator->translate('Enter description...'))
 				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)

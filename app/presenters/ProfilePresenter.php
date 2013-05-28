@@ -94,7 +94,7 @@ class ProfilePresenter extends BasePresenter {
 				->setOption('input-prepend', Html::el('i')->class('icon-envelope-alt'));
 		!$this->userData->email ? $form['email']->setAttribute('class', 'alert')->setAttribute('autofocus','TRUE') : NULL;
 		
-		$form->addTextArea('description', 'Description')
+		$form->addTextArea('description', 'Description', 30, 3)
 				->setDefaultValue($this->userData->description)
 				->setRequired('Please enter your informations')
 				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
