@@ -110,7 +110,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     {
 		if (!$this->getUser()->isInRole($role))
 		{
-			$this->flashMessage($this->translator->translate('You do not have sufficient rights'), $msgType);
+			if ($msgType) { $this->flashMessage($this->translator->translate('You do not have sufficient rights'), $msgType); }
 			return FALSE;
 		}
 		return TRUE;
