@@ -64,18 +64,17 @@
 								<li class="active"><a href="#">Home</a></li>
 								<li><a href="#">Link</a></li>
 								<li><a href="#">Link</a></li>
+								{if $user->isInRole('admin')}
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-hdd"></i> {_"Devices"} <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="#">Action</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li class="nav-header">Nav header</li>
-										<li><a href="#">Separated link</a></li>
-										<li><a href="#">One more separated link</a></li>
+										<li><a href="{link Device:}"><i class="icon-hdd"></i> {_"Devices"}</a></li>
+										<li class="nav-header">{_"Groups"}</li>
+										<li><a href="{link DeviceGroup:}"><i class="icon-sitemap"></i> {_"Device groups"}</a></li>
+										<li><a href="{link AuthenticationGroup:}"><i class="icon-key"></i> {_"Authentication groups"}</a></li>
 									</ul>
 								</li>
+								{/if}
 							</ul>
 							<ul class="nav pull-right">
 								{if $user->isInRole('admin')}
@@ -117,7 +116,7 @@
 				{if !$user->getIdentity()->email}
 					<div class="alert alert-info">
 						<button type="button" class="close" data-dismiss="alert">&times;</button>
-						<a n:href="Profile:">{_"Please complete the missing email in your profile !"}</a>
+						<a n:href="Profile:">{_"Please fill in the missing email in your profile !"}</a>
 					</div>
 				{/if}
 			{/if}
