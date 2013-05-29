@@ -14,7 +14,6 @@
  */
 
 use Nette\Application\UI\Form,
-	Nette\DateTime,
 	Nette\Utils\Html;
 
 class ProfilePresenter extends BasePresenter {

@@ -15,7 +15,6 @@
 
 use Grido\Grid,
     Grido\Components\Filters\Filter,
-    Grido\Components\Columns\Column,
     Nette\Utils\Html,
 	Nette\Application\UI\Form;
 
