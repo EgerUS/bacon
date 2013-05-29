@@ -1,0 +1,16 @@
+
+{block content}
+
+<div>
+	<div class="box">
+		<legend><i class="icon-plus-sign"></i> {_"Create new device group"}</legend>
+		{include '../components/form.latte', form => $presenter[deviceGroupAddForm]}
+	</div>
+
+	<div>
+		<h1><i class="icon-sitemap"></i> {_"List of device groups"}</h1>
+		{control grid}
+	</div>
+</div>
+	
+{/block}

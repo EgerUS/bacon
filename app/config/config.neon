@@ -46,6 +46,7 @@ common:
 		authenticator: Authenticator
 		userRepository: User\UserRepository
 		authenticationGroupRepository: Group\AuthenticationGroupRepository
+		deviceGroupRepository: Group\DeviceGroupRepository
 
 
 	factories:
