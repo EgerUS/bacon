@@ -27,10 +27,10 @@ class DeviceGroupRepository extends Nette\Object
     }
 	
 	/** 
-	 * Authentication group data getter
+	 * Device group data getter
 	 * @param string row Database row for select
 	 * @param string value Value for select
-	 * @return array Authentication group data
+	 * @return array Device group data
 	 */
 	
     public function getDeviceGroupData(array $query=array())
