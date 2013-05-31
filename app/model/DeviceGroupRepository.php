@@ -104,4 +104,6 @@ class DeviceGroupRepository extends Nette\Object
 		}
 		return $groupTree;
 	} 
+	
+	//TODO: Rewrite groups to http://codeassembly.com/How-to-display-infinite-depth-expandable-categories-using-php-and-javascript/
 }
