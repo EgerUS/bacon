@@ -159,7 +159,7 @@ class AuthenticationGroupPresenter extends BasePresenter {
 				->setOption('input-prepend', Html::el('i')->class('icon-th'));
 		$form->addText('username', 'Username', 30, 100)
 				->setAttribute('placeholder', $this->translator->translate('Enter username...'))
-				->addRule(Form::MAX_LENGTH, 'Username must be at max %d characters long', 64)
+				->addRule(Form::MAX_LENGTH, 'Username must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-user'));
 		$form->addText('password', 'Password', 30, 100)
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
@@ -233,7 +233,7 @@ class AuthenticationGroupPresenter extends BasePresenter {
 		$form->addText('username', 'Username', 30, 100)
 				->setValue($groupData->username)
 				->setAttribute('placeholder', $this->translator->translate('Enter username...'))
-				->addRule(Form::MAX_LENGTH, 'Username must be at max %d characters long', 64)
+				->addRule(Form::MAX_LENGTH, 'Username must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-user'));
 		$form->addText('password', 'Password', 30, 100)
 				->setValue($groupData->password)
