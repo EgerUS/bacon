@@ -87,9 +87,16 @@ class AuthenticationGroupRepository extends Nette\Object
 		} 
 	}
 	
+	/**
+	 * Check if authentication group is used
+	 * @return bool
+	 */
 	public function isAuthenticationGroupUsed($id) {
 		$fluent1 = $this->db->select('COUNT(authenticationGroupId)')->from('devicegroups')->where('authenticationGroupId = %i', $id);
 		$fluent2 = $this->db->select('COUNT(authenticationGroupId)')->from('devices')->where('authenticationGroupId = %i', $id);
-		return $fluent1->union($fluent2)->fetchSingle() ? TRUE : FALSE;
+		$fluent3 = $this->db->select('COUNT(authenticationGroupId)')->from('devicesources')->where('authenticationGroupId = %i', $id);
+		$result = $fluent1->union($fluent2)->union($fluent3)->fetchPairs();
+		return array_sum($result) ? TRUE : FALSE;
 	}
+
 }

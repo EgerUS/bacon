@@ -88,10 +88,16 @@ class DeviceGroupRepository extends Nette\Object
 		} 
 	}
 	
+	/**
+	 * Check if device group is used
+	 * @return bool
+	 */	
 	public function isDeviceGroupUsed($id) {
 		$fluent1 = $this->db->select('COUNT(parentId)')->from('devicegroups')->where('parentId = %i', $id);
 		$fluent2 = $this->db->select('COUNT(deviceGroupId)')->from('devices')->where('deviceGroupId = %i', $id);
-		return $fluent1->union($fluent2)->fetchSingle() ? TRUE : FALSE;
+		$fluent3 = $this->db->select('COUNT(deviceGroupId)')->from('devicesources')->where('deviceGroupId = %i', $id);
+		$result = $fluent1->union($fluent2)->union($fluent3)->fetchPairs();
+		return array_sum($result) ? TRUE : FALSE;
 	}
 	
 	public function getDeviceGroupTree($parent = 0, $level = 0) {
