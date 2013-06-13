@@ -47,6 +47,7 @@ common:
 		userRepository: User\UserRepository
 		authenticationGroupRepository: Group\AuthenticationGroupRepository
 		deviceGroupRepository: Group\DeviceGroupRepository
+		deviceSourceRepository: Device\DeviceSourceRepository
 		deviceRepository: Device\DeviceRepository
 
 

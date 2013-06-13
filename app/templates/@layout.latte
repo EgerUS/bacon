@@ -66,12 +66,17 @@
 								<li><a href="#">Link</a></li>
 								{if $user->isInRole('admin')}
 								<li class="dropdown">
-									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-hdd"></i> {_"Devices"} <b class="caret"></b></a>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-th"></i> {_"Groups"} <b class="caret"></b></a>
 									<ul class="dropdown-menu">
-										<li><a href="{link Device:}"><i class="icon-hdd"></i> {_"Devices"}</a></li>
-										<li class="nav-header">{_"Groups"}</li>
 										<li><a href="{link DeviceGroup:}"><i class="icon-sitemap"></i> {_"Device groups"}</a></li>
 										<li><a href="{link AuthenticationGroup:}"><i class="icon-key"></i> {_"Authentication groups"}</a></li>
+									</ul>
+								</li>
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-hdd"></i> {_"Devices"} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a href="{link DeviceSource:}"><i class="icon-link"></i> {_"Device sources"}</a></li>
+										<li><a href="{link Device:}"><i class="icon-hdd"></i> {_"Devices"}</a></li>
 									</ul>
 								</li>
 								{/if}
