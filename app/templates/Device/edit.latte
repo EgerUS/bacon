@@ -1,0 +1,16 @@
+
+{block content}
+
+<div>
+	<div class="box">
+		<legend><i class="icon-edit-sign"></i> {_"Edit device"}</legend>
+		{include '../components/form.latte', form => $presenter[deviceEditForm]}
+	</div>
+
+	<div>
+		<h1><i class="icon-hdd"></i> {_"List of devices"}</h1>
+		{control grid}
+	</div>
+</div>
+	
+{/block}

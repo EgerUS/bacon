@@ -37,19 +37,60 @@ class DeviceRepository extends Nette\Object {
     {
 		if(!isset($query['select']))
 		{
-			$query['select'] = 'devices.*, devicegroups.groupname AS deviceGroupName, authenticationgroups.groupname AS authenticationGroupName';
+			$query['select'] = 'devices.*, devicegroups.id AS gid, devicegroups.groupname AS deviceGroupName, authenticationgroups.id AS aid, authenticationgroups.groupname AS authenticationGroupName, devicesources.id AS sid, devicesources.sourcename AS deviceSourceName';
 			$autoselect = TRUE;
 		}
 		$fluent = $this->db->select($query['select'])->from('devices');
-		if($autoselect)
+		if(isset($autoselect))
 		{
 			$fluent = $fluent->leftJoin('devicegroups')->on('devicegroups.id = devices.deviceGroupId');
 			$fluent = $fluent->leftJoin('authenticationgroups')->on('authenticationgroups.id = devices.authenticationGroupId');
+			$fluent = $fluent->leftJoin('devicesources')->on('devicesources.id = devices.deviceSourceId');
 		}
 		if(isset($query['where']))
 		{
 			$fluent = $fluent->where($query['where']);
 		}
 		return $fluent;
+	}
+
+	/**
+	 * Add new device
+	 * @return bool
+	 */
+	public function addDevice($values) {
+		try {
+			if ($this->db->insert('devices', $values)->execute()) {
+				return true;
+			}
+		} catch (\DibiException $e) {
+			return false;
+		} 
+	}
+
+	/**
+	 * Update device
+	 * @return bool
+	 */
+	public function updateDevice($id, $values) {
+		try {
+			$this->db->update('devices', $values)->where('id = %i', $id)->execute();
+			return $this->db->affectedRows();
+		} catch (\DibiException $e) {
+			return false;
+		} 
+	}
+	
+	/**
+	 * Delete device
+	 * @return bool
+	 */
+	public function deleteDevice($id) {
+		try {
+			$this->db->delete("devices")->where('id = %i', $id)->execute();
+			return $this->db->affectedRows();
+		} catch (\DibiException $e) {
+			return false;
+		} 
 	}
 }
