@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-06-13 16:08:09
+# Created: 2013-06-14 10:53:06
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-06-13 16:08+0200\n"
+"PO-Revision-Date: 2013-06-14 10:53+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -90,6 +90,9 @@ msgstr "Zařízení '%s' bylo úspěšně vytvořeno"
 
 msgid "Device '%s' successfully deleted"
 msgstr "Zařízení '%s' bylo úspěšně smazáno"
+
+msgid "Device does not exist"
+msgstr "Zařízení neexistuje"
 
 msgid "Device group"
 msgstr "Skupina zařízení"
@@ -262,6 +265,12 @@ msgstr "Seznam zdrojů zařízení"
 msgid "List of devices"
 msgstr "Seznam zařízení"
 
+msgid "Load"
+msgstr "Načíst"
+
+msgid "Load devices from source"
+msgstr "Načíst zařízení ze zdroje"
+
 msgid "Login form"
 msgstr "Přihlášení"
 
@@ -342,6 +351,9 @@ msgstr "Zadejte prosím své uživatelské jméno"
 msgid "Please, select authentication group or enter username and/or password"
 msgstr "Vyberte prosím autentizační skupinu nebo zadejte uživatelské jméno a/nebo heslo"
 
+msgid "Please, select device source"
+msgstr "Vyberte prosím zdroj zařízení"
+
 msgid "Please, select user role"
 msgstr "Vyberte prosím oprávnění uživatele"
 
@@ -370,6 +382,9 @@ msgstr "Hledat"
 
 msgid "Select some row"
 msgstr "Vyberte nějaký záznam"
+
+msgid "Select source..."
+msgstr "Vyberte zdroj..."
 
 msgid "Selected..."
 msgstr "Vybrané..."
@@ -494,8 +509,8 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
-msgid "Device does not exist"
-msgstr "Zařízení neexistuje"
+msgid "Source does not exist"
+msgstr "Zdroj neexistuje"
 
 msgid "Česky"
 msgstr ""
@@ -503,10 +518,13 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-msgid "Mikrotik L2"
+msgid "Mikrotik"
 msgstr ""
 
-msgid "Mikrotik L2 auth"
+msgid "Portax Mikrotik L2"
+msgstr ""
+
+msgid "Portax Mikrotik L3"
 msgstr ""
 
 msgid "OK"

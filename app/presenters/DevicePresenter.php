@@ -23,6 +23,9 @@ class DevicePresenter extends BasePresenter {
 	/** @var Device\DeviceRepository */
 	private $Drepo;
 	
+	/** @var Device\DeviceSourceRepository */
+	private $DSrepo;
+
 	/** @var Group\DeviceGroupRepository */
 	private $DGrepo;
 	
@@ -37,10 +40,11 @@ class DevicePresenter extends BasePresenter {
 	 * @param Group\DeviceRepository DeviceGroupRepository
 	 * @param Authenticator auth
 	 */
-	public function __construct(Device\DeviceRepository $DeviceRepository, Group\DeviceGroupRepository $DeviceGroupRepository, Group\AuthenticationGroupRepository $AuthenticationGroupRepository, Authenticator $auth)
+	public function __construct(Device\DeviceRepository $DeviceRepository, Device\DeviceSourceRepository $DeviceSourceRepository, Group\DeviceGroupRepository $DeviceGroupRepository, Group\AuthenticationGroupRepository $AuthenticationGroupRepository, Authenticator $auth)
 	{
 		parent::__construct();
 		$this->Drepo = $DeviceRepository;
+		$this->DSrepo = $DeviceSourceRepository;
 		$this->DGrepo = $DeviceGroupRepository;
 		$this->AGrepo = $AuthenticationGroupRepository;
 		$this->auth = $auth;
@@ -403,4 +407,40 @@ class DevicePresenter extends BasePresenter {
 		}
 	}
 
+	protected function createComponentDeviceAddFromSourceForm()
+	{
+		$query = array('select' => 'id, sourceName');
+		$sources = $this->DSrepo->getDeviceSourceData($query)->fetchPairs();
+		$form = new Form();
+		$form->setTranslator($this->translator);
+		$prompt = Html::el('option')->setText($this->translator->translate('Select source...'))->class('prompt');
+		$form->addSelect('sourceNameId', 'Source', $sources)
+				->setRequired('Please, select device source')
+				->setOption('input-prepend', Html::el('i')->class('icon-link'))
+				->setPrompt($prompt);
+		$form->addSubmit('save', 'Load')
+				->setAttribute('class','btn btn-primary');
+		$form->addProtection('Timeout occured, please try it again');
+		$form->onValidate[] = callback($this, 'validateDeviceAddFromSourceForm');
+		$form->onSuccess[] = $this->DeviceAddFromSourceFormSubmitted;
+		return $form;
+	}
+
+	public function validateDeviceAddFromSourceForm($form)
+	{
+		$values = $form->getValues();
+
+		if (!$values->sourceNameId) {
+			$form->addError($this->translator->translate('Please, select device source'));
+		} elseif (!$this->DSrepo->getDeviceSourceData(array('select' => 'id', 'where' => 'id=\''.$values->sourceNameId.'\''))->fetch()) {
+			$form->addError($this->translator->translate('Source does not exist'));
+		}
+	}
+
+	public function DeviceAddFromSourceFormSubmitted(Form $form)
+	{
+		$values = $form->getValues();
+		
+		$this->redirect('default');
+	}
 }
