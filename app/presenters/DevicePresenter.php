@@ -414,7 +414,7 @@ class DevicePresenter extends BasePresenter {
 		$form = new Form();
 		$form->setTranslator($this->translator);
 		$prompt = Html::el('option')->setText($this->translator->translate('Select source...'))->class('prompt');
-		$form->addSelect('sourceNameId', 'Source', $sources)
+		$form->addSelect('id', 'Source', $sources)
 				->setRequired('Please, select device source')
 				->setOption('input-prepend', Html::el('i')->class('icon-link'))
 				->setPrompt($prompt);
@@ -430,9 +430,9 @@ class DevicePresenter extends BasePresenter {
 	{
 		$values = $form->getValues();
 
-		if (!$values->sourceNameId) {
+		if (!$values->id) {
 			$form->addError($this->translator->translate('Please, select device source'));
-		} elseif (!$this->DSrepo->getDeviceSourceData(array('select' => 'id', 'where' => 'id=\''.$values->sourceNameId.'\''))->fetch()) {
+		} elseif (!$this->DSrepo->getDeviceSourceData(array('select' => 'id', 'where' => 'id=\''.$values->id.'\''))->fetch()) {
 			$form->addError($this->translator->translate('Source does not exist'));
 		}
 	}
@@ -440,7 +440,16 @@ class DevicePresenter extends BasePresenter {
 	public function DeviceAddFromSourceFormSubmitted(Form $form)
 	{
 		$values = $form->getValues();
-		
+		$result = $this->DSrepo->getDevicesFromSource($values->id);
+		!$result->added && !$result->updated
+			? $this->flashMessage($this->translator->translate('No devices loaded from source \'%s\'', $result->sourceName), 'error')
+			: NULL;
+		$result->added
+			? $this->flashMessage($this->translator->translate('From source \'%s\' were added %d devices', $result->sourceName, $result->added), 'success')
+			: NULL;
+		$result->updated
+			? $this->flashMessage($this->translator->translate('From source \'%s\' were updated %d devices', $result->sourceName, $result->updated), 'success')
+			: NULL;
 		$this->redirect('default');
 	}
 }

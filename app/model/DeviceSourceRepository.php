@@ -14,16 +14,21 @@
  */ 
 
 namespace Device;
-use Nette;
+use Nette,
+	Kdyby\Curl;
 
 class DeviceSourceRepository extends Nette\Object {
 
     /** @var \DibiConnection */
     private $db;
 
-    public function __construct(\DibiConnection $connection)
+	/** @var Device\DeviceRepository */
+	private $Drepo;
+
+    public function __construct(\DibiConnection $connection, \Device\DeviceRepository $DeviceRepository)
     {
         $this->db = $connection;
+		$this->Drepo = $DeviceRepository;
     }
 	
 	/** 
@@ -99,4 +104,36 @@ class DeviceSourceRepository extends Nette\Object {
 		} 
 	}
 	
+	/**
+	 * Getter for devices from source
+	 */
+	public function getDevicesFromSource($id) {
+		$query = array('select' => '*', 'where' => 'id=\''.$id.'\'');
+		$source = $this->getDeviceSourceData($query)->fetch();
+		$curl = new Curl\CurlWrapper($source->sourceURL);
+		$curl->execute();
+		$return = (object) array('sourceName' => $source->sourceName, 'added' => 0, 'updated' => 0);
+		foreach (preg_split('/\r\n|\n|\r/', $curl->response) as $value) {
+			if (preg_match('/^[a-zA-Z0-9].*/', $value) && !preg_match('/^#.*/', $value)) {
+				$values = array('deviceGroupId'			=> $source->deviceGroupId,
+								'authenticationGroupId'	=> $source->authenticationGroupId,
+								'deviceSourceId'		=> $id,
+								'host'					=> $value,
+								'username'				=> NULL,
+								'password'				=> NULL,
+								'description'			=> $source->description);
+				
+				$query = array('select' => 'id, deviceSourceId', 'where' => 'host=\''.$value.'\'');
+				$dev = $this->Drepo->getDeviceData($query)->fetch();
+				if (isset($dev->id)) {
+					if ($dev->deviceSourceId == $id) {
+						$this->Drepo->updateDevice($dev->id, $values) ? $return->updated++ : NULL;
+					}
+				} else {
+					$this->Drepo->addDevice($values) ? $return->added++ : NULL;
+				}
+			}
+		}
+		return $return;
+	}
 }
