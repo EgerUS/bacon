@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3fc8426d41f81109a8ac63ee1db196a9",
+    "hash": "92d2db0e9f21462f9ddd74974efaf0bb",
     "packages": [
         {
             "name": "dibi/dibi",
@@ -52,6 +52,57 @@
                 "sqlite"
             ],
             "time": "2013-04-03 12:40:16"
+        },
+        {
+            "name": "kdyby/curl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kdyby/Curl.git",
+                "reference": "59ad40ee509c42b9996dda105e9facf3b5167a37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kdyby/Curl/zipball/59ad40ee509c42b9996dda105e9facf3b5167a37",
+                "reference": "59ad40ee509c42b9996dda105e9facf3b5167a37",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "nette/nette": "@dev"
+            },
+            "require-dev": {
+                "nette/tester": "@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Kdyby\\Curl": "src/"
+                },
+                "classmap": [
+                    "src/Kdyby/Curl/exceptions.php"
+                ]
+            },
+            "notification-url": "http://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause",
+                "GPL-2.0",
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Filip Procházka",
+                    "homepage": "http://filip-prochazka.com"
+                }
+            ],
+            "description": "Curl wrapper for Nette Framework",
+            "homepage": "http://kdyby.org",
+            "keywords": [
+                "curl",
+                "http",
+                "nette"
+            ],
+            "time": "2013-05-26 17:54:42"
         },
         {
             "name": "nette/nette",
@@ -180,12 +231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/o5/grido.git",
-                "reference": "a153f9aa671bbf808af63671b0ae6502537ad290"
+                "reference": "b1fce16911787797c75c634439a991e108f8260f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/o5/grido/zipball/a153f9aa671bbf808af63671b0ae6502537ad290",
-                "reference": "a153f9aa671bbf808af63671b0ae6502537ad290",
+                "url": "https://api.github.com/repos/o5/grido/zipball/b1fce16911787797c75c634439a991e108f8260f",
+                "reference": "b1fce16911787797c75c634439a991e108f8260f",
                 "shasum": ""
             },
             "require": {
@@ -222,7 +273,7 @@
                 "table",
                 "tablegrid"
             ],
-            "time": "2013-05-16 17:23:01"
+            "time": "2013-06-08 19:36:23"
         },
         {
             "name": "schmutzka/gettexttranslator",
@@ -278,12 +329,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "dfd266ff2956638716fe338c1816e745baf249d8"
+                "reference": "7ff0af99a7bf7b7fb4577d2094ecc3b87e286ba3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/dfd266ff2956638716fe338c1816e745baf249d8",
-                "reference": "dfd266ff2956638716fe338c1816e745baf249d8",
+                "url": "https://api.github.com/repos/nette/tester/zipball/7ff0af99a7bf7b7fb4577d2094ecc3b87e286ba3",
+                "reference": "7ff0af99a7bf7b7fb4577d2094ecc3b87e286ba3",
                 "shasum": ""
             },
             "require": {
@@ -321,7 +372,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2013-05-17 14:57:08"
+            "time": "2013-06-14 00:03:49"
         }
     ],
     "aliases": [
@@ -331,6 +382,7 @@
     "stability-flags": {
         "nextras/forms": 20,
         "o5/grido": 20,
+        "kdyby/curl": 20,
         "nette/tester": 20
     },
     "platform": {
