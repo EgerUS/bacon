@@ -94,52 +94,6 @@ html.js .jshidden {
 	display: none;
 }
 
-.box {
-	font: 10px Verdana;
-	white-space: nowrap;
-	background: #f0f0f0;
-	margin-bottom: 10px;
-	padding: 3%;
-	border: 1px solid #e6e6e6;
-	border-radius: 5px;
-}
-
-
-.box img {
-	float: left;
-}
-
-.box p {
-	clear: both;
-}
-
-.box:nth-child(4n - 2) h2 {
-	color: #00a6e5;
-}
-
-.box:nth-child(4n - 2) img {
-	margin: -24px 0 0 -24px;
-}
-
-.box:nth-child(4n - 1) h2 a {
-	color: #db8e34;
-	background: transparent;
-}
-
-.box:nth-child(4n) {
-	margin: 0;
-}
-
-.box:nth-child(4n) h2 a {
-	color: #578404;
-	background: transparent;
-}
-
-.box th {
-	text-align: right;
-	padding-right: 20px;
-}
-
 .sign-in-form {
 	width: 500px;
 	margin: auto;
