@@ -49,6 +49,7 @@ common:
 		deviceGroupRepository: Group\DeviceGroupRepository
 		deviceSourceRepository: Device\DeviceSourceRepository
 		deviceRepository: Device\DeviceRepository
+		scriptRepository: Script\ScriptRepository
 
 
 	factories:

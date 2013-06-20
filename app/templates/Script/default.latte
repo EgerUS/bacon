@@ -1,0 +1,16 @@
+
+{block content}
+
+<div>
+	<div class="well">
+		<legend><i class="icon-plus-sign"></i> {_"Create new script"}</legend>
+		{include '../components/form.latte', form => $presenter[scriptAddForm]}
+	</div>
+
+	<div>
+		<h1><i class="icon-file-text"></i> {_"List of scripts"}</h1>
+		{control grid}
+	</div>
+</div>
+	
+{/block}
