@@ -50,6 +50,8 @@ common:
 		deviceSourceRepository: Device\DeviceSourceRepository
 		deviceRepository: Device\DeviceRepository
 		scriptRepository: Script\ScriptRepository
+		scriptCommandsRepository: Commands\ScriptCommandsRepository
+		logRepository: Log\LogRepository
 
 
 	factories:
