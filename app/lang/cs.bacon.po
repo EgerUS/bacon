@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-06-21 00:47:55
+# Created: 2013-06-25 14:48:32
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-06-21 00:47+0200\n"
+"PO-Revision-Date: 2013-06-25 14:48+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -394,6 +394,9 @@ msgstr "Vyberte prosím autentizační skupinu nebo zadejte uživatelské jméno
 msgid "Please, select device source"
 msgstr "Vyberte prosím zdroj zařízení"
 
+msgid "Please, select script class"
+msgstr "Vyberte prosím třídu skriptu"
+
 msgid "Please, select user role"
 msgstr "Vyberte prosím oprávnění uživatele"
 
@@ -426,6 +429,9 @@ msgstr "Skript '%s' byl úspěšně vytvořen"
 msgid "Script '%s' successfully deleted"
 msgstr "Skript '%s' byl úspěšně smazán"
 
+msgid "Script class"
+msgstr "Třída skriptu"
+
 msgid "Script does not exist"
 msgstr "Skript neexistuje"
 
@@ -449,6 +455,9 @@ msgstr "Skripty"
 msgid "Search"
 msgstr "Hledat"
 
+msgid "Select script class..."
+msgstr "Vyberte třídu skriptu..."
+
 msgid "Select some row"
 msgstr "Vyberte nějaký záznam"
 
@@ -466,6 +475,9 @@ msgstr "Odhlásit"
 
 msgid "Signed out due to inactivity"
 msgstr "Došlo k odhlášení z důvodu neaktivity"
+
+msgid "Skript class does not exist"
+msgstr "Třída skriptu neexistuje"
 
 msgid "Source"
 msgstr "Zdroj"
@@ -506,6 +518,9 @@ msgstr "Aktualizace zařízení '%s' selhala"
 
 msgid "Update of device source '%s' failed"
 msgstr "Aktualizace zdroje zařízení '%s' selhala"
+
+msgid "Update of script '%s' failed"
+msgstr "Aktualizace skriptu '%s' selhala"
 
 msgid "Update of user '%s' failed"
 msgstr "Aktualizace uživatele '%s' selhala"
@@ -586,13 +601,28 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
-msgid "Update of script '%s' failed"
-msgstr "Aktualizace skriptu '%s' selhala"
+msgid "Script class does not exist"
+msgstr "Třída skriptu neexistuje"
 
 msgid "Česky"
 msgstr ""
 
 msgid "English"
+msgstr ""
+
+msgid "Mikrotik"
+msgstr ""
+
+msgid "  Mikrotik L3"
+msgstr ""
+
+msgid "Mikrotik L3"
+msgstr ""
+
+msgid "Mikrotik/ssh2"
+msgstr ""
+
+msgid "Mikrotik/telnet"
 msgstr ""
 
 msgid "OK"
@@ -613,6 +643,18 @@ msgstr ""
 msgid "100"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'test' ?"
+msgid "Opravdu chcete smazat 'asda' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Portax Mikrotik L2' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Portax Mikrotik L3' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'dsf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "test"
 msgstr ""
 

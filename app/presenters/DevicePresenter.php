@@ -16,7 +16,8 @@
 use Grido\Grid,
     Grido\Components\Filters\Filter,
     Nette\Utils\Html,
-	Nette\Application\UI\Form;
+	Nette\Application\UI\Form,
+	Nette\Utils\Finder;
 
 class DevicePresenter extends BasePresenter {
 
@@ -104,6 +105,12 @@ class DevicePresenter extends BasePresenter {
 					->setSuggestion()
 				->setColumn('devices.password');
 		
+        $grid->addColumnText('scriptClass', 'Script class')
+				->setSortable()
+				->setFilterNumber()
+					->setSuggestion()
+				->setColumn('devices.scriptClass');
+		
         $grid->addColumnText('active', 'Active')
 				->setSortable()
 				->setFilterNumber()
@@ -188,6 +195,10 @@ class DevicePresenter extends BasePresenter {
 		$groups = $this->DGrepo->getDeviceGroupTree();
 		$query = array('select' => 'id, groupname');
 		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
+		foreach (Finder::findFiles('*.php')->from('../app/model/Commands') as $file) {
+			$class = substr(strrchr($file, "Commands/"), 9, -4 );
+			$scriptClasses[$class] = $class;
+		}
 		$form = new Form();
 		$form->setTranslator($this->translator);
 		$form->addText('host', 'Host', 30, 100)
@@ -211,6 +222,11 @@ class DevicePresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
+		$prompt = Html::el('option')->setText($this->translator->translate('Select script class...'))->class('prompt');
+		$form->addSelect('scriptClass', 'Script class', $scriptClasses)
+				->setRequired('Please, select script class')
+				->setOption('input-prepend', Html::el('i')->class('icon-bolt'))
+				->setPrompt($prompt);
 		$form->addCheckbox('active', 'Active')
 				->setAttribute('class','checkbox')
 				->setDefaultValue(true);
@@ -258,6 +274,11 @@ class DevicePresenter extends BasePresenter {
 		if ($values->authenticationGroupId && ($values->username || $values->password)) {
 			$form->addError($this->translator->translate('Cannot be used an authentication group along with the username and password'));
 		}
+		if (!$values->scriptClass) {
+			$form->addError($this->translator->translate('Please, select script class'));
+		} elseif (!file_exists("../app/model/Commands/".$values->scriptClass.".php")) {
+			$form->addError($this->translator->translate('Script class does not exist'));
+		}
 	}
 
 	public function DeviceAddFormSubmitted(Form $form)
@@ -280,6 +301,10 @@ class DevicePresenter extends BasePresenter {
 		$groups = $this->DGrepo->getDeviceGroupTree();
 		$query = array('select' => 'id, groupname');
 		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
+		foreach (Finder::findFiles('*.php')->from('../app/model/Commands') as $file) {
+			$class = substr(strrchr($file, "Commands/"), 9, -4 );
+			$scriptClasses[$class] = $class;
+		}
 		$id = $this->getParam('id');
 		$query = array('where' => 'devices.id=\''.$id.'\'');
 		$deviceData = $this->Drepo->getDeviceData($query)->fetch();
@@ -322,6 +347,10 @@ class DevicePresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
+		$form->addSelect('scriptClass', 'Script class', $scriptClasses)
+				->setRequired('Please, select script class')
+				->setValue($deviceData->scriptClass)
+				->setOption('input-prepend', Html::el('i')->class('icon-bolt'));
 		$form->addCheckbox('active', 'Active')
 				->setValue($deviceData->active)
 				->setAttribute('class','checkbox');
@@ -373,6 +402,11 @@ class DevicePresenter extends BasePresenter {
 		if ($values->authenticationGroupId && ($values->username || $values->password)) {
 			$form->addError($this->translator->translate('Cannot be used an authentication group along with the username and password'));
 		}
+		if (!$values->scriptClass) {
+			$form->addError($this->translator->translate('Please, select script class'));
+		} elseif (!file_exists("../app/model/Commands/".$values->scriptClass.".php")) {
+			$form->addError($this->translator->translate('Script class does not exist'));
+		}
 	}
 
 	public function DeviceEditFormSubmitted(Form $form)
@@ -389,10 +423,13 @@ class DevicePresenter extends BasePresenter {
 								  'authenticationGroupId'	=> $values->authenticationGroupId,
 								  'username'				=> $values->username,
 								  'password'				=> $values->password,
+								  'scriptClass'				=> $values->scriptClass,
 								  'description'				=> $values->description);
 
 			if (isset($values->deviceSourceId)) {
 				$deviceValues['deviceSourceId'] = $values->deviceSourceId;
+			} else {
+				$deviceValues['deviceSourceId'] = 0;
 			}
 			if ($this->Drepo->updateDevice($values->id, $deviceValues))
 			{

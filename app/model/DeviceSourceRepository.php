@@ -121,6 +121,7 @@ class DeviceSourceRepository extends Nette\Object {
 								'host'					=> $value,
 								'username'				=> NULL,
 								'password'				=> NULL,
+								'scriptClass'			=> $source->scriptClass,
 								'description'			=> $source->description);
 				
 				$query = array('select' => 'id, deviceSourceId', 'where' => 'host=\''.$value.'\'');
