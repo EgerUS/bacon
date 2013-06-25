@@ -25,6 +25,7 @@ class SSH2 extends \Nette\Object {
 	private $port = 22;
 	public $lastCommand = NULL;
 	public $lastCommandResult = NULL;
+	public $lastCommandError = NULL;
 	
 	private $methods = array("kex" => "diffie-hellman-group1-sha1", 
 							 "client_to_server" => array("crypt" => "3des-cbc", 
@@ -32,7 +33,7 @@ class SSH2 extends \Nette\Object {
 							 "server_to_client" => array("crypt" => "aes256-cbc,aes192-cbc,aes128-cbc", 
                                                         "comp" => "none")); 
 
-	private $callbacks = array("disconnect" => "disc"); 
+	private $callbacks = array("disconnect" => "disconnect_cb"); 
 	
 	/** @var Log\LogRepository */
 	private $script;
@@ -48,7 +49,7 @@ class SSH2 extends \Nette\Object {
 
 	private function read($stream)
 	{
-		stream_set_blocking($stream,true);
+		stream_set_blocking($stream,TRUE);
 		$data = "";
 		while($buf = fread($stream,4096)) $data .= $buf;
 		fclose($stream);
@@ -71,6 +72,7 @@ class SSH2 extends \Nette\Object {
 			{
 				$record = array('message' => 'User \''.$this->username.'\' login failed', 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
 				$this->script->log->addLog($record);
+				$this->disconnect();
 			} else { 
 				$record = array('message' => 'User \''.$this->username.'\' logged in', 'messageType' => 'ok', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
 				$this->script->log->addLog($record);
@@ -83,7 +85,7 @@ class SSH2 extends \Nette\Object {
 		return $this->connection; 
     } 
 
-	public function disc($reason,$message,$language) 
+	public function disconnect_cb($reason,$message,$language) 
 	{ 
 		$this->connection = NULL;
 		$record = array('message' => 'Disconnected with reason code ['.$reason.'] and message: '.$message, 'messageType' => 'warning', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
@@ -91,29 +93,46 @@ class SSH2 extends \Nette\Object {
     } 
 
 	public function disconnect() 
-	{ 
-		//ssh2_exec($this->connection, 'exit');
-		$this->connection = NULL;
-		$record = array('message' => 'Disconnected', 'messageType' => 'ok', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
-		$this->script->log->addLog($record);
+	{
+		if ($this->connection) {
+			$this->connection = NULL;
+			$record = array('message' => 'Disconnected', 'messageType' => 'ok', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+			$this->script->log->addLog($record);
+		}
     } 
 
 	function fingerprint()
 	{
-		return ssh2_fingerprint($this->connection,SSH2_FINGERPRINT_MD5 | SSH2_FINGERPRINT_HEX);
+		if ($this->connection) {
+			return ssh2_fingerprint($this->connection,SSH2_FINGERPRINT_MD5 | SSH2_FINGERPRINT_HEX);
+		}
 	}
 	
 	public function command($command, $waitfor = NULL)
 	{
-		if(!($stream = ssh2_exec($this->connection,$command,null,null,80,25)))
-		{
-			$record = array('message' => 'Failed to execute command \''.$command.'\'', 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
-			$this->script->log->addLog($record);
-		} else {
-			$this->lastCommand = $command;
-			$this->read($stream);
-			$record = array('message' => 'Command \''.$command.'\' successfully executed', 'messageType' => 'ok', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
-			$this->script->log->addLog($record);
+		if ($this->connection) {
+			if(!($stream = ssh2_exec($this->connection,$command,null,null,80,25)))
+			{
+				$record = array('message' => 'Failed to send command \''.$command.'\'', 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+				$this->script->log->addLog($record);
+			} else {
+				$this->lastCommand = $command;
+				$this->read($stream);
+				$record = array('message' => 'Command \''.$command.'\' sended', 'messageType' => 'info', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+				$this->script->log->addLog($record);
+				$result = explode("\n", $this->lastCommandResult);
+				array_pop($result);
+				if (count($result)) {
+					echo $result[count($result)-1];
+					if (preg_match('/error|failed|bad command/i', $result[count($result)-1])) {
+						$this->lastCommandError = $result[count($result)-1];
+						$record = array('message' => 'Command \''.$command.'\' failed with error: '.$this->lastCommandError, 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+						$this->script->log->addLog($record);
+					} else {
+						$this->lastCommandError = NULL;
+					}
+				}
+			}
 		}
 	}
 	
