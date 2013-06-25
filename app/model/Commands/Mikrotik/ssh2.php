@@ -8,7 +8,7 @@
  * Created:     22.6.2013 
  * Encoding:    UTF-8 
  * 
- * Description: 
+ * Description: Module for Mikrotik SSH2 connection
  * 
  * 
  */ 
@@ -23,6 +23,7 @@ class SSH2 extends \Nette\Object {
 	private $password;
 	private $connection = NULL;
 	private $port = 22;
+	public $lastCommand = NULL;
 	public $lastCommandResult = NULL;
 	
 	private $methods = array("kex" => "diffie-hellman-group1-sha1", 
@@ -109,8 +110,17 @@ class SSH2 extends \Nette\Object {
 			$record = array('message' => 'Failed to execute command \''.$command.'\'', 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
 			$this->script->log->addLog($record);
 		} else {
+			$this->lastCommand = $command;
 			$this->read($stream);
 			$record = array('message' => 'Command \''.$command.'\' successfully executed', 'messageType' => 'ok', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+			$this->script->log->addLog($record);
+		}
+	}
+	
+	public function logLastCommand() {
+		if ($this->lastCommandResult)
+		{
+			$record = array('message' => 'Result of command \''.$this->lastCommand.'\': '.$this->lastCommandResult, 'messageType' => 'info', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
 			$this->script->log->addLog($record);
 		}
 	}
