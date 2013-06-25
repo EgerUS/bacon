@@ -20,21 +20,7 @@ class ScriptCommandsRepository extends Nette\Object {
 
 	/** @var Log\LogRepository */
 	public $log;
-		
-	/**
-	 * ===================================
-	 */
-	
-	
-	private $debug = true;
-	private $attempts = 5;
-	private $port = 23;
-	private $timeout = 3;
-	private $delay = 3;
-	private $connected = false;
-	private $error_no;
-	private $error_str;
-	
+
     public function __construct(\Log\LogRepository $LogRepository)
     {
 		$this->log = $LogRepository;
@@ -42,7 +28,7 @@ class ScriptCommandsRepository extends Nette\Object {
 	
 	public function init($class, $deviceHost, $deviceGroupName)
 	{
-		$className = "\\Commands\\".$class;
+		$className = strtr("/Commands/".$class, "/", "\\");
 		if(class_exists($className)) {
 			return new $className($this, $deviceHost, $deviceGroupName);
 		} else {
