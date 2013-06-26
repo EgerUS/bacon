@@ -26,6 +26,28 @@ class LogRepository extends Nette\Object {
         $this->db = $connection;
     }
 
+	/** 
+	 * Log data getter
+	 * @param string row Database row for select
+	 * @param string value Value for select
+	 * @return array Log data
+	 */
+	
+    public function getLogData(array $query=array())
+    {
+		if(!isset($query['select']))
+		{
+			$query['select'] = '*';
+			$autoselect = TRUE;
+		}
+		$fluent = $this->db->select($query['select'])->from('logs');
+		if(isset($query['where']))
+		{
+			$fluent = $fluent->where($query['where']);
+		}
+		return $fluent;
+	}
+	
 	/**
 	 * Add new log record
 	 * @return bool
