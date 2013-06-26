@@ -32,7 +32,7 @@ class ScriptCommandsRepository extends Nette\Object {
 		if(class_exists($className)) {
 			return new $className($this, $deviceHost, $deviceGroupName);
 		} else {
-			$record = array('message' => 'Class \''.$className.'\' does not exist', 'messageType' => 'error', 'deviceHost' => $deviceHost, 'deviceGroupName' => $deviceGroupName);
+			$record = array('message' => 'Class \''.$className.'\' does not exist', 'severity' => 'error', 'deviceHost' => $deviceHost, 'deviceGroupName' => $deviceGroupName);
 			$this->log->addLog($record);
 			return FALSE;
 		}
