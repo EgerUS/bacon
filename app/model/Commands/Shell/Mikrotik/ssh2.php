@@ -8,7 +8,7 @@
  * Created:     22.6.2013 
  * Encoding:    UTF-8 
  * 
- * Description: Module for Mikrotik SSH2 connection
+ * Description: Mikrotik SSH2 remote shell class
  * 
  * 
  */ 
@@ -101,7 +101,7 @@ class SSH2 extends \Nette\Object {
 		}
     } 
 
-	function fingerprint()
+	public function getFingerprint()
 	{
 		if ($this->connection) {
 			return ssh2_fingerprint($this->connection,SSH2_FINGERPRINT_MD5 | SSH2_FINGERPRINT_HEX);
@@ -111,6 +111,20 @@ class SSH2 extends \Nette\Object {
 	public function command($command, $waitfor = NULL)
 	{
 		if ($this->connection) {
+			if ($waitfor)
+			{
+				if (!preg_match($waitfor, $this->lastCommandResult))
+				{
+					$record = array('message' => 'Failed to wait for the result \''.$waitfor.'\'', 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+					$this->script->log->addLog($record);
+					$record = array('message' => 'Failed to send the command \''.$command.'\'', 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+					$this->script->log->addLog($record);
+					return FALSE;
+				} else {
+					$record = array('message' => 'Waiting for the result \''.$waitfor.'\' was successful', 'messageType' => 'ok', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+					$this->script->log->addLog($record);
+				}
+			}
 			if(!($stream = ssh2_exec($this->connection,$command,null,null,80,25)))
 			{
 				$record = array('message' => 'Failed to send command \''.$command.'\'', 'messageType' => 'error', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
@@ -118,7 +132,7 @@ class SSH2 extends \Nette\Object {
 			} else {
 				$this->lastCommand = $command;
 				$this->read($stream);
-				$record = array('message' => 'Command \''.$command.'\' sended', 'messageType' => 'info', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
+				$record = array('message' => 'Command \''.$command.'\' sended', 'messageType' => 'ok', 'deviceHost' => $this->deviceHost, 'deviceGroupName' => $this->deviceGroupName);
 				$this->script->log->addLog($record);
 				$result = explode("\n", $this->lastCommandResult);
 				array_pop($result);
