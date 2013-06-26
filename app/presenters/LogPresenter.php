@@ -60,7 +60,17 @@ class LogPresenter extends BasePresenter {
 		
         $grid->setModel($fluent);
 
-        $grid->addColumnText('dateTime', 'Date and time')
+        $grid->addColumnText('severity', 'Severity')
+				->setSortable()
+				->setCustomRender(function($item) use($grid) {
+					$severity = $item->severity;
+					if ($severity === 'error') { $severity = 'important'; }
+					return "<span class='label label-".$severity."'>".$item->severity."</span>";
+				})
+				->setFilterText()
+					->setSuggestion();
+
+		$grid->addColumnText('dateTime', 'Date and time')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
@@ -75,15 +85,11 @@ class LogPresenter extends BasePresenter {
 				->setFilterText()
 					->setSuggestion();
 		
-        $grid->addColumnText('messageType', 'Severity')
-				->setSortable()
-				->setFilterText()
-					->setSuggestion();
-		
         $grid->addColumnText('message', 'Message')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
+		$grid->getColumn('message')->headerPrototype->style = 'width: 40%;';
 		
 		$grid->setDefaultSort(array('dateTime' => 'desc'));
         $grid->setFilterRenderType(Filter::RENDER_INNER);
