@@ -24,7 +24,7 @@ $configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->addConfig(__DIR__ . '/config/config.local.neon', $configurator::NONE); // none section
 
 $configurator->onCompile[] = function ($configurator, $compiler) {
-    $compiler->addExtension('dibi', new DibiNetteExtension);
+    $compiler->addExtension('dibi', new DibiNette20Extension);
 };
 
 // GettextTranslator

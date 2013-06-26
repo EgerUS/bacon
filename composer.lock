@@ -3,21 +3,24 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "92d2db0e9f21462f9ddd74974efaf0bb",
+    "hash": "ca564f44ebc75795641610dc9520b3a6",
     "packages": [
         {
             "name": "dibi/dibi",
-            "version": "v2.0.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/dibi.git",
-                "reference": "v2.0.3"
+                "reference": "a388767848b8628bd368a32c7468f2693215dabd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/dibi/zipball/v2.0.3",
-                "reference": "v2.0.3",
+                "url": "https://api.github.com/repos/dg/dibi/zipball/a388767848b8628bd368a32c7468f2693215dabd",
+                "reference": "a388767848b8628bd368a32c7468f2693215dabd",
                 "shasum": ""
+            },
+            "require-dev": {
+                "nette/tester": "@dev"
             },
             "type": "library",
             "autoload": {
@@ -51,7 +54,7 @@
                 "postgresql",
                 "sqlite"
             ],
-            "time": "2013-04-03 12:40:16"
+            "time": "2013-06-23 01:36:01"
         },
         {
             "name": "kdyby/curl",
@@ -231,12 +234,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/o5/grido.git",
-                "reference": "b1fce16911787797c75c634439a991e108f8260f"
+                "reference": "97967d4b77d036918728d2725c6c9ddaa6b2a8e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/o5/grido/zipball/b1fce16911787797c75c634439a991e108f8260f",
-                "reference": "b1fce16911787797c75c634439a991e108f8260f",
+                "url": "https://api.github.com/repos/o5/grido/zipball/97967d4b77d036918728d2725c6c9ddaa6b2a8e4",
+                "reference": "97967d4b77d036918728d2725c6c9ddaa6b2a8e4",
                 "shasum": ""
             },
             "require": {
@@ -249,7 +252,7 @@
                     "Grido": ""
                 }
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3",
                 "GPL-2.0",
@@ -273,7 +276,7 @@
                 "table",
                 "tablegrid"
             ],
-            "time": "2013-06-08 19:36:23"
+            "time": "2013-06-24 14:39:32"
         },
         {
             "name": "schmutzka/gettexttranslator",
@@ -329,12 +332,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "7ff0af99a7bf7b7fb4577d2094ecc3b87e286ba3"
+                "reference": "99dfe7a8ec2e8a6ca18b9ca0cb2ce63536b466f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/7ff0af99a7bf7b7fb4577d2094ecc3b87e286ba3",
-                "reference": "7ff0af99a7bf7b7fb4577d2094ecc3b87e286ba3",
+                "url": "https://api.github.com/repos/nette/tester/zipball/99dfe7a8ec2e8a6ca18b9ca0cb2ce63536b466f7",
+                "reference": "99dfe7a8ec2e8a6ca18b9ca0cb2ce63536b466f7",
                 "shasum": ""
             },
             "require": {
@@ -349,7 +352,7 @@
                     "Tester/"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
                 "GPL-2.0",
@@ -372,7 +375,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2013-06-14 00:03:49"
+            "time": "2013-06-24 23:00:16"
         }
     ],
     "aliases": [
@@ -380,6 +383,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "dibi/dibi": 20,
         "nextras/forms": 20,
         "o5/grido": 20,
         "kdyby/curl": 20,
