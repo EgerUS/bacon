@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-06-25 14:48:32
+# Created: 2013-06-26 11:27:36
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-06-25 14:48+0200\n"
+"PO-Revision-Date: 2013-06-26 11:27+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -394,8 +394,11 @@ msgstr "Vyberte prosím autentizační skupinu nebo zadejte uživatelské jméno
 msgid "Please, select device source"
 msgstr "Vyberte prosím zdroj zařízení"
 
-msgid "Please, select script class"
-msgstr "Vyberte prosím třídu skriptu"
+msgid "Please, select remote file class"
+msgstr "Vyberte prosím třídu pro práci se vzdálenými soubory"
+
+msgid "Please, select remote shell class"
+msgstr "Vyberte prosím třídu pro práci se vzdáleným shellem"
 
 msgid "Please, select user role"
 msgstr "Vyberte prosím oprávnění uživatele"
@@ -405,6 +408,12 @@ msgstr "Profil"
 
 msgid "Profile form"
 msgstr "Profil"
+
+msgid "Remote file class"
+msgstr "Třída pro soubory"
+
+msgid "Remote shell class"
+msgstr "Třída pro shell"
 
 msgid "Reset"
 msgstr "Zrušit"
@@ -429,9 +438,6 @@ msgstr "Skript '%s' byl úspěšně vytvořen"
 msgid "Script '%s' successfully deleted"
 msgstr "Skript '%s' byl úspěšně smazán"
 
-msgid "Script class"
-msgstr "Třída skriptu"
-
 msgid "Script does not exist"
 msgstr "Skript neexistuje"
 
@@ -455,8 +461,11 @@ msgstr "Skripty"
 msgid "Search"
 msgstr "Hledat"
 
-msgid "Select script class..."
-msgstr "Vyberte třídu skriptu..."
+msgid "Select remote file class..."
+msgstr "Vyberte třídu pro vzdálené soubory..."
+
+msgid "Select remote shell class..."
+msgstr "Vyberte třídu pro vzdálený shell..."
 
 msgid "Select some row"
 msgstr "Vyberte nějaký záznam"
@@ -475,9 +484,6 @@ msgstr "Odhlásit"
 
 msgid "Signed out due to inactivity"
 msgstr "Došlo k odhlášení z důvodu neaktivity"
-
-msgid "Skript class does not exist"
-msgstr "Třída skriptu neexistuje"
 
 msgid "Source"
 msgstr "Zdroj"
@@ -601,8 +607,11 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
-msgid "Script class does not exist"
-msgstr "Třída skriptu neexistuje"
+msgid "Remote shell class does not exist"
+msgstr "Třída pro vzdálený shell neexistuje"
+
+msgid "Remote file class does not exist"
+msgstr "Třída pro vzdálené soubory neexistuje"
 
 msgid "Česky"
 msgstr ""
@@ -625,7 +634,28 @@ msgstr ""
 msgid "Mikrotik/telnet"
 msgstr ""
 
+msgid "Mikrotik/ftp"
+msgstr ""
+
+msgid "Portax Mikrotik L2"
+msgstr ""
+
+msgid "Portax Mikrotik L3"
+msgstr ""
+
+msgid "asda"
+msgstr ""
+
+msgid "dsf"
+msgstr ""
+
 msgid "OK"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Next"
 msgstr ""
 
 msgid "10"
@@ -643,7 +673,160 @@ msgstr ""
 msgid "100"
 msgstr ""
 
+msgid "Opravdu chcete smazat '172.30.15.196' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.123' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.124' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.125' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.129' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.130' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.131' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.132' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.133' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.134' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.135' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.136' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.137' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.138' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.139' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.48' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.49' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.50' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.54' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.72' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'localhost' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'test2' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'testik' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.82' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.98' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.5.3' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.113.82' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.254.166' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.254.178' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.254.179' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.254.58' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.254.66' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.70.198' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '188.175.70.66' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '213.180.32.169' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '213.180.32.68' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '213.180.32.69' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '213.180.35.134' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '213.180.47.14' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '82.150.162.10' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '90.182.20.85' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'backup.rionet.cz' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'fds' ?"
+msgstr ""
+
+msgid "aaa"
+msgstr ""
+
+msgid "Select script class..."
+msgstr ""
+
+msgid "Script class"
+msgstr ""
+
+msgid "Please, select script class"
+msgstr ""
+
+msgid "File/Mikrotik/ftp"
+msgstr ""
+
+msgid "Shell/Mikrotik/ssh2"
+msgstr ""
+
+msgid "Shell/Mikrotik/telnet"
+msgstr ""
+
 msgid "Opravdu chcete smazat 'asda' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'dsf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
 msgstr ""
 
 msgid "Opravdu chcete smazat 'Portax Mikrotik L2' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
@@ -652,7 +835,10 @@ msgstr ""
 msgid "Opravdu chcete smazat 'Portax Mikrotik L3' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
 msgstr ""
 
-msgid "Opravdu chcete smazat 'dsf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgid "Opravdu chcete smazat 'sdf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "sdf"
 msgstr ""
 
 msgid "test"

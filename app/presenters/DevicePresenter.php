@@ -105,11 +105,17 @@ class DevicePresenter extends BasePresenter {
 					->setSuggestion()
 				->setColumn('devices.password');
 		
-        $grid->addColumnText('scriptClass', 'Script class')
+        $grid->addColumnText('remoteShellClass', 'Remote shell class')
 				->setSortable()
 				->setFilterNumber()
 					->setSuggestion()
-				->setColumn('devices.scriptClass');
+				->setColumn('devices.remoteShellClass');
+		
+        $grid->addColumnText('remoteFileClass', 'Remote file class')
+				->setSortable()
+				->setFilterNumber()
+					->setSuggestion()
+				->setColumn('devices.remoteFileClass');
 		
         $grid->addColumnText('active', 'Active')
 				->setSortable()
@@ -195,9 +201,13 @@ class DevicePresenter extends BasePresenter {
 		$groups = $this->DGrepo->getDeviceGroupTree();
 		$query = array('select' => 'id, groupname');
 		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
-		foreach (Finder::findFiles('*.php')->from('../app/model/Commands') as $file) {
-			$class = substr(strrchr($file, "Commands/"), 9, -4 );
-			$scriptClasses[$class] = $class;
+		foreach (Finder::findFiles('*.php')->from('../app/model/Commands/Shell') as $file) {
+			$class = substr(strrchr($file, "Commands/Shell"), 15, -4 );
+			$remoteShellClasses[$class] = $class;
+		}
+		foreach (Finder::findFiles('*.php')->from('../app/model/Commands/File') as $file) {
+			$class = substr(strrchr($file, "Commands/File"), 14, -4 );
+			$remoteFileClasses[$class] = $class;
 		}
 		$form = new Form();
 		$form->setTranslator($this->translator);
@@ -222,10 +232,15 @@ class DevicePresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
-		$prompt = Html::el('option')->setText($this->translator->translate('Select script class...'))->class('prompt');
-		$form->addSelect('scriptClass', 'Script class', $scriptClasses)
-				->setRequired('Please, select script class')
+		$prompt = Html::el('option')->setText($this->translator->translate('Select remote shell class...'))->class('prompt');
+		$form->addSelect('remoteShellClass', 'Remote shell class', $remoteShellClasses)
+				->setRequired('Please, select remote shell class')
 				->setOption('input-prepend', Html::el('i')->class('icon-bolt'))
+				->setPrompt($prompt);
+		$prompt = Html::el('option')->setText($this->translator->translate('Select remote file class...'))->class('prompt');
+		$form->addSelect('remoteFileClass', 'Remote file class', $remoteFileClasses)
+				->setRequired('Please, select remote file class')
+				->setOption('input-prepend', Html::el('i')->class('icon-cloud-download'))
 				->setPrompt($prompt);
 		$form->addCheckbox('active', 'Active')
 				->setAttribute('class','checkbox')
@@ -274,10 +289,15 @@ class DevicePresenter extends BasePresenter {
 		if ($values->authenticationGroupId && ($values->username || $values->password)) {
 			$form->addError($this->translator->translate('Cannot be used an authentication group along with the username and password'));
 		}
-		if (!$values->scriptClass) {
-			$form->addError($this->translator->translate('Please, select script class'));
-		} elseif (!file_exists("../app/model/Commands/".$values->scriptClass.".php")) {
-			$form->addError($this->translator->translate('Script class does not exist'));
+		if (!$values->remoteShellClass) {
+			$form->addError($this->translator->translate('Please, select remote shell class'));
+		} elseif (!file_exists("../app/model/Commands/Shell/".$values->remoteShellClass.".php")) {
+			$form->addError($this->translator->translate('Remote shell class does not exist'));
+		}
+		if (!$values->remoteFileClass) {
+			$form->addError($this->translator->translate('Please, select remote file class'));
+		} elseif (!file_exists("../app/model/Commands/File/".$values->remoteFileClass.".php")) {
+			$form->addError($this->translator->translate('Remote file class does not exist'));
 		}
 	}
 
@@ -301,9 +321,13 @@ class DevicePresenter extends BasePresenter {
 		$groups = $this->DGrepo->getDeviceGroupTree();
 		$query = array('select' => 'id, groupname');
 		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
-		foreach (Finder::findFiles('*.php')->from('../app/model/Commands') as $file) {
-			$class = substr(strrchr($file, "Commands/"), 9, -4 );
-			$scriptClasses[$class] = $class;
+		foreach (Finder::findFiles('*.php')->from('../app/model/Commands/Shell') as $file) {
+			$class = substr(strrchr($file, "Commands/Shell"), 15, -4 );
+			$remoteShellClasses[$class] = $class;
+		}
+		foreach (Finder::findFiles('*.php')->from('../app/model/Commands/File') as $file) {
+			$class = substr(strrchr($file, "Commands/File"), 14, -4 );
+			$remoteFileClasses[$class] = $class;
 		}
 		$id = $this->getParam('id');
 		$query = array('where' => 'devices.id=\''.$id.'\'');
@@ -347,10 +371,14 @@ class DevicePresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter user password...'))
 				->addRule(Form::MAX_LENGTH, 'Password must be at max %d characters long', 100)
 				->setOption('input-prepend', Html::el('i')->class('icon-key'));
-		$form->addSelect('scriptClass', 'Script class', $scriptClasses)
-				->setRequired('Please, select script class')
-				->setValue($deviceData->scriptClass)
+		$form->addSelect('remoteShellClass', 'Remote shell class', $remoteShellClasses)
+				->setRequired('Please, select remote shell class')
+				->setValue($deviceData->remoteShellClass)
 				->setOption('input-prepend', Html::el('i')->class('icon-bolt'));
+		$form->addSelect('remoteFileClass', 'Remote file class', $remoteFileClasses)
+				->setRequired('Please, select remote file class')
+				->setValue($deviceData->remoteFileClass)
+				->setOption('input-prepend', Html::el('i')->class('icon-cloud-download'));
 		$form->addCheckbox('active', 'Active')
 				->setValue($deviceData->active)
 				->setAttribute('class','checkbox');
@@ -402,10 +430,15 @@ class DevicePresenter extends BasePresenter {
 		if ($values->authenticationGroupId && ($values->username || $values->password)) {
 			$form->addError($this->translator->translate('Cannot be used an authentication group along with the username and password'));
 		}
-		if (!$values->scriptClass) {
-			$form->addError($this->translator->translate('Please, select script class'));
-		} elseif (!file_exists("../app/model/Commands/".$values->scriptClass.".php")) {
-			$form->addError($this->translator->translate('Script class does not exist'));
+		if (!$values->remoteShellClass) {
+			$form->addError($this->translator->translate('Please, select remote shell class'));
+		} elseif (!file_exists("../app/model/Commands/Shell/".$values->remoteShellClass.".php")) {
+			$form->addError($this->translator->translate('Remote shell class does not exist'));
+		}
+		if (!$values->remoteFileClass) {
+			$form->addError($this->translator->translate('Please, select remote file class'));
+		} elseif (!file_exists("../app/model/Commands/File/".$values->remoteFileClass.".php")) {
+			$form->addError($this->translator->translate('Remote file class does not exist'));
 		}
 	}
 
@@ -423,7 +456,8 @@ class DevicePresenter extends BasePresenter {
 								  'authenticationGroupId'	=> $values->authenticationGroupId,
 								  'username'				=> $values->username,
 								  'password'				=> $values->password,
-								  'scriptClass'				=> $values->scriptClass,
+								  'remoteShellClass'		=> $values->remoteShellClass,
+								  'remoteFileClass'			=> $values->remoteFileClass,
 								  'description'				=> $values->description);
 
 			if (isset($values->deviceSourceId)) {
