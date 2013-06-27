@@ -1,0 +1,16 @@
+
+{block content}
+
+<div>
+	<div class="well">
+		<legend><i class="icon-eye-open"></i> {_"View of the log record"}</legend>
+		{include '../components/form.latte', form => $presenter[logViewForm]}
+	</div>
+
+	<div>
+		<h1><i class="icon-file-text"></i> {_"List of log messages"}</h1>
+		{control grid}
+	</div>
+</div>
+	
+{/block}

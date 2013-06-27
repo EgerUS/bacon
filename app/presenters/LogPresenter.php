@@ -15,7 +15,9 @@
 
 use Grido\Grid,
     Grido\Components\Filters\Filter,
-    Nette\Utils\Html;
+    Nette\Utils\Html,
+	Nette\Utils\Strings,
+	Nette\Application\UI\Form;
 
 class LogPresenter extends BasePresenter {
 
@@ -60,6 +62,17 @@ class LogPresenter extends BasePresenter {
 		
         $grid->setModel($fluent);
 
+        $grid->addColumnText('logId', 'Log ID')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+
+		$grid->addColumnText('dateTime', 'Date and time')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		$grid->getColumn('dateTime')->headerPrototype->style = 'width: 11%;';
+		
         $grid->addColumnText('severity', 'Severity')
 				->setSortable()
 				->setCustomRender(function($item) use($grid) {
@@ -70,27 +83,38 @@ class LogPresenter extends BasePresenter {
 				->setFilterText()
 					->setSuggestion();
 
-		$grid->addColumnText('dateTime', 'Date and time')
-				->setSortable()
-				->setFilterText()
-					->setSuggestion();
-		
-        $grid->addColumnText('deviceHost', 'Host')
+		$grid->addColumnText('deviceHost', 'Host')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
 
-        $grid->addColumnText('deviceGroupName', 'Group name')
+        $grid->addColumnText('deviceGroupName', 'Group')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $grid->addColumnText('scriptName', 'Script')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $grid->addColumnText('class', 'Class')
 				->setSortable()
 				->setFilterText()
 					->setSuggestion();
 		
         $grid->addColumnText('message', 'Message')
 				->setSortable()
+				->setCustomRender(function($item) use($grid) {
+					return Strings::truncate($item->message, 500);
+				})
 				->setFilterText()
 					->setSuggestion();
 		$grid->getColumn('message')->headerPrototype->style = 'width: 40%;';
-		
+
+		$grid->addActionHref('view', 'View')
+				->setIcon('eye-open');
+
 		$grid->setDefaultSort(array('dateTime' => 'desc'));
         $grid->setFilterRenderType(Filter::RENDER_INNER);
         $grid->setExporting();
@@ -111,5 +135,49 @@ class LogPresenter extends BasePresenter {
 		$this->redirect($operation, array('id' => $ids));
     }
 
-        
+    public function actionView($id)
+    {
+		$query = array('select' => 'id', 'where' => 'id=\''.$id.'\'');
+		!count($this->LogRepo->getLogData($query))
+			? $this->flashMessage($this->translator->translate('Log record does not exist'), 'error') && $this->redirect('default')
+			: $this->setView('view');
+    }
+
+	protected function createComponentLogViewForm()
+	{
+		$id = $this->getParam('id');
+		$query = array('where' => 'id=\''.$id.'\'');
+		$logData = $this->LogRepo->getLogData($query)->fetch();
+		$form = new Form();
+		$form->setTranslator($this->translator);
+		$form->addText('logID', 'Log ID')
+				->setValue($logData->logId)
+				->setOption('input-prepend', Html::el('i')->class('icon-file-text'));
+		$form->addText('dateTime', 'Date and time')
+				->setValue($logData->dateTime)
+				->setOption('input-prepend', Html::el('i')->class('icon-calendar'));
+		$form->addText('severity', 'Severity')
+				->setValue($logData->severity)
+				->setOption('input-prepend', Html::el('i')->class('icon-warning-sign'));
+		$form->addText('deviceHost', 'Host')
+				->setValue($logData->deviceHost)
+				->setOption('input-prepend', Html::el('i')->class('icon-hdd'));
+		$form->addText('deviceGroupName', 'Group')
+				->setValue($logData->deviceGroupName)
+				->setOption('input-prepend', Html::el('i')->class('icon-th'));
+		$form->addText('scriptName', 'Script name')
+				->setValue($logData->scriptName)
+				->setOption('input-prepend', Html::el('i')->class('icon-book'));
+		$form->addText('class', 'Class')
+				->setValue($logData->class)
+				->setOption('input-prepend', Html::el('i')->class('icon-inbox'));
+		$form->addTextArea('message', 'Message', 100, 20)
+				->setValue($logData->message)
+				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
+		
+		foreach ($form->getControls() as $control) {
+			$control->controlPrototype->readonly = 'readonly';
+		}
+		return $form;
+	}
 }
