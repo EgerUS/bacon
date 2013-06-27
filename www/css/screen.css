@@ -98,3 +98,7 @@ html.js .jshidden {
 	width: 500px;
 	margin: auto;
 }
+
+form #frmlogViewForm-message {
+	width: 600px;
+}
