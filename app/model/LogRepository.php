@@ -14,18 +14,41 @@
  */ 
 
 namespace Log;
-use Nette;
+use Nette,
+	Nette\DateTime;
 
 class LogRepository extends Nette\Object {
 
     /** @var \DibiConnection */
     private $db;
+	
+	private $logId;
 
     public function __construct(\DibiConnection $connection)
     {
         $this->db = $connection;
     }
 
+	/**
+	 * Log ID setter
+	 */
+	private function setLogId() {
+		!isset($this->logId)
+			? $this->logId = uniqid()
+			: NULL;
+	}
+
+	/**
+	 * Log ID getter
+	 * @return string value
+	 */
+	public function getLogId() {
+		!isset($this->logId)
+			? $this->setLogId()
+			: NULL;
+		return $this->logId;
+	}
+	
 	/** 
 	 * Log data getter
 	 * @param string row Database row for select
