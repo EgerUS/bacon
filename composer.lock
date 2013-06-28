@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ca564f44ebc75795641610dc9520b3a6",
+    "hash": "6944366a86750a74e8a21476557747f7",
     "packages": [
         {
             "name": "dibi/dibi",
@@ -55,6 +55,49 @@
                 "sqlite"
             ],
             "time": "2013-06-23 01:36:01"
+        },
+        {
+            "name": "egersdorfer/crontab",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/codeChap/Crontab.git",
+                "reference": "7b985443dd63f7ee4b8229c3c562c4a057461212"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/codeChap/Crontab/zipball/7b985443dd63f7ee4b8229c3c562c4a057461212",
+                "reference": "7b985443dd63f7ee4b8229c3c562c4a057461212",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Crontab": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Derrick Egersdorfer",
+                    "email": "derrick@egersdorfer.co.za",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Cronjob manager",
+            "homepage": "https://github.com/codeChap/crontab",
+            "keywords": [
+                "cron",
+                "cronjob",
+                "crontab"
+            ],
+            "time": "2013-05-19 08:13:43"
         },
         {
             "name": "kdyby/curl",
@@ -387,6 +430,7 @@
         "nextras/forms": 20,
         "o5/grido": 20,
         "kdyby/curl": 20,
+        "egersdorfer/crontab": 20,
         "nette/tester": 20
     },
     "platform": {

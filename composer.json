@@ -23,7 +23,8 @@
 		"schmutzka/gettexttranslator": "2.0.2",
 		"nextras/forms": "dev-master",
 		"o5/grido": "dev-master",
-		"kdyby/curl": "@dev"
+		"kdyby/curl": "@dev",
+		"egersdorfer/crontab": "dev-develop"
 	},
     "require-dev": {
         "nette/tester": "@dev"
