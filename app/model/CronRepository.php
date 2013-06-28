@@ -83,19 +83,38 @@ class CronRepository extends Nette\Object {
 		} 
 	}
 
-//	/**
-//	 * Update device
-//	 * @return bool
-//	 */
-//	public function updateDevice($id, $values) {
-//		try {
-//			$this->db->update('devices', $values)->where('id = %i', $id)->execute();
-//			return $this->db->affectedRows();
-//		} catch (\DibiException $e) {
-//			return false;
-//		} 
-//	}
-//	
+	/**
+	 * Update cron task
+	 * @return bool
+	 */
+	public function updateCron($id, $values) {
+		try {
+			$cronData = $this->getCronData(array('where' => 'cron.id = '.$id))->fetch();
+			$this->db->update('cron', $values)->where('id = %i', $id)->execute();
+			if ($this->db->affectedRows()) {
+				$cronCmd = str_replace('edit/', '', "wget -O - -q ".$this->uri."exec/".$id);
+				$cron = new \Crontab\Crontab();
+				$cron->setMinute($cronData->minute);
+				$cron->setHour($cronData->hour);
+				$cron->setDayOfMonth($cronData->dayOfMonth);
+				$cron->setMonth($cronData->month);
+				$cron->setDayOfWeek($cronData->dayOfWeek);
+				$cron->remove($cronCmd);
+				$cron->execute();
+				$cron->setMinute($values['minute']);
+				$cron->setHour($values['hour']);
+				$cron->setDayOfMonth($values['dayOfMonth']);
+				$cron->setMonth($values['month']);
+				$cron->setDayOfWeek($values['dayOfWeek']);
+				$cron->append($cronCmd);
+				$cron->execute();
+			}
+			return $this->db->affectedRows();
+		} catch (\DibiException $e) {
+			return false;
+		} 
+	}
+	
 	/**
 	 * Delete cron task
 	 * @return bool

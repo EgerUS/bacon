@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-06-28 16:16:19
+# Created: 2013-06-28 17:44:49
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-06-28 16:16+0200\n"
+"PO-Revision-Date: 2013-06-28 17:44+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -83,6 +83,9 @@ msgstr "Vytvořit nového uživatele"
 msgid "Cron '%s' successfully created"
 msgstr "Úloha '%s' byla úspěšně vytvořena"
 
+msgid "Cron '%s' successfully deleted"
+msgstr "Úloha '%s' byla úspěšně smazána"
+
 msgid "Cron day of month must be at max %d characters long"
 msgstr[0] "Hodnota dne v měsíci může obsahovat maximálně %d znak"
 msgstr[1] "Hodnota dne v měsíci může obsahovat maximálně %d znaky"
@@ -98,6 +101,9 @@ msgstr[2] "Hodnota dne v týdnu může obsahovat maximálně %d znaků"
 
 msgid "Cron day of week value has invalid format"
 msgstr "Hodnota cron dne v týdnu má nesprávný formát"
+
+msgid "Cron does not exist"
+msgstr "Úloha neexistuje"
 
 msgid "Cron hour must be at max %d characters long"
 msgstr[0] "Hodnota hodiny může obsahovat maximálně %d znak"
@@ -128,6 +134,9 @@ msgid "Cron name must be at max %d characters long"
 msgstr[0] "Název úlohy může obsahovat maximálně %d znak"
 msgstr[1] "Název úlohy může obsahovat maximálně %d znaky"
 msgstr[2] "Název úlohy může obsahovat maximálně %d znaků"
+
+msgid "Cron task '%s' succesfully updated"
+msgstr "Úloha '%s' byla úspěšně aktualizována"
 
 msgid "Current password"
 msgstr "Současné heslo"
@@ -211,6 +220,9 @@ msgstr "Upravit skupinu zařízení"
 
 msgid "Edit device source"
 msgstr "Upravit zdroj zařízení"
+
+msgid "Edit scheduled task"
+msgstr "Upravit naplánovanou úlohu"
 
 msgid "Edit script"
 msgstr "Upravit skript"
@@ -779,8 +791,8 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
-msgid "Cron '%s' successfully deleted"
-msgstr "Úloha '%s' byla úspěšně smazána"
+msgid "Update of cron task '%s' failed"
+msgstr "Aktualizace naplánované úlohy '%s' selhala"
 
 msgid "Česky"
 msgstr ""
@@ -944,18 +956,9 @@ msgstr ""
 msgid "100"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Testik' ?"
+msgid "Opravdu chcete smazat 'asdasaaa' ?"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'zaloha MT L3' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'sdf' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'werew' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'cxz' ?"
+msgid "Opravdu chcete smazat 'test' ?"
 msgstr ""
 

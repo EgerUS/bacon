@@ -362,4 +362,211 @@ class CronPresenter extends BasePresenter {
 		}
 		$this->redirect('default');
 	}
+
+	protected function createComponentCronEditForm()
+	{
+		$groups = $this->DGrepo->getDeviceGroupTree();
+		$query = array('select' => 'id, host');
+		$devices = $this->Drepo->getDeviceData($query)->fetchPairs();
+		$query = array('select' => 'id, scriptName');
+		$scripts = $this->Srepo->getScriptData($query)->fetchPairs();
+		$id = $this->getParam('id');
+		$query = array('where' => 'cron.id=\''.$id.'\'');
+		$cronData = $this->Crepo->getCronData($query)->fetch();
+		$cronData->hash = md5(serialize($cronData));
+		$form = new Form();
+		$form->setTranslator($this->translator);
+		$form->addHidden('id', $cronData->id);
+		$form->addHidden('_cronName', $cronData->cronName);
+		$form->addHidden('hash', $cronData->hash);
+		$form->addText('cronName', 'Cron name', 30, 100)
+				->setValue($cronData->cronName)
+				->setRequired('Please, enter cron name')
+				->setAttribute('placeholder', $this->translator->translate('Enter cron name...'))
+				->addRule(Form::MAX_LENGTH, 'Cron name must be at max %d characters long', 100)
+				->setAttribute('autofocus','TRUE')
+				->setOption('input-prepend', Html::el('i')->class('icon-time'));
+		$prompt = Html::el('option')->setText($this->translator->translate('Select device...'))->class('prompt');
+		$form->addSelect('deviceId', 'Device', $devices)
+				->setValue($cronData->did)
+				->setOption('input-prepend', Html::el('i')->class('icon-hdd'))
+				->setPrompt($prompt);
+		$prompt = Html::el('option')->setText($this->translator->translate('Select group...'))->class('prompt');
+		$form->addSelect('deviceGroupId', 'Device group', $groups)
+				->setValue($cronData->gid)
+				->setOption('input-prepend', Html::el('i')->class('icon-sitemap'))
+				->setPrompt($prompt);
+		$form->addText('minute', 'Minute', 30, 100)
+				->setValue($cronData->minute)
+				->setRequired('Please, enter cron minute')
+				->setAttribute('placeholder', $this->translator->translate('Enter cron minute...'))
+				->addRule(Form::MAX_LENGTH, 'Cron minute must be at max %d characters long', 100)
+				->addRule(Form::PATTERN, 'Cron minute value has invalid format', self::REGEX_CRON_MINUTE)
+				->setOption('input-prepend', Html::el('i')->class('icon-time'));
+		$form->addText('hour', 'Hour', 30, 100)
+				->setValue($cronData->hour)
+				->setRequired('Please, enter cron hour')
+				->setAttribute('placeholder', $this->translator->translate('Enter cron hour...'))
+				->addRule(Form::MAX_LENGTH, 'Cron hour must be at max %d characters long', 100)
+				->addRule(Form::PATTERN, 'Cron hour value has invalid format', self::REGEX_CRON_HOUR)
+				->setOption('input-prepend', Html::el('i')->class('icon-time'));
+		$form->addText('dayOfMonth', 'Day of month', 30, 100)
+				->setValue($cronData->dayOfMonth)
+				->setRequired('Please, enter cron day of month')
+				->setAttribute('placeholder', $this->translator->translate('Enter cron day of month...'))
+				->addRule(Form::MAX_LENGTH, 'Cron day of month must be at max %d characters long', 100)
+				->addRule(Form::PATTERN, 'Cron day of month value has invalid format', self::REGEX_CRON_DAYOFMONTH)
+				->setOption('input-prepend', Html::el('i')->class('icon-time'));
+		$form->addText('month', 'Month', 30, 100)
+				->setValue($cronData->month)
+				->setRequired('Please, enter cron month')
+				->setAttribute('placeholder', $this->translator->translate('Enter cron month...'))
+				->addRule(Form::MAX_LENGTH, 'Cron month must be at max %d characters long', 100)
+				->addRule(Form::PATTERN, 'Cron month value has invalid format', self::REGEX_CRON_MONTH)
+				->setOption('input-prepend', Html::el('i')->class('icon-time'));
+		$form->addText('dayOfWeek', 'Day of week', 30, 100)
+				->setValue($cronData->dayOfWeek)
+				->setRequired('Please, enter cron day of week')
+				->setAttribute('placeholder', $this->translator->translate('Enter cron day of week...'))
+				->addRule(Form::MAX_LENGTH, 'Cron day of week must be at max %d characters long', 100)
+				->addRule(Form::PATTERN, 'Cron day of week value has invalid format', self::REGEX_CRON_DAYOFWEEK)
+				->setOption('input-prepend', Html::el('i')->class('icon-time'));
+		$prompt = Html::el('option')->setText($this->translator->translate('Select script...'))->class('prompt');
+		$form->addSelect('scriptId', 'Script', $scripts)
+				->setValue($cronData->sid)
+				->setRequired('Please, select script')
+				->setOption('input-prepend', Html::el('i')->class('icon-bolt'))
+				->setPrompt($prompt);
+		$form->addTextArea('description', 'Description', 30, 3)
+				->setValue($cronData->description)
+				->setAttribute('placeholder', $this->translator->translate('Enter description...'))
+				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
+				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
+		$form->addSubmit('save', 'Save')
+				->setAttribute('class','btn btn-primary');
+		$form->addProtection('Timeout occured, please try it again');
+		$form->onValidate[] = callback($this, 'validateCronEditForm');
+		$form->onSuccess[] = $this->CronEditFormSubmitted;
+		return $form;
+	}
+	
+	public function validateCronEditForm($form)
+	{
+		$values = $form->getValues();
+
+		if (!$values->cronName) {
+			$form->addError($this->translator->translate('Please, enter cron name'));
+		} elseif (strlen($values->cronName) > 100) {
+			$form->addError($this->translator->translate('Cron name must be at max %d characters long', 100));
+		} elseif (($values->cronName != $values->_cronName) && ($this->Crepo->getCronData(array('select' => 'cronName', 'where' => 'cronName=\''.$values->cronName.'\''))->fetch())) {
+			$form->addError($this->translator->translate('Cron \'%s\' already exists', $values->cronName));
+		}
+		
+		if (!$values->deviceId && !$values->deviceGroupId) {
+			$form->addError($this->translator->translate('Please select device or device group'));
+		}
+		
+		if ($values->deviceId && !$this->Drepo->getDeviceData(array('select' => 'id', 'where' => 'id=\''.$values->deviceId.'\''))->fetch()) {
+			$form->addError($this->translator->translate('Device does not exist'));
+		}
+		if ($values->deviceGroupId && !$this->DGrepo->getDeviceGroupData(array('select' => 'id', 'where' => 'id=\''.$values->deviceGroupId.'\''))->fetch()) {
+			$form->addError($this->translator->translate('Group does not exist'));
+		}
+		if ($values->deviceId && $values->deviceGroupId) {
+			$form->addError($this->translator->translate('Cannot be used an device along with the device group. Please select only one of them.'));
+		}
+
+		if (!$values->minute) {
+			$form->addError($this->translator->translate('Please, enter cron minute'));
+		} elseif (strlen($values->minute) > 100) {
+			$form->addError($this->translator->translate('Cron minute must be at max %d characters long', 100));
+		} elseif (!preg_match(self::REGEX_CRON_MINUTE, $values->minute)) {
+			$form->addError($this->translator->translate('Cron minute value has invalid format'));
+		}
+
+		if (!$values->hour) {
+			$form->addError($this->translator->translate('Please, enter cron hour'));
+		} elseif (strlen($values->hour) > 100) {
+			$form->addError($this->translator->translate('Cron hour must be at max %d characters long', 100));
+		} elseif (!preg_match(self::REGEX_CRON_HOUR, $values->hour)) {
+			$form->addError($this->translator->translate('Cron hour value has invalid format'));
+		}
+
+		if (!$values->dayOfMonth) {
+			$form->addError($this->translator->translate('Please, enter cron day of month'));
+		} elseif (strlen($values->dayOfMonth) > 100) {
+			$form->addError($this->translator->translate('Cron day of month must be at max %d characters long', 100));
+		} elseif (!preg_match(self::REGEX_CRON_DAYOFMONTH, $values->dayOfMonth)) {
+			$form->addError($this->translator->translate('Cron day of month value has invalid format'));
+		}
+
+		if (!$values->month) {
+			$form->addError($this->translator->translate('Please, enter cron month'));
+		} elseif (strlen($values->month) > 100) {
+			$form->addError($this->translator->translate('Cron month must be at max %d characters long', 100));
+		} elseif (!preg_match(self::REGEX_CRON_MONTH, $values->month)) {
+			$form->addError($this->translator->translate('Cron month value has invalid format'));
+		}
+
+		if (!$values->dayOfWeek) {
+			$form->addError($this->translator->translate('Please, enter cron day of week'));
+		} elseif (strlen($values->dayOfWeek) > 100) {
+			$form->addError($this->translator->translate('Cron day of week must be at max %d characters long', 100));
+		} elseif (!preg_match(self::REGEX_CRON_DAYOFWEEK, $values->dayOfWeek)) {
+			$form->addError($this->translator->translate('Cron day of week value has invalid format'));
+		}
+
+		if (!$values->scriptId) {
+			$form->addError($this->translator->translate('Please, select script'));
+		} elseif ($values->scriptId && !$this->Srepo->getScriptData(array('select' => 'id', 'where' => 'id=\''.$values->scriptId.'\''))->fetch()) {
+			$form->addError($this->translator->translate('Script does not exist'));
+		}
+		if (strlen($values->description) > 255) {
+			$form->addError($this->translator->translate('Description must be at max %d characters long', 255));
+		}
+	}
+
+	public function CronEditFormSubmitted(Form $form)
+	{
+		$values = $form->getValues();
+		$query = array('where' => 'cron.id=\''.$values->id.'\'');
+		$cronData = $this->Crepo->getCronData($query)->fetch();
+		$cronData->hash = md5(serialize($cronData));
+
+		if ($cronData->hash === $values->hash)
+		{
+			$cronValues = array('cronName'		=> $values->cronName,
+								'deviceId'		=> $values->deviceId,
+								'deviceGroupId'	=> $values->deviceGroupId,
+								'minute'		=> $values->minute,
+								'hour'			=> $values->hour,
+								'dayOfMonth'	=> $values->dayOfMonth,
+								'month'			=> $values->month,
+								'dayOfWeek'		=> $values->dayOfWeek,
+								'scriptId'		=> $values->scriptId,
+								'description'	=> $values->description);
+
+			if (isset($values->deviceId)) {
+				$cronValues['deviceId'] = $values->deviceId;
+			} else {
+				$cronValues['deviceId'] = 0;
+			}
+			if (isset($values->deviceGroupId)) {
+				$cronValues['deviceGroupId'] = $values->deviceGroupId;
+			} else {
+				$cronValues['deviceGroupId'] = 0;
+			}
+			if ($this->Crepo->updateCron($values->id, $cronValues))
+			{
+				$this->flashMessage($this->translator->translate('Cron task \'%s\' succesfully updated', $cronData->cronName), 'success');
+				$this->redirect('default');
+			} else {
+				$this->flashMessage($this->translator->translate('Update of cron task \'%s\' failed', $cronData->cronName), 'error');
+			}
+		} else {
+			$this->flashMessage($this->translator->translate('Database data changes during modification. Please modify data again.'),'error');
+			$this->redirect('this');
+		}
+	}
+	
 }
