@@ -1,0 +1,16 @@
+
+{block content}
+
+<div>
+	<div class="well">
+		<legend><i class="icon-plus-sign"></i> {_"Create new task"}</legend>
+		{include '../components/form.latte', form => $presenter[cronAddForm]}
+	</div>
+
+	<div>
+		<h1><i class="icon-clock"></i> {_"List of scheduled tasks"}</h1>
+		{control grid}
+	</div>
+</div>
+	
+{/block}

@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-06-27 15:52:45
+# Created: 2013-06-28 16:16:19
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-06-27 15:52+0200\n"
+"PO-Revision-Date: 2013-06-28 16:16+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,6 +44,9 @@ msgstr "Autentizační skupiny"
 msgid "Cannot be used an authentication group along with the username and password"
 msgstr "Nelze použít autentizační skupinu spolu s uživatelským jménem a heslem"
 
+msgid "Cannot be used an device along with the device group. Please select only one of them."
+msgstr "Nelze použít zařízení spolu se skupinou zařízení. Vyberte pouze jedno z toho."
+
 msgid "Class"
 msgstr "Třída"
 
@@ -71,8 +74,60 @@ msgstr "Vytvořit nový zdroj zařízení"
 msgid "Create new script"
 msgstr "Vytvořit nový skript"
 
+msgid "Create new task"
+msgstr "Vytvořit novou úlohu"
+
 msgid "Create new user"
 msgstr "Vytvořit nového uživatele"
+
+msgid "Cron '%s' successfully created"
+msgstr "Úloha '%s' byla úspěšně vytvořena"
+
+msgid "Cron day of month must be at max %d characters long"
+msgstr[0] "Hodnota dne v měsíci může obsahovat maximálně %d znak"
+msgstr[1] "Hodnota dne v měsíci může obsahovat maximálně %d znaky"
+msgstr[2] "Hodnota dne v měsíci může obsahovat maximálně %d znaků"
+
+msgid "Cron day of month value has invalid format"
+msgstr "Hodnota cron dne v měsíci má nesprávný formát"
+
+msgid "Cron day of week must be at max %d characters long"
+msgstr[0] "Hodnota dne v týdnu může obsahovat maximálně %d znak"
+msgstr[1] "Hodnota dne v týdnu může obsahovat maximálně %d znaky"
+msgstr[2] "Hodnota dne v týdnu může obsahovat maximálně %d znaků"
+
+msgid "Cron day of week value has invalid format"
+msgstr "Hodnota cron dne v týdnu má nesprávný formát"
+
+msgid "Cron hour must be at max %d characters long"
+msgstr[0] "Hodnota hodiny může obsahovat maximálně %d znak"
+msgstr[1] "Hodnota hodiny může obsahovat maximálně %d znaky"
+msgstr[2] "Hodnota hodiny může obsahovat maximálně %d znaků"
+
+msgid "Cron hour value has invalid format"
+msgstr "Hodnota cron hodiny má nesprávný formát"
+
+msgid "Cron minute must be at max %d characters long"
+msgstr "Minuta může obsahovat ma"
+
+msgid "Cron minute value has invalid format"
+msgstr "Hodnota cron minuty má nesprávný formát"
+
+msgid "Cron month must be at max %d characters long"
+msgstr[0] "Hodnota měsíce může obsahovat maximálně %d znak"
+msgstr[1] "Hodnota měsíce může obsahovat maximálně %d znaky"
+msgstr[2] "Hodnota měsíce může obsahovat maximálně %d znaků"
+
+msgid "Cron month value has invalid format"
+msgstr "Hodnota cron měsíce má nesprávný formát"
+
+msgid "Cron name"
+msgstr "Název úlohy"
+
+msgid "Cron name must be at max %d characters long"
+msgstr[0] "Název úlohy může obsahovat maximálně %d znak"
+msgstr[1] "Název úlohy může obsahovat maximálně %d znaky"
+msgstr[2] "Název úlohy může obsahovat maximálně %d znaků"
 
 msgid "Current password"
 msgstr "Současné heslo"
@@ -82,6 +137,12 @@ msgstr "Během editace došlo ke změně dat v databázi. Prověďte prosím edi
 
 msgid "Date and time"
 msgstr "Datum a čas"
+
+msgid "Day of month"
+msgstr "Den v měsíci"
+
+msgid "Day of week"
+msgstr "Den v týdnu"
 
 msgid "Delete"
 msgstr "Smazat"
@@ -93,6 +154,9 @@ msgid "Description must be at max %d characters long"
 msgstr[0] "Popis může obsahovat maximálně %d znak"
 msgstr[1] "Popis může obsahovat maximálně %d znaky"
 msgstr[2] "Popis může obsahovat maximálně %d znaků "
+
+msgid "Device"
+msgstr "Zařízení"
 
 msgid "Device '%s' succesfully updated"
 msgstr "Zařízení '%s' bylo úspěšně aktualizováno"
@@ -167,6 +231,24 @@ msgstr[2] "Email může obsahovat maximálně %d znaků"
 
 msgid "Enter commands..."
 msgstr "Zadejte příkazy..."
+
+msgid "Enter cron day of month..."
+msgstr "Zadejte den v měsíci..."
+
+msgid "Enter cron day of week..."
+msgstr "Zadejte den v týdnu..."
+
+msgid "Enter cron hour..."
+msgstr "Zadejte hodinu..."
+
+msgid "Enter cron minute..."
+msgstr "Zadejte minutu..."
+
+msgid "Enter cron month..."
+msgstr "Zadejte měsíc..."
+
+msgid "Enter cron name..."
+msgstr "Zadejte název úlohy..."
 
 msgid "Enter description..."
 msgstr "Zadejte popis..."
@@ -275,6 +357,9 @@ msgstr[0] "Host může obsahovat maximálně %d znak"
 msgstr[1] "Host může obsahovat maximálně %d znaky"
 msgstr[2] "Host může obsahovat maximálně %d znaků"
 
+msgid "Hour"
+msgstr "Hodina"
+
 msgid "Invert"
 msgstr "Invertovat výběr"
 
@@ -305,6 +390,9 @@ msgstr "Seznam zařízení"
 msgid "List of log messages"
 msgstr "Výpis logu"
 
+msgid "List of scheduled tasks"
+msgstr "Seznam naplánovaných úloh"
+
 msgid "List of scripts"
 msgstr "Seznam skriptů"
 
@@ -328,6 +416,12 @@ msgstr "Logy"
 
 msgid "Message"
 msgstr "Zpráva"
+
+msgid "Minute"
+msgstr "Minuta"
+
+msgid "Month"
+msgstr "Měsíc"
 
 msgid "New password"
 msgstr "Nové heslo"
@@ -373,8 +467,29 @@ msgstr "Zadejte prosím informace o své osobě"
 msgid "Please fill in the missing email in your profile !"
 msgstr "Vyplňte prosím chybějící e-mail ve vašem profilu !"
 
+msgid "Please select device or device group"
+msgstr "Vyberte prosím zařízení nebo skupinu zařízení"
+
 msgid "Please, enter commands"
 msgstr "Zadejte prosím příkazy"
+
+msgid "Please, enter cron day of month"
+msgstr "Zadejte prosím den v měsíci"
+
+msgid "Please, enter cron day of week"
+msgstr "Zadejte prosím den v týdnu"
+
+msgid "Please, enter cron hour"
+msgstr "Zadejte prosím hodinu"
+
+msgid "Please, enter cron minute"
+msgstr "Zadejte prosím minutu"
+
+msgid "Please, enter cron month"
+msgstr "Zadejte prosím měsíc"
+
+msgid "Please, enter cron name"
+msgstr "Zadejte prosím název úlohy"
 
 msgid "Please, enter group name"
 msgstr "Zadejte prosím název skupiny"
@@ -424,6 +539,9 @@ msgstr "Vyberte prosím třídu pro práci se vzdálenými soubory"
 msgid "Please, select remote shell class"
 msgstr "Vyberte prosím třídu pro práci se vzdáleným shellem"
 
+msgid "Please, select script"
+msgstr "Vyberte prosím skript"
+
 msgid "Please, select user role"
 msgstr "Vyberte prosím oprávnění uživatele"
 
@@ -458,6 +576,9 @@ msgstr[2] "Oprávnění může obsahovat maximálně %d znaků"
 
 msgid "Save"
 msgstr "Uložit"
+
+msgid "Scheduler (Cron)"
+msgstr "Plánovač (Cron)"
 
 msgid "Script"
 msgstr "Skript"
@@ -494,11 +615,20 @@ msgstr "Skripty"
 msgid "Search"
 msgstr "Hledat"
 
+msgid "Select device..."
+msgstr "Vyberte zařízení..."
+
+msgid "Select group..."
+msgstr "Vyberte skupinu..."
+
 msgid "Select remote file class..."
 msgstr "Vyberte třídu pro vzdálené soubory..."
 
 msgid "Select remote shell class..."
 msgstr "Vyberte třídu pro vzdálený shell..."
+
+msgid "Select script..."
+msgstr "Vyberte skript..."
 
 msgid "Select some row"
 msgstr "Vyberte nějaký záznam"
@@ -649,10 +779,154 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
+msgid "Cron '%s' successfully deleted"
+msgstr "Úloha '%s' byla úspěšně smazána"
+
 msgid "Česky"
 msgstr ""
 
 msgid "English"
+msgstr ""
+
+msgid "testik"
+msgstr ""
+
+msgid "test2"
+msgstr ""
+
+msgid "localhost"
+msgstr ""
+
+msgid "backup.rionet.cz"
+msgstr ""
+
+msgid "172.30.15.196"
+msgstr ""
+
+msgid "213.180.32.68"
+msgstr ""
+
+msgid "172.31.209.139"
+msgstr ""
+
+msgid "172.31.209.124"
+msgstr ""
+
+msgid "172.31.209.48"
+msgstr ""
+
+msgid "172.31.209.54"
+msgstr ""
+
+msgid "172.31.209.138"
+msgstr ""
+
+msgid "172.31.209.49"
+msgstr ""
+
+msgid "172.31.209.50"
+msgstr ""
+
+msgid "172.31.209.137"
+msgstr ""
+
+msgid "188.175.254.58"
+msgstr ""
+
+msgid "188.175.254.178"
+msgstr ""
+
+msgid "213.180.32.69"
+msgstr ""
+
+msgid "172.31.209.82"
+msgstr ""
+
+msgid "188.175.254.179"
+msgstr ""
+
+msgid "172.31.209.123"
+msgstr ""
+
+msgid "172.31.209.134"
+msgstr ""
+
+msgid "172.31.209.98"
+msgstr ""
+
+msgid "213.180.32.169"
+msgstr ""
+
+msgid "188.175.70.66"
+msgstr ""
+
+msgid "188.175.254.66"
+msgstr ""
+
+msgid "90.182.20.85"
+msgstr ""
+
+msgid "172.31.5.3"
+msgstr ""
+
+msgid "213.180.35.134"
+msgstr ""
+
+msgid "188.175.70.198"
+msgstr ""
+
+msgid "82.150.162.10"
+msgstr ""
+
+msgid "188.175.113.82"
+msgstr ""
+
+msgid "188.175.254.166"
+msgstr ""
+
+msgid "172.31.209.72"
+msgstr ""
+
+msgid "172.31.209.130"
+msgstr ""
+
+msgid "172.31.209.133"
+msgstr ""
+
+msgid "172.31.209.132"
+msgstr ""
+
+msgid "172.31.209.131"
+msgstr ""
+
+msgid "172.31.209.135"
+msgstr ""
+
+msgid "172.31.209.136"
+msgstr ""
+
+msgid "172.31.209.125"
+msgstr ""
+
+msgid "213.180.47.14"
+msgstr ""
+
+msgid "172.31.209.129"
+msgstr ""
+
+msgid "fds"
+msgstr ""
+
+msgid "Mikrotik"
+msgstr ""
+
+msgid "  Mikrotik L3"
+msgstr ""
+
+msgid "test"
+msgstr ""
+
+msgid "OK"
 msgstr ""
 
 msgid "10"
@@ -668,5 +942,20 @@ msgid "50"
 msgstr ""
 
 msgid "100"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Testik' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'zaloha MT L3' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'sdf' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'werew' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'cxz' ?"
 msgstr ""
 
