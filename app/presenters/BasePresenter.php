@@ -78,7 +78,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		 * ... show logout reason if exists
 		 * ... and redirect to sign form
 		 */
-		if ($this->name != 'Sign') {
+		if ($this->name != 'Sign' && ($this->name != 'Cron' && $this->view != 'exec')) {
 			if (!$this->getUser()->isLoggedIn() && $this->getUser()->getLogoutReason() === User::INACTIVITY) {
 				$this->getUser()->logout(TRUE);
 				$this->flashMessage($this->translator->translate('Signed out due to inactivity'));

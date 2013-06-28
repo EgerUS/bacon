@@ -32,6 +32,9 @@ class CronPresenter extends BasePresenter {
 	/** @var Script\ScriptRepository */
 	private $Srepo;
 
+	/** @var Commands\ScriptCommandsRepository */
+	private $SCrepo;
+
 	/** @var Authenticator */
 	private $auth;
 
@@ -46,15 +49,17 @@ class CronPresenter extends BasePresenter {
 	 * @param Device\DeviceRepository $DeviceRepository
 	 * @param Group\DeviceGroupRepository $DeviceGroupRepository
 	 * @param Script\ScriptRepository $ScriptRepository
+	 * @param Commands\ScriptCommandsRepository $ScriptCommandsRepository
 	 * @param Authenticator auth
 	 */
-	public function __construct(Cron\CronRepository $CronRepository, Device\DeviceRepository $DeviceRepository, Group\DeviceGroupRepository $DeviceGroupRepository, Script\ScriptRepository $ScriptRepository, Authenticator $auth)
+	public function __construct(Cron\CronRepository $CronRepository, Device\DeviceRepository $DeviceRepository, Group\DeviceGroupRepository $DeviceGroupRepository, Script\ScriptRepository $ScriptRepository, Commands\ScriptCommandsRepository $ScriptCommandsRepository, Authenticator $auth)
 	{
 		parent::__construct();
 		$this->Crepo = $CronRepository;
 		$this->Drepo = $DeviceRepository;
 		$this->DGrepo = $DeviceGroupRepository;
 		$this->Srepo = $ScriptRepository;
+		$this->SCrepo = $ScriptCommandsRepository;
 		$this->auth = $auth;
 	}
 
@@ -62,12 +67,23 @@ class CronPresenter extends BasePresenter {
 	{
 		parent::startup();
 		
-		if (!$this->isInRole('admin'))
+		if (!$this->isInRole('admin') && $this->action != 'exec')
 		{
 			$this->redirect('Profile:');
 		}
 	}
 
+	public function actionExec($id) {
+		try {
+			$cron = $this->Crepo->getCronData(array('where' => 'cron.id = '.$id))->fetch();
+// tady budu predavat data do SCrepo a tam pak zpracuju skript
+			
+		} catch (DibiException $exc) {
+			echo $exc;
+		}
+		exit;
+	}
+	
 	/**
 	 * Create datagrid
 	 */
