@@ -75,8 +75,20 @@ class CronPresenter extends BasePresenter {
 
 	public function actionExec($id) {
 		try {
-			$cron = $this->Crepo->getCronData(array('where' => 'cron.id = '.$id))->fetch();
-// tady budu predavat data do SCrepo a tam pak zpracuju skript
+			if ($cron = $this->Crepo->getCronData(array('where' => 'cron.id = '.$id))->fetch())
+			{
+				if ($cron->deviceGroupId)
+				{
+					$devices = $this->Drepo->getDeviceData(array('select' => 'id', 'where' => 'deviceGroupId = '.$cron->deviceGroupId))->fetchPairs();
+				} elseif ($cron->deviceId) {
+					$devices = $this->Drepo->getDeviceData(array('select' => 'id', 'where' => 'id = '.$cron->deviceId))->fetchPairs();
+				}
+				
+				if (isset($devices))
+				{
+					$this->SCrepo->execScript($devices, $cron->scriptId);
+				}
+			}
 			
 		} catch (DibiException $exc) {
 			echo $exc;
