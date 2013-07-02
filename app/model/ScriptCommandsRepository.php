@@ -127,6 +127,9 @@ class ScriptCommandsRepository extends Nette\Object {
 				$this->lib->command($command[1], $waitfor[1]);
 				break;
 			default:
+				$this->logRecord['message'] = 'Unrecognized command ['.$command[0].']';
+				$this->logRecord['severity'] = 'warning';
+				$this->log->addLog($this->logRecord);
 				break;
 		}
 	}
