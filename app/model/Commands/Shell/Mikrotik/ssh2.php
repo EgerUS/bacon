@@ -58,7 +58,7 @@ class SSH2 extends \Nette\Object {
 			$this->script->logRecord['message'] = 'Connected';
 			$this->script->logRecord['severity'] = 'success';
 			$this->script->log->addLog($this->script->logRecord);
-			if(!($stream = ssh2_auth_password($this->connection,$username,$password)))
+			if(!(@$stream = ssh2_auth_password($this->connection,$username,$password)))
 			{
 				$this->script->logRecord['message'] = 'User ['.$username.'] login failed';
 				$this->script->logRecord['severity'] = 'error';
