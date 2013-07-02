@@ -37,7 +37,7 @@ class DeviceRepository extends Nette\Object {
     {
 		if(!isset($query['select']))
 		{
-			$query['select'] = 'devices.*, devicegroups.id AS gid, devicegroups.groupname AS deviceGroupName, authenticationgroups.id AS aid, authenticationgroups.groupname AS authenticationGroupName, devicesources.id AS sid, devicesources.sourcename AS deviceSourceName';
+			$query['select'] = 'devices.*, devicegroups.id AS gid, devicegroups.groupname AS deviceGroupName, authenticationgroups.id AS aid, authenticationgroups.groupname AS authenticationGroupName, authenticationgroups.username AS authenticationUsername, authenticationgroups.password AS authenticationPassword, devicesources.id AS sid, devicesources.sourcename AS deviceSourceName';
 			$autoselect = TRUE;
 		}
 		$fluent = $this->db->select($query['select'])->from('devices');
