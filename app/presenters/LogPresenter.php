@@ -115,7 +115,7 @@ class LogPresenter extends BasePresenter {
 		$grid->addActionHref('view', 'View')
 				->setIcon('eye-open');
 
-		$grid->setDefaultSort(array('dateTime' => 'desc'));
+		$grid->setDefaultSort(array('logId' => 'desc'));
         $grid->setFilterRenderType(Filter::RENDER_INNER);
         $grid->setExporting();
     }
