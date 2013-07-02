@@ -146,7 +146,7 @@ class ScriptPresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter description...'))
 				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
-		$form->addTextArea('commands', 'Commands', 30, 10)
+		$form->addTextArea('commands', 'Commands', 100, 20)
 				->setRequired('Please, enter commands')
 				->setAttribute('placeholder', $this->translator->translate('Enter commands...'))
 				->setOption('input-prepend', Html::el('i')->class('icon-bolt'));
@@ -215,7 +215,7 @@ class ScriptPresenter extends BasePresenter {
 				->setAttribute('placeholder', $this->translator->translate('Enter description...'))
 				->addRule(Form::MAX_LENGTH, 'Description must be at max %d characters long', 255)
 				->setOption('input-prepend', Html::el('i')->class('icon-pencil'));
-		$form->addTextArea('commands', 'Commands', 30, 10)
+		$form->addTextArea('commands', 'Commands', 100, 20)
 				->setValue($scriptData->commands)
 				->setRequired('Please, enter commands')
 				->setAttribute('placeholder', $this->translator->translate('Enter commands...'))

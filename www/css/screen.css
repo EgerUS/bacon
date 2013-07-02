@@ -99,6 +99,10 @@ html.js .jshidden {
 	margin: auto;
 }
 
+form #frmscriptAddForm-commands, #frmscriptEditForm-commands {
+	width: 100%;
+}
+
 form #frmlogViewForm-message {
 	width: 100%;
 }
