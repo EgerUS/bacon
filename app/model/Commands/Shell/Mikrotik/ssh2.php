@@ -51,7 +51,7 @@ class SSH2 extends \Nette\Object {
 
 	public function connect($username,$password) 
 	{ 
-		$this->connection = ssh2_connect($this->script->deviceHost,$this->port,$this->methods,array($this,$this->callbacks)); 
+		@$this->connection = ssh2_connect($this->script->deviceHost,$this->port,$this->methods,array($this,$this->callbacks)); 
 
 		if($this->connection) 
 		{ 
@@ -123,7 +123,7 @@ class SSH2 extends \Nette\Object {
 					$this->script->log->addLog($this->script->logRecord);
 				}
 			}
-			if(!($stream = ssh2_exec($this->connection,$command,null,null,80,25)))
+			if(!(@$stream = ssh2_exec($this->connection,$command,null,null,80,25)))
 			{
 				$this->script->logRecord['message'] = 'Failed to send the command ['.$command.']';
 				$this->script->logRecord['severity'] = 'error';
