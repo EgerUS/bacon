@@ -32,10 +32,8 @@ class LogRepository extends Nette\Object {
 	/**
 	 * Log ID setter
 	 */
-	private function setLogId() {
-		!isset($this->logId)
-			? $this->logId = uniqid()
-			: NULL;
+	public function setLogId() {
+		$this->logId = uniqid();
 	}
 
 	/**
