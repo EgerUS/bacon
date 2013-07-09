@@ -17,8 +17,10 @@ namespace Commands\Mikrotik;
 
 class SSH2 extends \Nette\Object {
 
-	private $connection = NULL;
 	private $port = 22;
+	private $fileStoragePath = '/var/backup/';
+	
+	private $connection = NULL;
 	public $lastCommand = NULL;
 	public $lastCommandResult = NULL;
 	public $lastCommandError = NULL;
@@ -137,7 +139,6 @@ class SSH2 extends \Nette\Object {
 				$result = explode("\n", $this->lastCommandResult);
 				array_pop($result);
 				if (count($result)) {
-					echo $result[count($result)-1];
 					if (preg_match('/error|failed|bad command/i', $result[count($result)-1])) {
 						$this->lastCommandError = $result[count($result)-1];
 						$this->script->logRecord['message'] = 'Command ['.$command.'] failed with error: '.$this->lastCommandError;
@@ -151,6 +152,81 @@ class SSH2 extends \Nette\Object {
 		}
 	}
 	
+	public function scpRecv($file) {
+		$target = rtrim($this->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
+		if (!file_exists($target))
+		{
+			if (@mkdir($target, 0777, true))
+			{
+				$this->script->logRecord['message'] = 'Created target directory ['.$target.'].';
+				$this->script->logRecord['severity'] = 'info';
+				$this->script->log->addLog($this->script->logRecord);
+			} else {
+				$this->script->logRecord['message'] = 'Failed to create target directory ['.$target.'].';
+				$this->script->logRecord['severity'] = 'error';
+				$this->script->log->addLog($this->script->logRecord);
+				return FALSE;
+			}
+		}
+		if ($this->connection)
+		{
+			if (@ssh2_scp_recv($this->connection, $file, $target.$file))
+			{
+				$this->script->logRecord['message'] = 'File ['.$file.'] was successfully downloaded to ['.$target.']';
+				$this->script->logRecord['severity'] = 'success';
+				$this->script->log->addLog($this->script->logRecord);
+			} else {
+				$this->script->logRecord['message'] = 'Failed to download file ['.$file.'] by SCP';
+				$this->script->logRecord['severity'] = 'error';
+				$this->script->log->addLog($this->script->logRecord);
+			}
+		}
+	}
+	
+	public function sftpRecv($file) {
+		$target = rtrim($this->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
+		if (!file_exists($target))
+		{
+			if (@mkdir($target, 0777, true))
+			{
+				$this->script->logRecord['message'] = 'Created target directory ['.$target.'].';
+				$this->script->logRecord['severity'] = 'info';
+				$this->script->log->addLog($this->script->logRecord);
+			} else {
+				$this->script->logRecord['message'] = 'Failed to create target directory ['.$target.'].';
+				$this->script->logRecord['severity'] = 'error';
+				$this->script->log->addLog($this->script->logRecord);
+				return FALSE;
+			}
+		}
+		if ($this->connection)
+		{
+			$sftp = ssh2_sftp($this->connection);
+			$size = filesize('ssh2.sftp://'.$sftp.'/'.$file);
+			$stream = fopen('ssh2.sftp://'.$sftp.'/'.$file, 'r');			
+			if (! $stream)
+			{
+				$this->script->logRecord['message'] = 'Failed to download file ['.$file.'] by SFTP';
+				$this->script->logRecord['severity'] = 'error';
+				$this->script->log->addLog($this->script->logRecord);
+			} else {
+				$contents = '';
+				$read = 0;
+				$len = $size;
+				while ($read < $len && ($buf = fread($stream, $len - $read)))
+				{
+					$read += strlen($buf);
+					$contents .= $buf;
+				}       
+				file_put_contents ($target.$file,$contents);
+				@fclose($stream);
+				$this->script->logRecord['message'] = 'File ['.$file.'] was successfully downloaded to ['.$target.']';
+				$this->script->logRecord['severity'] = 'success';
+				$this->script->log->addLog($this->script->logRecord);
+            } 
+		}
+	}
+
 	public function logLastCommand() {
 		if ($this->lastCommandResult)
 		{
