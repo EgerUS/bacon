@@ -98,6 +98,13 @@ class SSH2 extends \Nette\Object {
 		}
     } 
 
+	public function sleep($sec) {
+		sleep($sec);
+		$this->script->logRecord['message'] = 'Sleep for ['.$sec.'] seconds';
+		$this->script->logRecord['severity'] = 'success';
+		$this->script->log->addLog($this->script->logRecord);
+	}
+	
 	public function getFingerprint()
 	{
 		if ($this->connection) {
@@ -201,29 +208,31 @@ class SSH2 extends \Nette\Object {
 		}
 		if ($this->connection)
 		{
-			$sftp = ssh2_sftp($this->connection);
-			$size = filesize('ssh2.sftp://'.$sftp.'/'.$file);
-			$stream = fopen('ssh2.sftp://'.$sftp.'/'.$file, 'r');			
-			if (! $stream)
+			if (@$sftp = ssh2_sftp($this->connection))
 			{
-				$this->script->logRecord['message'] = 'Failed to download file ['.$file.'] by SFTP';
-				$this->script->logRecord['severity'] = 'error';
-				$this->script->log->addLog($this->script->logRecord);
-			} else {
-				$contents = '';
-				$read = 0;
-				$len = $size;
-				while ($read < $len && ($buf = fread($stream, $len - $read)))
+				$size = filesize('ssh2.sftp://'.$sftp.'/'.$file);
+				$stream = fopen('ssh2.sftp://'.$sftp.'/'.$file, 'r');			
+				if (! $stream)
 				{
-					$read += strlen($buf);
-					$contents .= $buf;
-				}       
-				file_put_contents ($target.$file,$contents);
-				@fclose($stream);
-				$this->script->logRecord['message'] = 'File ['.$file.'] was successfully downloaded to ['.$target.']';
-				$this->script->logRecord['severity'] = 'success';
-				$this->script->log->addLog($this->script->logRecord);
-            } 
+					$this->script->logRecord['message'] = 'Failed to download file ['.$file.'] by SFTP';
+					$this->script->logRecord['severity'] = 'error';
+					$this->script->log->addLog($this->script->logRecord);
+				} else {
+					$contents = '';
+					$read = 0;
+					$len = $size;
+					while ($read < $len && ($buf = fread($stream, $len - $read)))
+					{
+						$read += strlen($buf);
+						$contents .= $buf;
+					}       
+					file_put_contents ($target.$file,$contents);
+					@fclose($stream);
+					$this->script->logRecord['message'] = 'File ['.$file.'] was successfully downloaded to ['.$target.']';
+					$this->script->logRecord['severity'] = 'success';
+					$this->script->log->addLog($this->script->logRecord);
+				}
+			}
 		}
 	}
 

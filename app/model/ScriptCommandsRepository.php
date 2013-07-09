@@ -117,6 +117,12 @@ class ScriptCommandsRepository extends Nette\Object {
 			case 'disconnect':
 				$this->lib->disconnect();
 				break;
+			case 'sleep':
+				(isset($command[1]) && is_numeric($command[1]))
+					? $sec = $command[1]
+					: $sec = 10;
+				$this->lib->sleep($sec);
+				break;
 			case 'logLastCommand':
 				$this->lib->logLastCommand();
 				break;
