@@ -49,28 +49,21 @@ class SSH2 extends \Nette\Object {
 		fclose($stream);
 		$this->lastCommandResult = $data;
 	}
-	
 
-	public function connect($username,$password) 
+	public function connect($login) 
 	{ 
 		@$this->connection = ssh2_connect($this->script->deviceHost,$this->port,$this->methods,array($this,$this->callbacks)); 
 
-		if($this->connection) 
+		if($this->connection)
 		{ 
 			$this->script->logRecord['message'] = 'Connected';
+			if ($login === '0' || strtolower($login) === 'false') $this->script->logRecord['message'] .= ' without login';
 			$this->script->logRecord['severity'] = 'success';
 			$this->script->log->addLog($this->script->logRecord);
-			if(!(@$stream = ssh2_auth_password($this->connection,$username,$password)))
+			if (!$login || $login === '1' || strtolower($login) === 'true')
 			{
-				$this->script->logRecord['message'] = 'User ['.$username.'] login failed';
-				$this->script->logRecord['severity'] = 'error';
-				$this->script->log->addLog($this->script->logRecord);
-				$this->disconnect();
-			} else { 
-				$this->script->logRecord['message'] = 'User ['.$username.'] logged in';
-				$this->script->logRecord['severity'] = 'success';
-				$this->script->log->addLog($this->script->logRecord);
-			} 
+				$this->login();
+			}
 		} else { 
 			$this->script->logRecord['message'] = 'Connection failed';
 			$this->script->logRecord['severity'] = 'error';
@@ -80,7 +73,25 @@ class SSH2 extends \Nette\Object {
 		return $this->connection; 
     } 
 
-	public function disconnect_cb($reason,$message,$language) 
+	public function login() 
+	{ 
+		if($this->connection) 
+		{ 
+			if(!(@$stream = ssh2_auth_password($this->connection,$this->script->deviceUsername,$this->script->devicePassword)))
+			{
+				$this->script->logRecord['message'] = 'User ['.$this->script->deviceUsername.'] login failed';
+				$this->script->logRecord['severity'] = 'error';
+				$this->script->log->addLog($this->script->logRecord);
+				$this->disconnect();
+			} else { 
+				$this->script->logRecord['message'] = 'User ['.$this->script->deviceUsername.'] logged in';
+				$this->script->logRecord['severity'] = 'success';
+				$this->script->log->addLog($this->script->logRecord);
+			}
+		}
+    } 
+
+	private function disconnect_cb($reason,$message,$language) 
 	{ 
 		$this->connection = NULL;
 		$this->script->logRecord['message'] = 'Disconnected with reason code ['.$reason.'] and message: '.$message;
@@ -99,17 +110,11 @@ class SSH2 extends \Nette\Object {
     } 
 
 	public function sleep($sec) {
+		if(is_null($sec) || !is_numeric($sec)) $sec = 5;
 		sleep($sec);
 		$this->script->logRecord['message'] = 'Sleep for ['.$sec.'] seconds';
 		$this->script->logRecord['severity'] = 'success';
 		$this->script->log->addLog($this->script->logRecord);
-	}
-	
-	public function getFingerprint()
-	{
-		if ($this->connection) {
-			return ssh2_fingerprint($this->connection,SSH2_FINGERPRINT_MD5 | SSH2_FINGERPRINT_HEX);
-		}
 	}
 	
 	public function command($command, $waitfor = NULL)
@@ -117,7 +122,7 @@ class SSH2 extends \Nette\Object {
 		if ($this->connection) {
 			if ($waitfor)
 			{
-				if (!preg_match($waitfor, $this->lastCommandResult))
+				if (@!preg_match($waitfor, $this->lastCommandResult))
 				{
 					$this->script->logRecord['message'] = 'Failed to wait for the result ['.$waitfor.']';
 					$this->script->logRecord['severity'] = 'error';
@@ -159,27 +164,32 @@ class SSH2 extends \Nette\Object {
 		}
 	}
 	
-	public function scpRecv($file) {
-		$target = rtrim($this->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
-		if (!file_exists($target))
-		{
-			if (@mkdir($target, 0777, true))
-			{
-				$this->script->logRecord['message'] = 'Created target directory ['.$target.'].';
-				$this->script->logRecord['severity'] = 'info';
-				$this->script->log->addLog($this->script->logRecord);
-			} else {
-				$this->script->logRecord['message'] = 'Failed to create target directory ['.$target.'].';
-				$this->script->logRecord['severity'] = 'error';
-				$this->script->log->addLog($this->script->logRecord);
-				return FALSE;
-			}
-		}
+	public function scp_recv($file) {
 		if ($this->connection)
 		{
+			$target = rtrim($this->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
+			if (!file_exists($target))
+			{
+				if (@mkdir($target, 0777, true))
+				{
+					$this->script->logRecord['message'] = 'Created target directory ['.$target.'].';
+					$this->script->logRecord['severity'] = 'info';
+					$this->script->log->addLog($this->script->logRecord);
+				} else {
+					$this->script->logRecord['message'] = 'Failed to create target directory ['.$target.'].';
+					$this->script->logRecord['severity'] = 'error';
+					$this->script->log->addLog($this->script->logRecord);
+					return FALSE;
+				}
+			} else {
+				$this->script->logRecord['message'] = 'Target directory ['.$target.'] exists';
+				$this->script->logRecord['severity'] = 'info';
+				$this->script->log->addLog($this->script->logRecord);
+			}
+
 			if (@ssh2_scp_recv($this->connection, $file, $target.$file))
 			{
-				$this->script->logRecord['message'] = 'File ['.$file.'] was successfully downloaded to ['.$target.']';
+				$this->script->logRecord['message'] = 'File ['.$file.'] was successfully downloaded to ['.$target.'] by SCP';
 				$this->script->logRecord['severity'] = 'success';
 				$this->script->log->addLog($this->script->logRecord);
 			} else {
@@ -190,28 +200,41 @@ class SSH2 extends \Nette\Object {
 		}
 	}
 	
-	public function sftpRecv($file) {
-		$target = rtrim($this->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
-		if (!file_exists($target))
-		{
-			if (@mkdir($target, 0777, true))
-			{
-				$this->script->logRecord['message'] = 'Created target directory ['.$target.'].';
-				$this->script->logRecord['severity'] = 'info';
-				$this->script->log->addLog($this->script->logRecord);
-			} else {
-				$this->script->logRecord['message'] = 'Failed to create target directory ['.$target.'].';
-				$this->script->logRecord['severity'] = 'error';
-				$this->script->log->addLog($this->script->logRecord);
-				return FALSE;
-			}
-		}
+	public function sftp_recv($file) {
 		if ($this->connection)
 		{
-			if (@$sftp = ssh2_sftp($this->connection))
+			if (@!$sftp = ssh2_sftp($this->connection))
 			{
-				$size = filesize('ssh2.sftp://'.$sftp.'/'.$file);
-				$stream = fopen('ssh2.sftp://'.$sftp.'/'.$file, 'r');			
+				$this->script->logRecord['message'] = 'SFTP startup failed. File ['.$file.'] cannot be downloaded';
+				$this->script->logRecord['severity'] = 'error';
+				$this->script->log->addLog($this->script->logRecord);
+			} else {
+				$this->script->logRecord['message'] = 'SFTP startup ok.';
+				$this->script->logRecord['severity'] = 'info';
+				$this->script->log->addLog($this->script->logRecord);
+				
+				$target = rtrim($this->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
+				if (!file_exists($target))
+				{
+					if (@mkdir($target, 0777, true))
+					{
+						$this->script->logRecord['message'] = 'Created target directory ['.$target.'].';
+						$this->script->logRecord['severity'] = 'info';
+						$this->script->log->addLog($this->script->logRecord);
+					} else {
+						$this->script->logRecord['message'] = 'Failed to create target directory ['.$target.'].';
+						$this->script->logRecord['severity'] = 'error';
+						$this->script->log->addLog($this->script->logRecord);
+						return FALSE;
+					}
+				} else {
+					$this->script->logRecord['message'] = 'Target directory ['.$target.'] exists';
+					$this->script->logRecord['severity'] = 'info';
+					$this->script->log->addLog($this->script->logRecord);
+				}
+
+				@$size = filesize('ssh2.sftp://'.$sftp.'/'.$file);
+				@$stream = fopen('ssh2.sftp://'.$sftp.'/'.$file, 'r');
 				if (! $stream)
 				{
 					$this->script->logRecord['message'] = 'Failed to download file ['.$file.'] by SFTP';
@@ -228,7 +251,7 @@ class SSH2 extends \Nette\Object {
 					}       
 					file_put_contents ($target.$file,$contents);
 					@fclose($stream);
-					$this->script->logRecord['message'] = 'File ['.$file.'] was successfully downloaded to ['.$target.']';
+					$this->script->logRecord['message'] = 'The file ['.$file.'] of size '.$size.' bytes was successfully downloaded to ['.$target.']';
 					$this->script->logRecord['severity'] = 'success';
 					$this->script->log->addLog($this->script->logRecord);
 				}
@@ -244,4 +267,14 @@ class SSH2 extends \Nette\Object {
 			$this->script->log->addLog($this->script->logRecord);
 		}
 	}
+
+	public function logFingerprint()
+	{
+		if ($this->connection) {
+			$this->script->logRecord['message'] = 'Host fingerprint: ['.ssh2_fingerprint($this->connection,SSH2_FINGERPRINT_MD5 | SSH2_FINGERPRINT_HEX).']';
+			$this->script->logRecord['severity'] = 'info';
+			$this->script->log->addLog($this->script->logRecord);
+		}
+	}
+	
 }
