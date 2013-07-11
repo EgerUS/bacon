@@ -13,7 +13,7 @@
  * 
  */ 
 
-namespace Commands\Mikrotik;
+namespace Commands\RouterOS;
 
 class Telnet extends \Nette\Object {
 

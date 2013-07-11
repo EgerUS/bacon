@@ -13,7 +13,7 @@
  * 
  */ 
 
-namespace Commands\Mikrotik;
+namespace Commands\RouterOS;
 
 class SSH2 extends \Nette\Object {
 
