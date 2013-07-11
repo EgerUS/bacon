@@ -4,11 +4,11 @@
  * @link        http://github.com/EgerUS/bacon
  * 
  * Project:     bacon 
- * File:        Mikrotik.php 
+ * File:        telnet.php 
  * Created:     22.6.2013 
  * Encoding:    UTF-8 
  * 
- * Description: 
+ * Description: RouterOS telnet library   !!! NOT WORKING !!!
  * 
  * 
  */ 

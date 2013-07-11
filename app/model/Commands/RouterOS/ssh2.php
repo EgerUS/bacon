@@ -8,7 +8,7 @@
  * Created:     22.6.2013 
  * Encoding:    UTF-8 
  * 
- * Description: Mikrotik SSH2 remote shell class
+ * Description: RouterOS SSH2 library
  * 
  * 
  */ 

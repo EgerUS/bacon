@@ -8,7 +8,7 @@
  * Created:     26.6.2013 
  * Encoding:    UTF-8 
  * 
- * Description: Mikrotik FTP remote file class
+ * Description: RouterOS FTP library   !!! NOT WORKING !!!
  * 
  * 
  */ 
