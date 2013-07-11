@@ -23,8 +23,8 @@ class ScriptCommandsRepository extends Nette\Object {
 
 	public $logRecord;
 	public $deviceHost;
-	private $deviceUsername;
-	private $devicePassword;
+	public $deviceUsername;
+	public $devicePassword;
 
 	/** @var \Device\DeviceRepository */
 	private $Drepo;
@@ -67,15 +67,7 @@ class ScriptCommandsRepository extends Nette\Object {
 
 			foreach (preg_split('/\r\n|\n|\r/', $scriptData->commands) as $value) {
 				$cmd = explode('->', rtrim($value, ';'));
-				if (strtolower($cmd[0]) == 'file')
-				{
-					array_shift($cmd);
-					$class = $deviceData->remoteFileClass;
-				} else {
-					$class = $deviceData->remoteShellClass;
-				}
-				$class = strtr("Commands/".$class, "/", "\\");
-				$this->logRecord['class'] = $class;
+				$class = strtr("Commands/".$deviceData->deviceClass."/".$cmd[0], "/", "\\");
 				if (!isset($this->lib) || strtolower(get_class($this->lib)) != strtolower($class))
 				{
 					if (class_exists($class))
@@ -83,7 +75,7 @@ class ScriptCommandsRepository extends Nette\Object {
 						$this->lib = new $class($this);
 						if ($this->lib)
 						{
-							$class = str_replace("\\Commands\\", "", get_class($this->lib));
+							$class = str_replace("Commands\\", "", get_class($this->lib));
 							$this->logRecord['class'] = $class;
 							$this->logRecord['message'] = 'Loaded class ['.$class.']';
 							$this->logRecord['severity'] = 'info';
@@ -94,63 +86,85 @@ class ScriptCommandsRepository extends Nette\Object {
 							$this->log->addLog($this->logRecord);
 						}
 					} else {
+						$this->logRecord['class'] = $class;
 						$this->logRecord['message'] = 'Class ['.$class.'] does not exist';
 						$this->logRecord['severity'] = 'error';
 						$this->log->addLog($this->logRecord);
+						exit;
 					}
 				}
 				if (class_exists(get_class($this->lib)))
 				{
-					$this->parseCmd($cmd);
+					array_shift($cmd);
+					if (!($command = strstr($cmd[0], '(', true)))
+					{
+						$command = $cmd[0];
+					}
+					$params = str_getcsv(trim(strstr($cmd[0], '('), '()'));
+					foreach ($params as $key => $value) {
+						$params[$key] = trim(trim($value), '\'');
+					}
+					if (method_exists($this->lib, $command)) {
+						call_user_func_array(array($this->lib, $command), $params);
+					} else {
+						$this->logRecord['message'] = 'Unrecognized command ['.$command.']';
+						$this->logRecord['severity'] = 'warning';
+						$this->log->addLog($this->logRecord);
+					}
 				}
 			}
 			$this->lib = NULL;
 		}
 	}
-	
-	public function parseCmd($cmd) {
-		$command = $this->getCmdWithParams($cmd[0]);
-		switch ($command[0]) {
-			case 'connect':
-				$this->lib->connect($this->deviceUsername, $this->devicePassword);
-				break;
-			case 'disconnect':
-				$this->lib->disconnect();
-				break;
-			case 'sleep':
-				(isset($command[1]) && is_numeric($command[1]))
-					? $sec = $command[1]
-					: $sec = 10;
-				$this->lib->sleep($sec);
-				break;
-			case 'logLastCommand':
-				$this->lib->logLastCommand();
-				break;
-			case 'command':
-				(isset($cmd[1]) && preg_match('/waitfor/i', $cmd[1]))
-					? $waitfor = $this->getCmdWithParams($cmd[1])
-					: $waitfor = array('','');
-				$this->lib->command($command[1], $waitfor[1]);
-				break;
-			case 'scpRecv':
-				$this->lib->scpRecv($command[1]);
-				break;
-			case 'sftpRecv':
-				$this->lib->sftpRecv($command[1]);
-				break;
-			default:
-				$this->logRecord['message'] = 'Unrecognized command ['.$command[0].']';
-				$this->logRecord['severity'] = 'warning';
-				$this->log->addLog($this->logRecord);
-				break;
-		}
-	}
-	
-	private function getCmdWithParams($value)
-	{
-		($cmd[0] = strstr($value, '(', true))
-				? $cmd[1] = trim(strstr($value, '('), '(,)')
-				: $cmd[0] = $value;
-		return $cmd;
-	}
+
+//	public function parseCmd($cmd) {
+//		$command = $this->getCmdWithParams($cmd[0]);
+//		switch ($command[0]) {
+//			case 'connect':
+//				isset($command[1]) && strtoupper($command[1]) == "TRUE"
+//					? $this->lib->connect($this->deviceUsername, $this->devicePassword)
+//					: $this->lib->connect();
+//				break;
+//			case 'login':
+//				$this->lib->login($this->deviceUsername, $this->devicePassword);
+//				break;
+//			case 'disconnect':
+//				$this->lib->disconnect();
+//				break;
+//			case 'sleep':
+//				(isset($command[1]) && is_numeric($command[1]))
+//					? $sec = $command[1]
+//					: $sec = 10;
+//				$this->lib->sleep($sec);
+//				break;
+//			case 'logLastCommand':
+//				$this->lib->logLastCommand();
+//				break;
+//			case 'command':
+//				(isset($cmd[1]) && preg_match('/waitfor/i', $cmd[1]))
+//					? $waitfor = $this->getCmdWithParams($cmd[1])
+//					: $waitfor = array('','');
+//				$this->lib->command($command[1], $waitfor[1]);
+//				break;
+//			case 'scpRecv':
+//				$this->lib->scpRecv($command[1]);
+//				break;
+//			case 'sftpRecv':
+//				$this->lib->sftpRecv($command[1]);
+//				break;
+//			default:
+//				$this->logRecord['message'] = 'Unrecognized command ['.$command[0].']';
+//				$this->logRecord['severity'] = 'warning';
+//				$this->log->addLog($this->logRecord);
+//				break;
+//		}
+//	}
+//	
+//	private function getCmdWithParams($value)
+//	{
+//		($cmd[0] = strstr($value, '(', true))
+//				? $cmd[1] = trim(strstr($value, '('), '(,)')
+//				: $cmd[0] = $value;
+//		return $cmd;
+//	}
 }
