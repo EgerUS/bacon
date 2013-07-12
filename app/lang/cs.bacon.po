@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-07-11 17:27:44
+# Created: 2013-07-12 14:22:55
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-07-11 17:27+0200\n"
+"PO-Revision-Date: 2013-07-12 14:22+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,6 +20,22 @@ msgstr "Aktivní"
 
 msgid "Administration"
 msgstr "Správa"
+
+msgid "Are you sure you want to acknowledge %i errors ?"
+msgstr[0] "Opravdu chcete potvrdit %i záznam o chybě"
+msgstr[1] "Opravdu chcete potvrdit %i záznamy o chybě"
+msgstr[2] "Opravdu chcete potvrdit %i záznamů o chybě"
+
+msgid "Are you sure you want to acknowledge %i warnings ?"
+msgstr[0] "Opravdu chcete potvrdit %i záznam varování"
+msgstr[1] "Opravdu chcete potvrdit %i záznamy varování"
+msgstr[2] "Opravdu chcete potvrdit %i záznamů varování"
+
+msgid "Are you sure you want to acknowledge error ?"
+msgstr "Opravdu chcete potvrdit záznam o chybě ?"
+
+msgid "Are you sure you want to acknowledge warning ?"
+msgstr "Opravdu chcete potvrdit záznam varování ?"
 
 msgid "Are you sure you want to delete %i items ?"
 msgstr[0] "Opravdu chcete smazat %i záznam ?"
@@ -138,6 +154,9 @@ msgstr[2] "Název úlohy může obsahovat maximálně %d znaků"
 msgid "Cron task '%s' succesfully updated"
 msgstr "Úloha '%s' byla úspěšně aktualizována"
 
+msgid "Current alarms"
+msgstr "Aktuální alarmy"
+
 msgid "Current password"
 msgstr "Současné heslo"
 
@@ -175,6 +194,9 @@ msgstr "Zařízení '%s' bylo úspěšně vytvořeno"
 
 msgid "Device '%s' successfully deleted"
 msgstr "Zařízení '%s' bylo úspěšně smazáno"
+
+msgid "Device class"
+msgstr "Třída zařízení"
 
 msgid "Device does not exist"
 msgstr "Zařízení neexistuje"
@@ -307,6 +329,9 @@ msgstr "Zadejte své uživatelské jméno..."
 msgid "Export all items"
 msgstr "Exportovat všechny záznamy"
 
+msgid "Failed to acknowledge log record"
+msgstr "Potvrzení záznamu logu se nezdařilo"
+
 msgid "Fill in for password change..."
 msgstr "Vyplňte pro změnu hesla..."
 
@@ -390,6 +415,12 @@ msgstr "Jazyk"
 msgid "List of authentication groups"
 msgstr "Seznam autentizačních skupin"
 
+msgid "List of current alarms"
+msgstr "Seznam aktuálních alarmů"
+
+msgid "List of current warnings"
+msgstr "Seznam aktuálních varování"
+
 msgid "List of device groups"
 msgstr "Seznam skupin zařízení"
 
@@ -419,6 +450,9 @@ msgstr "Identifikátor"
 
 msgid "Log record does not exist"
 msgstr "Záznam logu neexistuje"
+
+msgid "Log record successfully acknowledged"
+msgstr "Záznam logu byl potvrzen"
 
 msgid "Login form"
 msgstr "Přihlášení"
@@ -542,14 +576,11 @@ msgstr "Zadejte prosím své uživatelské jméno"
 msgid "Please, select authentication group or enter username and/or password"
 msgstr "Vyberte prosím autentizační skupinu nebo zadejte uživatelské jméno a/nebo heslo"
 
+msgid "Please, select device class"
+msgstr "Vyberte prosím třídu zařízení"
+
 msgid "Please, select device source"
 msgstr "Vyberte prosím zdroj zařízení"
-
-msgid "Please, select remote file class"
-msgstr ""
-
-msgid "Please, select remote shell class"
-msgstr ""
 
 msgid "Please, select script"
 msgstr "Vyberte prosím skript"
@@ -562,18 +593,6 @@ msgstr "Profil"
 
 msgid "Profile form"
 msgstr "Profil"
-
-msgid "Remote file class"
-msgstr ""
-
-msgid "Remote file class does not exist"
-msgstr ""
-
-msgid "Remote shell class"
-msgstr ""
-
-msgid "Remote shell class does not exist"
-msgstr ""
 
 msgid "Reset"
 msgstr "Zrušit"
@@ -627,17 +646,14 @@ msgstr "Skripty"
 msgid "Search"
 msgstr "Hledat"
 
+msgid "Select device class..."
+msgstr "Vyberte třídu zařízení..."
+
 msgid "Select device..."
 msgstr "Vyberte zařízení..."
 
 msgid "Select group..."
 msgstr "Vyberte skupinu..."
-
-msgid "Select remote file class..."
-msgstr ""
-
-msgid "Select remote shell class..."
-msgstr ""
 
 msgid "Select script..."
 msgstr "Vyberte skript..."
@@ -794,471 +810,6 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
-msgid "Device class"
-msgstr "Třída zařízení"
-
-msgid "Please, select device class"
-msgstr "Vyberte prosím třídu zařízení"
-
-msgid "Select device class..."
-msgstr "Vyberte třídu zařízení..."
-
-msgid "Česky"
-msgstr ""
-
-msgid "English"
-msgstr ""
-
-msgid "testik"
-msgstr ""
-
-msgid "test2"
-msgstr ""
-
-msgid "localhost"
-msgstr ""
-
-msgid "backup.rionet.cz"
-msgstr ""
-
-msgid "172.30.15.196"
-msgstr ""
-
-msgid "213.180.32.68"
-msgstr ""
-
-msgid "172.31.209.139"
-msgstr ""
-
-msgid "172.31.209.124"
-msgstr ""
-
-msgid "172.31.209.48"
-msgstr ""
-
-msgid "172.31.209.54"
-msgstr ""
-
-msgid "172.31.209.138"
-msgstr ""
-
-msgid "172.31.209.49"
-msgstr ""
-
-msgid "172.31.209.50"
-msgstr ""
-
-msgid "172.31.209.137"
-msgstr ""
-
-msgid "188.175.254.58"
-msgstr ""
-
-msgid "188.175.254.178"
-msgstr ""
-
-msgid "213.180.32.69"
-msgstr ""
-
-msgid "172.31.209.82"
-msgstr ""
-
-msgid "188.175.254.179"
-msgstr ""
-
-msgid "172.31.209.123"
-msgstr ""
-
-msgid "172.31.209.134"
-msgstr ""
-
-msgid "172.31.209.98"
-msgstr ""
-
-msgid "213.180.32.169"
-msgstr ""
-
-msgid "188.175.70.66"
-msgstr ""
-
-msgid "188.175.254.66"
-msgstr ""
-
-msgid "90.182.20.85"
-msgstr ""
-
-msgid "172.31.5.3"
-msgstr ""
-
-msgid "213.180.35.134"
-msgstr ""
-
-msgid "188.175.70.198"
-msgstr ""
-
-msgid "82.150.162.10"
-msgstr ""
-
-msgid "188.175.113.82"
-msgstr ""
-
-msgid "188.175.254.166"
-msgstr ""
-
-msgid "172.31.209.72"
-msgstr ""
-
-msgid "172.31.209.130"
-msgstr ""
-
-msgid "172.31.209.133"
-msgstr ""
-
-msgid "172.31.209.132"
-msgstr ""
-
-msgid "172.31.209.131"
-msgstr ""
-
-msgid "172.31.209.135"
-msgstr ""
-
-msgid "172.31.209.136"
-msgstr ""
-
-msgid "172.31.209.125"
-msgstr ""
-
-msgid "213.180.47.14"
-msgstr ""
-
-msgid "172.31.209.129"
-msgstr ""
-
-msgid "fds"
-msgstr ""
-
-msgid "Mikrotik"
-msgstr ""
-
-msgid "  Mikrotik L3"
-msgstr ""
-
-msgid "test"
-msgstr ""
-
-msgid "OK"
-msgstr ""
-
-msgid "10"
-msgstr ""
-
-msgid "20"
-msgstr ""
-
-msgid "30"
-msgstr ""
-
-msgid "50"
-msgstr ""
-
-msgid "100"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'asdasaaa' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'test' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'sda' ?"
-msgstr ""
-
-msgid "Mikrotik L3"
-msgstr ""
-
-msgid "Mikrotik/ssh2"
-msgstr ""
-
-msgid "Mikrotik/telnet"
-msgstr ""
-
-msgid "Mikrotik/ftp"
-msgstr ""
-
-msgid "Portax Mikrotik L2"
-msgstr ""
-
-msgid "Portax Mikrotik L3"
-msgstr ""
-
-msgid "asda"
-msgstr ""
-
-msgid "dsf"
-msgstr ""
-
-msgid "sdf"
-msgstr ""
-
-msgid "Previous"
-msgstr ""
-
-msgid "Next"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.30.15.196' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.123' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.124' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.125' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.129' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.130' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.131' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.132' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.133' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.134' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.135' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.136' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.137' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.138' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.139' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.48' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.49' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.50' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.54' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.72' ?"
-msgstr ""
-
-msgid "Enter page:"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'asda' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
-msgstr ""
-
-msgid "Opravdu chcete smazat 'dsf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
-msgstr ""
-
-msgid "Opravdu chcete smazat 'Portax Mikrotik L2' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
-msgstr ""
-
-msgid "Opravdu chcete smazat 'Portax Mikrotik L3' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
-msgstr ""
-
-msgid "Opravdu chcete smazat 'sdf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
-msgstr ""
-
-msgid "Opravdu chcete smazat 'Mikrotik L3' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.82' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'backup.rionet.cz' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'localhost' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'test2' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'fds' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'testik' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '213.180.32.169' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.113.82' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.254.58' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '213.180.32.68' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '82.150.162.10' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.209.98' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.70.198' ?"
-msgstr ""
-
-msgid "admin"
-msgstr ""
-
-msgid "user"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'admin' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'sdf' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'Mikrotik' ?"
-msgstr ""
-
-msgid "aaa"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.254.179' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '172.31.5.3' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '90.182.20.85' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '213.180.32.69' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.254.66' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.70.66' ?"
-msgstr ""
-
-msgid "Linux"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'Linux' ?"
-msgstr ""
-
-msgid "noc.rionet.cz"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.254.166' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '188.175.254.178' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '213.180.35.134' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '213.180.47.14' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat 'noc.rionet.cz' ?"
-msgstr ""
-
-msgid "Opravdu chcete smazat '192.168.1.1' ?"
-msgstr ""
-
-msgid "192.168.1.1"
-msgstr ""
-
-msgid "ikrotik/ftp"
-msgstr ""
-
-msgid "ikrotik/ftp."
-msgstr ""
-
-msgid "Mikrotik/ssh2."
-msgstr ""
-
-msgid "Mikrotik/telnet."
-msgstr ""
-
-msgid "Commands/File/Mikrotik/ftp.php"
-msgstr ""
-
-msgid "Commands/Shell/Mikrotik/ssh2.php"
-msgstr ""
-
-msgid "Commands/Shell/Mikrotik/telnet.php"
-msgstr ""
-
-msgid "Commands/Mikrotik"
-msgstr ""
-
-msgid "ik/ftp"
-msgstr ""
-
-msgid "ik/ssh2"
-msgstr ""
-
-msgid "ik/telnet"
-msgstr ""
-
-msgid "tik/ftp"
-msgstr ""
-
-msgid "tik/ssh2"
-msgstr ""
-
-msgid "tik/telnet"
-msgstr ""
-
-msgid "/app/model/Commands/Mikrotik"
-msgstr ""
-
-msgid "tik"
-msgstr ""
-
-msgid "RouterOS"
-msgstr ""
-
-msgid "OS/ftp"
-msgstr ""
-
-msgid "OS/ssh2"
-msgstr ""
-
-msgid "OS/telnet"
-msgstr ""
-
-msgid "rOS/ftp"
-msgstr ""
-
-msgid "rOS/ssh2"
-msgstr ""
-
-msgid "rOS/telnet"
-msgstr ""
+msgid "Acknowledge"
+msgstr "Potvrdit"
 

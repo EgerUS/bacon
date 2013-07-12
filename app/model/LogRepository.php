@@ -83,4 +83,18 @@ class LogRepository extends Nette\Object {
 			return false;
 		} 
 	}
+	
+	/**
+	 * Acknowledge of log record
+	 * @return bool
+	 */
+	public function ackLog($id) {
+		try {
+			$this->db->update('logs', array('ack' => 1))->where('id = %i AND ack = 0', $id)->execute();
+			return $this->db->affectedRows();
+		} catch (\DibiException $e) {
+			return false;
+		} 
+	}
+	
 }

@@ -49,7 +49,7 @@ class LogPresenter extends BasePresenter {
 	}
 
 	/**
-	 * Create datagrid
+	 * Create logs datagrid
 	 */
 	protected function createComponentGrid($name)
     {
@@ -120,21 +120,6 @@ class LogPresenter extends BasePresenter {
         $grid->setExporting();
     }
 
-    /**
-     * Handler for operations.
-     * @param string $operation
-     * @param array $id
-     */
-    public function gridOperationsHandler($operation, $id)
-    {
-        if ($id) {
-            $ids = implode(',', $id);
-        } else {
-            $this->flashMessage($this->translator->translate('No rows selected.'), 'error');
-        }
-		$this->redirect($operation, array('id' => $ids));
-    }
-
     public function actionView($id)
     {
 		$query = array('select' => 'id', 'where' => 'id=\''.$id.'\'');
@@ -180,4 +165,199 @@ class LogPresenter extends BasePresenter {
 		}
 		return $form;
 	}
+
+	/**
+	 * Create error logs datagrid
+	 */
+	protected function createComponentGridAlarmsError($name)
+    {
+		$translator = $this->translator;
+        $gridErrors = new Grid($this, $name);
+		$gridErrors->setTranslator($this->translator);
+
+		/** Get error logs data */
+		$fluent = $this->LogRepo->getLogData(array('where' => 'severity=\'error\' AND ack=0'));
+		
+        $gridErrors->setModel($fluent);
+
+        $gridErrors->addColumnText('logId', 'Log ID')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+
+		$gridErrors->addColumnText('dateTime', 'Date and time')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		$gridErrors->getColumn('dateTime')->headerPrototype->style = 'width: 11%;';
+		
+        $gridErrors->addColumnText('severity', 'Severity')
+				->setSortable()
+				->setCustomRender(function($item) use($gridErrors) {
+					$severity = $item->severity;
+					if ($severity === 'error') { $severity = 'important'; }
+					return "<span class='label label-".$severity."'>".$item->severity."</span>";
+				})
+				->setFilterText()
+					->setSuggestion();
+
+		$gridErrors->addColumnText('deviceHost', 'Host')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+
+        $gridErrors->addColumnText('deviceGroupName', 'Group')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $gridErrors->addColumnText('scriptName', 'Script')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $gridErrors->addColumnText('class', 'Class')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $gridErrors->addColumnText('message', 'Message')
+				->setSortable()
+				->setCustomRender(function($item) use($gridErrors) {
+					return Strings::truncate($item->message, 500);
+				})
+				->setFilterText()
+					->setSuggestion();
+		$gridErrors->getColumn('message')->headerPrototype->style = 'width: 40%;';
+
+		$gridErrors->addActionHref('ack', 'Acknowledge')
+				->setIcon('ok')
+				->setConfirm(function($item) use ($translator) {
+					return $translator->translate('Are you sure you want to acknowledge error ?');
+				});
+
+		$operationsErrors = array('ack' => 'Acknowledge');
+		$gridErrors->setOperations($operationsErrors, callback($this, 'gridOperationsHandler'))
+				->setConfirm('ack', $this->translator->translate('Are you sure you want to acknowledge %i errors ?'))
+				->setPrimaryKey('id');
+
+		$gridErrors->setDefaultSort(array('logId' => 'desc'));
+        $gridErrors->setFilterRenderType(Filter::RENDER_INNER);
+        $gridErrors->setExporting();
+    }
+
+	/**
+	 * Create warning logs datagrid
+	 */
+	protected function createComponentGridAlarmsWarning($name)
+    {
+		$translator = $this->translator;
+        $grid = new Grid($this, $name);
+		$grid->setTranslator($this->translator);
+
+		/** Get warning logs data */
+		$fluent = $this->LogRepo->getLogData(array('where' => 'severity=\'warning\' AND ack=0'));
+		
+        $grid->setModel($fluent);
+
+        $grid->addColumnText('logId', 'Log ID')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+
+		$grid->addColumnText('dateTime', 'Date and time')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		$grid->getColumn('dateTime')->headerPrototype->style = 'width: 11%;';
+		
+        $grid->addColumnText('severity', 'Severity')
+				->setSortable()
+				->setCustomRender(function($item) use($grid) {
+					$severity = $item->severity;
+					if ($severity === 'error') { $severity = 'important'; }
+					return "<span class='label label-".$severity."'>".$item->severity."</span>";
+				})
+				->setFilterText()
+					->setSuggestion();
+
+		$grid->addColumnText('deviceHost', 'Host')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+
+        $grid->addColumnText('deviceGroupName', 'Group')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $grid->addColumnText('scriptName', 'Script')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $grid->addColumnText('class', 'Class')
+				->setSortable()
+				->setFilterText()
+					->setSuggestion();
+		
+        $grid->addColumnText('message', 'Message')
+				->setSortable()
+				->setCustomRender(function($item) use($grid) {
+					return Strings::truncate($item->message, 500);
+				})
+				->setFilterText()
+					->setSuggestion();
+		$grid->getColumn('message')->headerPrototype->style = 'width: 40%;';
+
+		$grid->addActionHref('ack', 'Acknowledge')
+				->setIcon('ok')
+				->setConfirm(function($item) use ($translator) {
+					return $translator->translate('Are you sure you want to acknowledge warning ?');
+				});
+
+		$operations = array('ack' => 'Acknowledge');
+		$grid->setOperations($operations, callback($this, 'gridOperationsHandler'))
+				->setConfirm('ack', $this->translator->translate('Are you sure you want to acknowledge %i warnings ?'))
+				->setPrimaryKey('id');
+
+		$grid->setDefaultSort(array('logId' => 'desc'));
+        $grid->setFilterRenderType(Filter::RENDER_INNER);
+        $grid->setExporting();
+    }
+
+	/**
+     * Handler for operations.
+     * @param string $operation
+     * @param array $id
+     */
+    public function gridOperationsHandler($operation, $id)
+    {
+        if ($id) {
+            $ids = implode(',', $id);
+        } else {
+            $this->flashMessage($this->translator->translate('No rows selected.'), 'error');
+        }
+		$this->redirect($operation, array('id' => $ids));
+    }
+
+    public function actionAck()
+    {
+        $id = $this->getParam('id');
+        $id = explode(',', $id);
+		foreach ($id as $key => $log_id) {
+			$log = $this->LogRepo->getLogData(array('select' => 'id', 'where' => 'id=\''.$log_id.'\''))->fetch();
+			if (isset($log->id)) {
+				if ($this->LogRepo->ackLog($log->id))	{
+					$this->flashMessage($this->translator->translate('Log record successfully acknowledged'), 'success');
+				} else {
+					$this->flashMessage($this->translator->translate('Failed to acknowledge log record'), 'error');
+				}
+			} else {
+				$this->flashMessage($this->translator->translate('Log record does not exist'), 'error');
+			}
+		}
+        $this->redirect('alarms');
+	}
+
 }
