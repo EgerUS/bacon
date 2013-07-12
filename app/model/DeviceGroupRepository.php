@@ -37,7 +37,6 @@ class DeviceGroupRepository extends Nette\Object
     {
 		if(!isset($query['select']))
 		{
-			//$query['select'] = '*, parentid as pid, (select groupname from devicegroups where id=pid) as parentgroupname, (select groupname from authenticationgroups where id=authenticationgroupid) as authenticationgroupname';
 			$query['select'] = '*';
 		}
 		$fluent = $this->db->select($query['select'])->from('view_devicegroups');

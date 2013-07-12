@@ -76,11 +76,6 @@ class DeviceGroupPresenter extends BasePresenter {
 				->setFilterText()
 					->setSuggestion();
 
-        $grid->addColumnText('authenticationgroupname', 'Authentication group')
-				->setSortable()
-				->setFilterText()
-					->setSuggestion();
-		
         $grid->addColumnText('description', 'Description')
 				->setSortable()
 				->setFilterText()
@@ -154,8 +149,6 @@ class DeviceGroupPresenter extends BasePresenter {
 	protected function createComponentDeviceGroupAddForm()
 	{
 		$groups = $this->DGrepo->getDeviceGroupTree();
-		$query = array('select' => 'id, groupname');
-		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
 		$form = new Form();
 		$form->setTranslator($this->translator);
 		$form->addText('groupname', 'Group name', 30, 100)
@@ -167,9 +160,6 @@ class DeviceGroupPresenter extends BasePresenter {
 		$prompt = Html::el('option')->setText($this->translator->translate('none'))->class('prompt');
 		$form->addSelect('parentId', 'Parent group', $groups)
 				->setOption('input-prepend', Html::el('i')->class('icon-sitemap'))
-				->setPrompt($prompt);
-		$form->addSelect('authenticationGroupId', 'Authentication group', $authGroups)
-				->setOption('input-prepend', Html::el('i')->class('icon-key'))
 				->setPrompt($prompt);
 		$form->addTextArea('description', 'Description', 30, 3)
 				->setAttribute('placeholder', $this->translator->translate('Enter description...'))
@@ -196,9 +186,6 @@ class DeviceGroupPresenter extends BasePresenter {
 		}
 		if ($values->parentId && !$this->DGrepo->getDeviceGroupData(array('select' => 'id', 'where' => 'id=\''.$values->parentId.'\''))->fetch()) {
 			$form->addError($this->translator->translate('Parent group does not exist'));
-		}
-		if ($values->authenticationGroupId && !$this->AGrepo->getAuthenticationGroupData(array('select' => 'id', 'where' => 'id=\''.$values->authenticationGroupId.'\''))->fetch()) {
-			$form->addError($this->translator->translate('Authentication group does not exist'));
 		}
 		if (strlen($values->description) > 255) {
 			$form->addError($this->translator->translate('Description must be at max %d characters long', 255));
@@ -227,8 +214,6 @@ class DeviceGroupPresenter extends BasePresenter {
 		$groupData = $this->DGrepo->getDeviceGroupData($query)->fetch();
 		$groupData->hash = md5(serialize($groupData));
 		$groups = $this->DGrepo->getDeviceGroupTree();
-		$query = array('select' => 'id, groupname');
-		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
 		$form = new Form();
 		$form->setTranslator($this->translator);
 		$form->addHidden('id', $groupData->id);
@@ -245,10 +230,6 @@ class DeviceGroupPresenter extends BasePresenter {
 		$form->addSelect('parentId', 'Parent group', $groups)
 				->setValue($groupData->pid)
 				->setOption('input-prepend', Html::el('i')->class('icon-sitemap'))
-				->setPrompt($prompt);
-		$form->addSelect('authenticationGroupId', 'Authentication group', $authGroups)
-				->setValue($groupData->aid)
-				->setOption('input-prepend', Html::el('i')->class('icon-key'))
 				->setPrompt($prompt);
 		$form->addTextArea('description', 'Description', 30, 3)
 				->setValue($groupData->description)
@@ -277,9 +258,6 @@ class DeviceGroupPresenter extends BasePresenter {
 		if ($values->parentId && !$this->DGrepo->getDeviceGroupData(array('select' => 'id', 'where' => 'id=\''.$values->parentId.'\''))->fetch()) {
 			$form->addError($this->translator->translate('Parent group does not exist'));
 		}
-		if ($values->authenticationGroupId && !$this->AGrepo->getAuthenticationGroupData(array('select' => 'id', 'where' => 'id=\''.$values->authenticationGroupId.'\''))->fetch()) {
-			$form->addError($this->translator->translate('Authentication group does not exist'));
-		}
 		if (strlen($values->description) > 255) {
 			$form->addError($this->translator->translate('Description must be at max %d characters long', 255));
 		}
@@ -296,7 +274,6 @@ class DeviceGroupPresenter extends BasePresenter {
 		{
 			$groupValues = array('groupname'			 => $values->groupname,
 								 'parentId'				 => $values->parentId,
-								 'authenticationGroupId' => $values->authenticationGroupId,
 								 'description'			 => $values->description);
 
 			if ($this->DGrepo->updateDeviceGroup($values->id, $groupValues))
