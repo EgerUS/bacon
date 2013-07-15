@@ -37,15 +37,22 @@ class ScriptCommandsRepository extends Nette\Object {
 	
 	private $lib;
 	
+	private $dateTime;
+	private $dateTimeFull;
+	
     public function __construct(\Log\LogRepository $LogRepository, \Device\DeviceRepository $DeviceRepository, \Group\DeviceGroupRepository $DeviceGroupRepository, \Script\ScriptRepository $ScriptRepository)
     {
 		$this->log = $LogRepository;
 		$this->Drepo = $DeviceRepository;
 		$this->DGrepo = $DeviceGroupRepository;
 		$this->Srepo = $ScriptRepository;
-    }
+	}
 	
 	public function execScript($devices, $scriptId) {
+		$date = new \DateTime();
+		$this->dateTime = $date->format('Y-m-d');
+		$this->dateTimeFull = $date->format('Y-m-d-H-i-s');
+		
 		$scriptData = $this->Srepo->getScriptData(array('where' => 'id='.$scriptId))->fetch();
 		foreach ($devices as $key => $value) {
 			$deviceData = $this->Drepo->getDeviceData(array('where' => 'devices.id='.$value))->fetch();
@@ -102,6 +109,13 @@ class ScriptCommandsRepository extends Nette\Object {
 					}
 					$params = str_getcsv(trim(strstr($cmd[0], '('), '()'));
 					foreach ($params as $key => $value) {
+						$replacements = array(
+												'{host}' => $this->deviceHost,
+												'{user}' => $this->deviceUsername,
+												'{datetime}' => $this->dateTime,
+												'{datetimefull}' => $this->dateTimeFull
+											 );
+						$value = str_replace(array_keys($replacements), $replacements, $value);
 						$params[$key] = trim(trim($value), '\'');
 					}
 					if (method_exists($this->lib, $command)) {
