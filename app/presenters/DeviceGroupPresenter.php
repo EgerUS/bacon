@@ -196,7 +196,6 @@ class DeviceGroupPresenter extends BasePresenter {
 	{
 		$values = $form->getValues();
 		if (!$values->parentId) { $values->parentId = 0; }
-		if (!$values->authenticationGroupId) { $values->authenticationGroupId = 0; }
 		
 		if ($this->DGrepo->addDeviceGroup($values))
 		{
