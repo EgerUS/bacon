@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-07-12 14:22:55
+# Created: 2013-07-15 15:55:41
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-07-12 14:22+0200\n"
+"PO-Revision-Date: 2013-07-15 15:55+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,6 +11,9 @@ msgstr ""
 
 msgid "Account disabled"
 msgstr "Účet je zablokován"
+
+msgid "Acknowledge"
+msgstr "Potvrdit"
 
 msgid "Actions"
 msgstr "Akce"
@@ -810,6 +813,411 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
-msgid "Acknowledge"
-msgstr "Potvrdit"
+msgid "Previous"
+msgstr "Předchozí"
+
+msgid "Next"
+msgstr "Další"
+
+msgid "Česky"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "10"
+msgstr ""
+
+msgid "20"
+msgstr ""
+
+msgid "30"
+msgstr ""
+
+msgid "50"
+msgstr ""
+
+msgid "100"
+msgstr ""
+
+msgid "Opravdu chcete potvrdit záznam o chybě ?"
+msgstr ""
+
+msgid "Opravdu chcete potvrdit záznam varování ?"
+msgstr ""
+
+msgid "Acknowledges"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'test' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'SSH2 + SFTP' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'TELNET + FTP' ?"
+msgstr ""
+
+msgid "213.180.32.68"
+msgstr ""
+
+msgid "172.31.209.139"
+msgstr ""
+
+msgid "172.31.209.124"
+msgstr ""
+
+msgid "172.31.209.48"
+msgstr ""
+
+msgid "172.31.209.54"
+msgstr ""
+
+msgid "172.31.209.138"
+msgstr ""
+
+msgid "172.31.209.49"
+msgstr ""
+
+msgid "172.31.209.50"
+msgstr ""
+
+msgid "172.31.209.137"
+msgstr ""
+
+msgid "188.175.254.58"
+msgstr ""
+
+msgid "188.175.254.178"
+msgstr ""
+
+msgid "213.180.32.69"
+msgstr ""
+
+msgid "172.31.209.82"
+msgstr ""
+
+msgid "188.175.254.179"
+msgstr ""
+
+msgid "172.31.209.123"
+msgstr ""
+
+msgid "172.31.209.134"
+msgstr ""
+
+msgid "172.31.209.98"
+msgstr ""
+
+msgid "213.180.32.169"
+msgstr ""
+
+msgid "188.175.70.66"
+msgstr ""
+
+msgid "188.175.254.66"
+msgstr ""
+
+msgid "90.182.20.85"
+msgstr ""
+
+msgid "172.31.5.3"
+msgstr ""
+
+msgid "213.180.35.134"
+msgstr ""
+
+msgid "188.175.70.198"
+msgstr ""
+
+msgid "82.150.162.10"
+msgstr ""
+
+msgid "188.175.113.82"
+msgstr ""
+
+msgid "188.175.254.166"
+msgstr ""
+
+msgid "172.31.209.72"
+msgstr ""
+
+msgid "172.31.209.130"
+msgstr ""
+
+msgid "172.31.209.133"
+msgstr ""
+
+msgid "172.31.209.132"
+msgstr ""
+
+msgid "172.31.209.131"
+msgstr ""
+
+msgid "172.31.209.135"
+msgstr ""
+
+msgid "172.31.209.136"
+msgstr ""
+
+msgid "172.31.209.125"
+msgstr ""
+
+msgid "213.180.47.14"
+msgstr ""
+
+msgid "172.30.15.196"
+msgstr ""
+
+msgid "192.168.1.1"
+msgstr ""
+
+msgid "172.31.209.129"
+msgstr ""
+
+msgid "Mikrotik"
+msgstr ""
+
+msgid "  Mikrotik L3"
+msgstr ""
+
+msgid "Linux"
+msgstr ""
+
+msgid "SSH2 + SFTP"
+msgstr ""
+
+msgid "TELNET + FTP"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'sda' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'SSH2 + FTP' ?"
+msgstr ""
+
+msgid "Enter page:"
+msgstr ""
+
+msgid "Mikrotik L3"
+msgstr ""
+
+msgid "RouterOS"
+msgstr ""
+
+msgid "Portax Mikrotik L2"
+msgstr ""
+
+msgid "Portax Mikrotik L3"
+msgstr ""
+
+msgid "asda"
+msgstr ""
+
+msgid "dsf"
+msgstr ""
+
+msgid "sdf"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.30.15.196' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.123' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.124' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.125' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.129' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.130' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.131' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.132' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.133' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.134' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.135' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.136' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.137' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.138' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.139' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.48' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.49' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.50' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.54' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.72' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Mikrotik L3' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Linux' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Mikrotik' ?"
+msgstr ""
+
+msgid "Cisco"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Cisco' ?"
+msgstr ""
+
+msgid "Cisco switch"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Cisco switch' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'sme0.adm.i' ?"
+msgstr ""
+
+msgid "aaa"
+msgstr ""
+
+msgid "sme0.adm.i"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Cisco telnet TFTP backup' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'asda' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'dsf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Portax Mikrotik L2' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Portax Mikrotik L3' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "Opravdu chcete smazat 'sdf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgstr ""
+
+msgid "  Mikrotik L2"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Mikrotik L2' ?"
+msgstr ""
+
+msgid "  Cisco L2"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Cisco L2' ?"
+msgstr ""
+
+msgid "CMTS"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'CMTS' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.118' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.128' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.135' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.174' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.233' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.35' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.39' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.72' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.84' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.0.87' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.10.115' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.10.167' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.10.238' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.11.162' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.11.211' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.11.23' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.12.206' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.12.234' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.13.181' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '10.100.13.38' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '213.180.53.34' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '82.150.162.10' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '90.182.20.85' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '94.74.230.22' ?"
+msgstr ""
 
