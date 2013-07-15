@@ -196,7 +196,8 @@ class DevicePresenter extends BasePresenter {
 		$query = array('select' => 'id, groupname');
 		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
 		foreach (Finder::findDirectories('*')->from('../app/model/Commands') as $dir) {
-			$class = substr(strrchr($dir, "Commands/"), 9);
+			$class = explode('/', $dir);
+			$class = end($class);
 			$deviceClasses[$class] = $class;
 		}
 		$form = new Form();
@@ -302,7 +303,8 @@ class DevicePresenter extends BasePresenter {
 		$query = array('select' => 'id, groupname');
 		$authGroups = $this->AGrepo->getAuthenticationGroupData($query)->fetchPairs();
 		foreach (Finder::findDirectories('*')->from('../app/model/Commands') as $dir) {
-			$class = substr(strrchr($dir, "Commands/"), 9);
+			$class = explode('/', $dir);
+			$class = end($class);
 			$deviceClasses[$class] = $class;
 		}
 		$id = $this->getParam('id');
