@@ -114,6 +114,7 @@ class SSH2 extends \Nette\Object {
 	public function disconnect() 
 	{
 		if ($this->connection) {
+			$this->connection->disconnect();
 			$this->connection = NULL;
 			$this->script->logRecord['message'] = 'Disconnected';
 			$this->script->logRecord['severity'] = 'success';
