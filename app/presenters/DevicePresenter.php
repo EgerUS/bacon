@@ -426,7 +426,8 @@ class DevicePresenter extends BasePresenter {
 								  'username'				=> $values->username,
 								  'password'				=> $values->password,
 								  'deviceClass'				=> $values->deviceClass,
-								  'description'				=> $values->description);
+								  'description'				=> $values->description,
+								  'active'					=> $values->active);
 
 			if (isset($values->deviceSourceId)) {
 				$deviceValues['deviceSourceId'] = $values->deviceSourceId;
