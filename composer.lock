@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6944366a86750a74e8a21476557747f7",
+    "hash": "59d2565cece124bc2050df6f00d1cf03",
     "packages": [
         {
             "name": "dibi/dibi",
@@ -11,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dg/dibi.git",
-                "reference": "a388767848b8628bd368a32c7468f2693215dabd"
+                "reference": "e87c112d713c370a16347b18c7fd46d005a295ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dg/dibi/zipball/a388767848b8628bd368a32c7468f2693215dabd",
-                "reference": "a388767848b8628bd368a32c7468f2693215dabd",
+                "url": "https://api.github.com/repos/dg/dibi/zipball/e87c112d713c370a16347b18c7fd46d005a295ff",
+                "reference": "e87c112d713c370a16347b18c7fd46d005a295ff",
                 "shasum": ""
             },
             "require-dev": {
@@ -54,7 +54,7 @@
                 "postgresql",
                 "sqlite"
             ],
-            "time": "2013-06-23 01:36:01"
+            "time": "2013-07-13 18:23:13"
         },
         {
             "name": "egersdorfer/crontab",
@@ -105,12 +105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Kdyby/Curl.git",
-                "reference": "59ad40ee509c42b9996dda105e9facf3b5167a37"
+                "reference": "f6fbe6d306d8cfbf3649756930e7162bf462354e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Kdyby/Curl/zipball/59ad40ee509c42b9996dda105e9facf3b5167a37",
-                "reference": "59ad40ee509c42b9996dda105e9facf3b5167a37",
+                "url": "https://api.github.com/repos/Kdyby/Curl/zipball/f6fbe6d306d8cfbf3649756930e7162bf462354e",
+                "reference": "f6fbe6d306d8cfbf3649756930e7162bf462354e",
                 "shasum": ""
             },
             "require": {
@@ -129,7 +129,7 @@
                     "src/Kdyby/Curl/exceptions.php"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
                 "GPL-2.0",
@@ -148,20 +148,20 @@
                 "http",
                 "nette"
             ],
-            "time": "2013-05-26 17:54:42"
+            "time": "2013-07-09 01:59:56"
         },
         {
             "name": "nette/nette",
-            "version": "v2.0.10",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/nette.git",
-                "reference": "v2.0.10"
+                "reference": "v2.0.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/nette/zipball/v2.0.10",
-                "reference": "v2.0.10",
+                "url": "https://api.github.com/repos/nette/nette/zipball/v2.0.11",
+                "reference": "v2.0.11",
                 "shasum": ""
             },
             "require": {
@@ -170,7 +170,7 @@
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "nette/tester": "@dev"
+                "nette/tester": "0.9.*"
             },
             "suggest": {
                 "ext-fileinfo": "*",
@@ -190,7 +190,7 @@
                     "Nette/loader.php"
                 ]
             },
-            "notification-url": "http://packagist.org/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
                 "GPL-2.0",
@@ -222,7 +222,7 @@
                 "neon",
                 "templating"
             ],
-            "time": "2013-03-08 15:44:35"
+            "time": "2013-07-11 20:39:27"
         },
         {
             "name": "nextras/forms",
@@ -277,12 +277,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/o5/grido.git",
-                "reference": "97967d4b77d036918728d2725c6c9ddaa6b2a8e4"
+                "reference": "aa54769d527968723f228fcf84e14a9646f0f1b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/o5/grido/zipball/97967d4b77d036918728d2725c6c9ddaa6b2a8e4",
-                "reference": "97967d4b77d036918728d2725c6c9ddaa6b2a8e4",
+                "url": "https://api.github.com/repos/o5/grido/zipball/aa54769d527968723f228fcf84e14a9646f0f1b4",
+                "reference": "aa54769d527968723f228fcf84e14a9646f0f1b4",
                 "shasum": ""
             },
             "require": {
@@ -319,7 +319,81 @@
                 "table",
                 "tablegrid"
             ],
-            "time": "2013-06-24 14:39:32"
+            "time": "2013-07-03 17:44:47"
+        },
+        {
+            "name": "phpseclib/phpseclib",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpseclib/phpseclib.git",
+                "reference": "ae2a0886a5332e18d0449bfa95c606f723f18681"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/ae2a0886a5332e18d0449bfa95c606f723f18681",
+                "reference": "ae2a0886a5332e18d0449bfa95c606f723f18681",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "suggest": {
+                "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
+                "ext-mcrypt": "Install the Mcrypt extension in order to speed up a wide variety of cryptographic operations.",
+                "pear-pear/PHP_Compat": "Install PHP_Compat to get phpseclib working on PHP >= 4.3.3."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Crypt": "phpseclib/",
+                    "File": "phpseclib/",
+                    "Math": "phpseclib/",
+                    "Net": "phpseclib/"
+                },
+                "files": [
+                    "phpseclib/Crypt/Random.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "phpseclib/"
+            ],
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Wigginton",
+                    "email": "terrafrost@php.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
+            "homepage": "http://phpseclib.sourceforge.net",
+            "keywords": [
+                "BigInteger",
+                "aes",
+                "asn.1",
+                "asn1",
+                "crypto",
+                "cryptography",
+                "encryption",
+                "rsa",
+                "security",
+                "sftp",
+                "signature",
+                "signing",
+                "ssh",
+                "x.509",
+                "x509"
+            ],
+            "time": "2013-07-16 16:21:46"
         },
         {
             "name": "schmutzka/gettexttranslator",
@@ -375,12 +449,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "99dfe7a8ec2e8a6ca18b9ca0cb2ce63536b466f7"
+                "reference": "40e88794885dda194160d874692c4d5a036d4348"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/99dfe7a8ec2e8a6ca18b9ca0cb2ce63536b466f7",
-                "reference": "99dfe7a8ec2e8a6ca18b9ca0cb2ce63536b466f7",
+                "url": "https://api.github.com/repos/nette/tester/zipball/40e88794885dda194160d874692c4d5a036d4348",
+                "reference": "40e88794885dda194160d874692c4d5a036d4348",
                 "shasum": ""
             },
             "require": {
@@ -418,7 +492,7 @@
                 "testing",
                 "unit"
             ],
-            "time": "2013-06-24 23:00:16"
+            "time": "2013-07-17 11:19:40"
         }
     ],
     "aliases": [
@@ -431,6 +505,7 @@
         "o5/grido": 20,
         "kdyby/curl": 20,
         "egersdorfer/crontab": 20,
+        "phpseclib/phpseclib": 20,
         "nette/tester": 20
     },
     "platform": {

@@ -24,7 +24,8 @@
 		"nextras/forms": "dev-master",
 		"o5/grido": "dev-master",
 		"kdyby/curl": "@dev",
-		"egersdorfer/crontab": "dev-develop"
+		"egersdorfer/crontab": "dev-develop",
+		"phpseclib/phpseclib": "0.3.*@dev"
 	},
     "require-dev": {
         "nette/tester": "@dev"
