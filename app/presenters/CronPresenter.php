@@ -79,9 +79,9 @@ class CronPresenter extends BasePresenter {
 			{
 				if ($cron->deviceGroupId)
 				{
-					$devices = $this->Drepo->getDeviceData(array('select' => 'id', 'where' => 'deviceGroupId = '.$cron->deviceGroupId))->fetchPairs();
+					$devices = $this->Drepo->getDeviceData(array('select' => 'id', 'where' => 'active = 1 AND deviceGroupId = '.$cron->deviceGroupId))->fetchPairs();
 				} elseif ($cron->deviceId) {
-					$devices = $this->Drepo->getDeviceData(array('select' => 'id', 'where' => 'id = '.$cron->deviceId))->fetchPairs();
+					$devices = $this->Drepo->getDeviceData(array('select' => 'id', 'where' => 'active = 1 AND id = '.$cron->deviceId))->fetchPairs();
 				}
 				
 				if (isset($devices))
