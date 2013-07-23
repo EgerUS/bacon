@@ -27,6 +27,9 @@ class SSH2 extends \Nette\Object {
 	private $lastCommandResult = NULL;
 	private $lastCommandError = NULL;
 	
+	const LOG_COMMAND_ERROR_SEVERITY = 'error';
+	private $logCommandErrorSeverity = self::LOG_COMMAND_ERROR_SEVERITY;
+	
 	/** @var \Commands\ScriptCommandsRepository */
 	private $script;
 
@@ -70,6 +73,27 @@ class SSH2 extends \Nette\Object {
 		}
 	}
 
+	public function setLogError($log)
+	{
+		if ($log === '1' || strtolower($log) === 'info') {
+			$this->logCommandErrorSeverity = 'info';
+		} elseif ($log === '2' || strtolower($log) === 'warning') {
+			$this->logCommandErrorSeverity = 'warning';
+		} else {
+			$this->logCommandErrorSeverity = 'error';
+		}
+		
+		if ($log === '0' || strtolower($log) === 'false')
+		{
+			$this->logCommandErrorSeverity = FALSE;
+			$this->script->logRecord['message'] = 'Logging errors of the next command has been turned off';
+		} else {
+			$this->script->logRecord['message'] = 'Logging severity of the next command error has been set to ['.$this->logCommandErrorSeverity.']';
+		}
+		$this->script->logRecord['severity'] = 'info';
+		$this->script->log->addLog($this->script->logRecord);
+	}
+
 	public function connect($login) 
 	{ 
 		@$this->connection = new \Net_SSH2($this->script->deviceHost, $this->port, $this->timeout);
@@ -108,6 +132,10 @@ class SSH2 extends \Nette\Object {
 				$this->script->logRecord['severity'] = 'success';
 				$this->script->log->addLog($this->script->logRecord);
 			}
+		} else {
+			$this->script->logRecord['message'] = 'Unable to login due to the connection is not established';
+			$this->script->logRecord['severity'] = 'error';
+			$this->script->log->addLog($this->script->logRecord);
 		}
     } 
 
@@ -129,9 +157,13 @@ class SSH2 extends \Nette\Object {
 			{
 				if (@!preg_match($waitfor, $this->lastCommandResult))
 				{
-					$this->script->logRecord['message'] = 'Failed to wait for the result ['.$waitfor.']. Command ['.$command.'] not sended.';
-					$this->script->logRecord['severity'] = 'error';
-					$this->script->log->addLog($this->script->logRecord);
+					if ($this->logCommandErrorSeverity)
+					{
+						$this->script->logRecord['message'] = 'Failed to wait for the result ['.$waitfor.']. Command ['.$command.'] not sended.';
+						$this->script->logRecord['severity'] = $this->logCommandErrorSeverity;
+						$this->script->log->addLog($this->script->logRecord);
+					}
+					$this->logCommandErrorSeverity = self::LOG_COMMAND_ERROR_SEVERITY;
 					return FALSE;
 				} else {
 					$this->script->logRecord['message'] = 'Waiting for the result ['.$waitfor.'] was successful';
@@ -141,9 +173,12 @@ class SSH2 extends \Nette\Object {
 			}
 			if (!@$this->connection->write($command."\n"))
 			{
-				$this->script->logRecord['message'] = 'Failed to send the command ['.$command.']';
-				$this->script->logRecord['severity'] = 'error';
-				$this->script->log->addLog($this->script->logRecord);
+				if ($this->logCommandErrorSeverity)
+				{
+					$this->script->logRecord['message'] = 'Failed to send the command ['.$command.']';
+					$this->script->logRecord['severity'] = $this->logCommandErrorSeverity;
+					$this->script->log->addLog($this->script->logRecord);
+				}
 			} else {
 				$this->lastCommand = $command;
 				$this->read();
@@ -154,16 +189,18 @@ class SSH2 extends \Nette\Object {
 				if (count($error))
 				{
 					$this->lastCommandError = end($error);
-					$this->script->logRecord['message'] = 'Command ['.$command.'] failed with error: '.$this->lastCommandError;
-					$this->script->logRecord['severity'] = 'error';
-					$this->script->log->addLog($this->script->logRecord);
+					if ($this->logCommandErrorSeverity)
+					{
+						$this->script->logRecord['message'] = 'Command ['.$command.'] failed with error: '.$this->lastCommandError;
+						$this->script->logRecord['severity'] = $this->logCommandErrorSeverity;
+						$this->script->log->addLog($this->script->logRecord);
+					}
 				} else {
 					$this->lastCommandError = NULL;
 				}
-
-				
 			}
 		}
+		$this->logCommandErrorSeverity = self::LOG_COMMAND_ERROR_SEVERITY;
 	}
 	
 	public function logLastCommand() {
