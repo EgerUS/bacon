@@ -98,7 +98,7 @@ class SSH2 extends \Nette\Object {
 	{ 
 		@$this->connection = new \Net_SSH2($this->script->deviceHost, $this->port, $this->timeout);
 
-		if($this->connection)
+		if ($this->connection)
 		{ 
 			$this->script->logRecord['message'] = 'Connected';
 			if ($login === '0' || strtolower($login) === 'false')
@@ -118,7 +118,10 @@ class SSH2 extends \Nette\Object {
 
 	public function login() 
 	{ 
-		if($this->connection) 
+		if (!$this->connection)
+			$this->connect('true');
+
+		if ($this->connection) 
 		{ 
 			if(@!$this->connection->login($this->script->deviceUsername,$this->script->devicePassword))
 			{
@@ -152,6 +155,9 @@ class SSH2 extends \Nette\Object {
 
 	public function command($command, $waitfor = NULL)
 	{
+		if (!$this->connection)
+			$this->connect('true');
+
 		if ($this->connection) {
 			if ($waitfor)
 			{
