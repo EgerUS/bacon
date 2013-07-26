@@ -17,7 +17,7 @@ namespace Commands\RouterOS;
 
 class SSH2 extends \Nette\Object {
 
-	private $connection = NULL;
+	public $connection = NULL;
 	private $port = 22;
 	private $timeout = 2;
 	private $prompt = '/\[.+\] >/i';
@@ -147,9 +147,6 @@ class SSH2 extends \Nette\Object {
 	public function disconnect() 
 	{
 		if ($this->connection) {
-			echo "<pre>";
-			print_r($this->connection->getLog());
-
 			$this->connection->disconnect();
 			$this->connection = NULL;
 			$this->script->logRecord['message'] = 'Disconnected';
@@ -194,7 +191,6 @@ class SSH2 extends \Nette\Object {
 				$this->connection->setTimeout($this->timeout);
 				$this->lastCommand = $command;
 				$this->read();
-				echo "<br> >>>> ".$this->lastCommandResult." <<<< <br>";
 				$this->script->logRecord['message'] = 'Command ['.$command.'] sended';
 				$this->script->logRecord['severity'] = 'success';
 				$this->script->log->addLog($this->script->logRecord);
