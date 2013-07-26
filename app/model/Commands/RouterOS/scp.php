@@ -9,19 +9,23 @@
  * Encoding:    UTF-8 
  * 
  * Description: RouterOS SCP library
- *				Require RouterOS SSH2 library !
+ *				Require RouterOS SSH2 or SSH1 library !
  * 
  * 
  */ 
 
 namespace Commands\RouterOS;
 
+define('CLASS_BASE', __NAMESPACE__.'\\');
+define('SSH1', CLASS_BASE.'SSH1');
+define('SSH2', CLASS_BASE.'SSH2');
+
 class SCP extends \Nette\Object {
 
 	private $connection = NULL;
 	private $ssh = NULL;
 	
-	const SSH_VERSION = 'SSH2';
+	private $ssh1 = FALSE;
 	
 	/** @var \Commands\ScriptCommandsRepository */
 	private $script;
@@ -31,29 +35,59 @@ class SCP extends \Nette\Object {
 		$this->script = $ScriptCommandsRepository;		
 	}
 	
-	private function init($sshver = NULL)
+	private function init()
 	{
 		if (!isset($this->ssh->connection))
 		{
-			$defaultClass = __NAMESPACE__.'\\'.self::SSH_VERSION;
-			$class = __NAMESPACE__.'\\'.strtoupper($sshver);
-			class_exists($class)
-				? $this->ssh = new $class($this->script)
-				: $this->ssh = new $defaultClass($this->script);
-
-			$this->ssh->connect('true');
-			if ($this->connection = new \Net_SCP($this->ssh->connection))
+			$this->ssh1
+				? $class = SSH1
+				: $class = SSH2;
+			if (class_exists($class))
 			{
-				$this->script->logRecord['message'] = 'SCP startup ok';
-				$this->script->logRecord['severity'] = 'success';
+				@$this->ssh = new $class($this->script);
+				$this->ssh->connect('true');
+				if ($this->connection = new \Net_SCP($this->ssh->connection))
+				{
+					$this->script->logRecord['message'] = 'SCP startup ok';
+					$this->script->logRecord['severity'] = 'success';
+					$this->script->log->addLog($this->script->logRecord);
+				}
+			} else {
+				$this->script->logRecord['message'] = 'Failed to init SSH class ['.$class.']';
+				$this->script->logRecord['severity'] = 'error';
 				$this->script->log->addLog($this->script->logRecord);
+				exit;
 			}
 		}
 	}
 
-	public function get($file, $sshver = NULL)
+	public function ssh1()
 	{
-		$this->init($sshver);
+		if (class_exists(SSH1))
+		{
+			$this->ssh1 = TRUE;
+			$this->script->logRecord['message'] = 'SSH is set to protocol version 1';
+			$this->script->logRecord['severity'] = 'info';
+			$this->script->log->addLog($this->script->logRecord);
+		} else {
+			$this->ssh1 = FALSE;
+			$this->script->logRecord['message'] = 'Class for SSH1 not found. SSH is set to protocol version 2';
+			$this->script->logRecord['severity'] = 'warning';
+			$this->script->log->addLog($this->script->logRecord);
+		}
+	}
+
+	public function ssh2()
+	{
+		$this->ssh1 = FALSE;
+		$this->script->logRecord['message'] = 'SSH is set to protocol version 2';
+		$this->script->logRecord['severity'] = 'info';
+		$this->script->log->addLog($this->script->logRecord);
+	}
+
+	public function get($file)
+	{
+		$this->init();
 		if ($this->connection)
 		{
 			$target = rtrim($this->script->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
@@ -88,7 +122,42 @@ class SCP extends \Nette\Object {
 			}
 			
 		} else { 
-			$this->script->logRecord['message'] = 'SCP startup failed. File ['.$file.'] cannot be downloaded';
+			$this->script->logRecord['message'] = 'SCP connection failed. File ['.$file.'] cannot be downloaded';
+			$this->script->logRecord['severity'] = 'error';
+			$this->script->log->addLog($this->script->logRecord);
+		}
+	}
+	
+	public function put($file, $data, $mode = NULL) {
+		$this->init();
+		if ($this->connection)
+		{
+			if (strtolower($mode) === 'string')
+			{
+				if (@$this->connection->put($file, $data))
+				{
+					$this->script->logRecord['message'] = 'The string was successfully written to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'success';
+					$this->script->log->addLog($this->script->logRecord);
+				} else {
+					$this->script->logRecord['message'] = 'Failed to write the string to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'error';
+					$this->script->log->addLog($this->script->logRecord);
+				}
+			} else {
+				if (@$this->connection->put($file, $data, NET_SCP_LOCAL_FILE))
+				{
+					$this->script->logRecord['message'] = 'The local file ['.$data.'] was successfully uploaded to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'success';
+					$this->script->log->addLog($this->script->logRecord);
+				} else {
+					$this->script->logRecord['message'] = 'Failed to upload the local file ['.$data.'] to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'error';
+					$this->script->log->addLog($this->script->logRecord);
+				}
+			}
+		} else { 
+			$this->script->logRecord['message'] = 'SCP connection failed. Remote file ['.$file.'] cannot be created';
 			$this->script->logRecord['severity'] = 'error';
 			$this->script->log->addLog($this->script->logRecord);
 		} 
