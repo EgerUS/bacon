@@ -31,7 +31,6 @@ class SFTP extends \Nette\Object {
 
 	public function connect($login) 
 	{ 
-		define('NET_SFTP_LOGGING', true);
 		@$this->connection = new \Net_SFTP($this->script->deviceHost);
 
 		if ($this->connection)
@@ -126,4 +125,38 @@ class SFTP extends \Nette\Object {
 			}
 		}
 	}
+	
+	public function put($file, $data, $mode = NULL) {
+		if (!$this->connection)
+			$this->connect('true');
+		
+		if ($this->connection)
+		{
+			if (strtolower($mode) === 'string')
+			{
+				if (@$this->connection->put($file, $data))
+				{
+					$this->script->logRecord['message'] = 'The string was successfully written to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'success';
+					$this->script->log->addLog($this->script->logRecord);
+				} else {
+					$this->script->logRecord['message'] = 'Failed to write the string to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'error';
+					$this->script->log->addLog($this->script->logRecord);
+				}
+			} else {
+				if (@$this->connection->put($file, $data, NET_SFTP_LOCAL_FILE))
+				{
+					$this->script->logRecord['message'] = 'The local file ['.$data.'] was successfully uploaded to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'success';
+					$this->script->log->addLog($this->script->logRecord);
+				} else {
+					$this->script->logRecord['message'] = 'Failed to upload the local file ['.$data.'] to the remote file ['.$file.']';
+					$this->script->logRecord['severity'] = 'error';
+					$this->script->log->addLog($this->script->logRecord);
+				}
+			}
+		}
+	}
 }
+
