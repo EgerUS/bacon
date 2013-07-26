@@ -123,7 +123,11 @@ class SFTP extends \Nette\Object {
 				$this->script->logRecord['severity'] = 'error';
 				$this->script->log->addLog($this->script->logRecord);
 			}
-		}
+		} else { 
+			$this->script->logRecord['message'] = 'SFTP connection failed. File ['.$file.'] cannot be downloaded';
+			$this->script->logRecord['severity'] = 'error';
+			$this->script->log->addLog($this->script->logRecord);
+		} 
 	}
 	
 	public function put($file, $data, $mode = NULL) {
@@ -156,7 +160,11 @@ class SFTP extends \Nette\Object {
 					$this->script->log->addLog($this->script->logRecord);
 				}
 			}
-		}
+		} else { 
+			$this->script->logRecord['message'] = 'SFTP connection failed. Remote file ['.$file.'] cannot be created';
+			$this->script->logRecord['severity'] = 'error';
+			$this->script->log->addLog($this->script->logRecord);
+		} 
 	}
 }
 
