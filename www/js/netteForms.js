@@ -70,7 +70,7 @@ Nette.getValue = function(elem) {
  * Validates form element against given rules.
  */
 Nette.validateControl = function(elem, rules, onlyCheck) {
-	rules = rules || eval('[' + (elem.getAttribute('data-nette-rules') || '') + ']');
+	rules = rules || Nette.parseJSON(elem.getAttribute('data-nette-rules'));
 	for (var id = 0, len = rules.length; id < len; id++) {
 		var rule = rules[id], op = rule.op.match(/(~)?([^?]+)/);
 		rule.neg = op[1];
@@ -108,14 +108,20 @@ Nette.validateControl = function(elem, rules, onlyCheck) {
  * Validates whole form.
  */
 Nette.validateForm = function(sender) {
-	var form = sender.form || sender;
+	var form = sender.form || sender, scope = false;
 	if (form['nette-submittedBy'] && form['nette-submittedBy'].getAttribute('formnovalidate') !== null) {
-		return true;
+		var scopeArr = Nette.parseJSON(form['nette-submittedBy'].getAttribute('data-nette-validation-scope'));
+		if (scopeArr.length) {
+			scope = new RegExp('^(' + scopeArr.join('-|') + '-)');
+		} else {
+			return true;
+		}
 	}
 	for (var i = 0; i < form.elements.length; i++) {
 		var elem = form.elements[i];
 		if (!(elem.nodeName.toLowerCase() in {input: 1, select: 1, textarea: 1}) ||
 			(elem.type in {hidden: 1, submit: 1, image: 1, reset: 1}) ||
+			(scope && !elem.name.replace(/]\[|\[|]|$/g, '-').match(scope)) ||
 			elem.disabled || elem.readonly
 		) {
 			continue;
@@ -234,10 +240,6 @@ Nette.validators = {
 
 	submitted: function(elem, arg, val) {
 		return elem.form['nette-submittedBy'] === elem;
-	},
-
-	fileSize: function(elem, arg, val) {
-		return window.FileList && elem.files[0] ? elem.files[0].size <= arg : true;
 	}
 };
 
@@ -264,7 +266,7 @@ Nette.toggleForm = function(form, firsttime) {
  * Process toggles on form element.
  */
 Nette.toggleControl = function(elem, rules, topSuccess, firsttime) {
-	rules = rules || eval('[' + (elem.getAttribute('data-nette-rules') || '') + ']');
+	rules = rules || Nette.parseJSON(elem.getAttribute('data-nette-rules'));
 	var has = false, __hasProp = Object.prototype.hasOwnProperty, handler = function() {
 		Nette.toggleForm(elem.form);
 	};
@@ -314,6 +316,15 @@ Nette.toggleControl = function(elem, rules, topSuccess, firsttime) {
 };
 
 
+Nette.parseJSON = function(s) {
+	s = s || '[]';
+	if (s.substr(0, 3) === '{op') {
+		return eval('[' + s + ']'); // backward compatibility
+	}
+	return window.JSON && window.JSON.parse ? JSON.parse(s) : eval(s);
+};
+
+
 /**
  * Displays or hides HTML element.
  */
@@ -331,15 +342,8 @@ Nette.toggle = function(id, visible) {
 Nette.initForm = function(form) {
 	form.noValidate = 'novalidate';
 
-	Nette.addEvent(form, 'submit', function(e) {
-		if (!Nette.validateForm(form)) {
-			e = e || event;
-			e.cancelBubble = true;
-			if (e.stopPropagation) {
-				e.stopPropagation();
-			}
-			return false;
-		}
+	Nette.addEvent(form, 'submit', function() {
+		return Nette.validateForm(form);
 	});
 
 	Nette.addEvent(form, 'click', function(e) {
@@ -349,6 +353,23 @@ Nette.initForm = function(form) {
 	});
 
 	Nette.toggleForm(form, true);
+
+	if (/MSIE/.exec(navigator.userAgent)) {
+		var labels = {},
+			wheelHandler = function() { return false; },
+			clickHandler = function() { document.getElementById(this.htmlFor).focus(); return false; };
+
+		for (i = 0, elms = form.getElementsByTagName('label'); i < elms.length; i++) {
+			labels[elms[i].htmlFor] = elms[i];
+		}
+
+		for (i = 0, elms = form.getElementsByTagName('select'); i < elms.length; i++) {
+			Nette.addEvent(elms[i], 'mousewheel', wheelHandler); // prevents accidental change in IE
+			if (labels[elms[i].htmlId]) {
+				Nette.addEvent(labels[elms[i].htmlId], 'click', clickHandler); // prevents deselect in IE 5 - 6
+			}
+		}
+	}
 };
 
 
@@ -365,19 +386,3 @@ Nette.addEvent(window, 'load', function() {
 		Nette.initForm(document.forms[i]);
 	}
 });
-
-
-/**
- * Converts string to web safe characters [a-z0-9-] text.
- */
-Nette.webalize = function(s) {
-    s = s.toLowerCase();
-    var res = '', i, ch;
-    for (i = 0; i < s.length; i++) {
-    	ch = Nette.webalizeTable[s.charAt(i)];
-        res += ch ? ch : s.charAt(i);
-    }
-    return res.replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-};
-
-Nette.webalizeTable = {\u00e1: 'a', \u010d: 'c', \u010f: 'd', \u00e9: 'e', \u011b: 'e', \u00ed: 'i', \u0148: 'n', \u00f3: 'o', \u0159: 'r', \u0161: 's', \u0165: 't', \u00fa: 'u', \u016f: 'u', \u00fd: 'y', \u017e: 'z'};

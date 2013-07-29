@@ -79,7 +79,6 @@
     padding: 2px 6px 0 5px;
     border-radius: 0;
     height: 35px;
-    width: 9%;
 }
 
 .grido.filter.outer {
@@ -89,8 +88,9 @@
 }
 
 .grido.filter.outer .items {
-    width: 84%;
+    width: 90%;
     float: left;
+    min-height: 60px;
 }
 
 .grido.filter.outer .items span {
@@ -107,7 +107,7 @@
 
 .grido.filter.outer .buttons {
     float: right;
-    margin: 15px 7px 0 0;
+    margin: .9% .5% 0 0;
 }
 
 .grido input.date {background: url('../img/cal.jpg') #fff no-repeat right center}
@@ -117,7 +117,7 @@
 /******************** OTHERS ********************/
 
 .grido th.actions {
-    width: 16%;
+    width: 15%;
     text-align: center;
 }
 
@@ -159,10 +159,11 @@
 }
 .grido input.text {text-indent: 3px}
 
-.grido tr.filter .buttons input {
+.grido .buttons input {
     width: auto;
     padding: 4px 10px 4px;
     height: auto;
+    margin-right: 4px;
 }
 .grido label {display: inline}
 

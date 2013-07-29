@@ -148,30 +148,21 @@
 			<footer>Copyright &copy; 2013 Jiri Eger | backup control | Powered by Nette Framework {=Nette\Framework::VERSION}</footer>
 		</div>
 
+		{var ajax = 'off'}
 		{block scripts}
 		<script src="{$basePath}/js/jquery/jquery-1.8.3.min.js"></script>
+        <script src="{$basePath}/js/bootstrap/bootstrap.min.js"></script>
+        <script src="{$basePath}/js/netteForms.js"></script>
+        <script n:if="$ajax" src="{$basePath}/js/nette.ajax.js"></script>
+        <script n:if="$ajax" src="{$basePath}/js/spinner.ajax.js"></script>
+		
         <script src="{$basePath}/js/jquery/jquery.hashchange.min.js"></script>
         <script src="{$basePath}/js/jquery/jquery.maskedinput.min.js"></script>
-        <script src="{$basePath}/js/jquery/jquery.nette.js"></script>
-        <script src="{$basePath}/js/jquery/jquery.ajaxform.js"></script>
-		
-        <script src="{$basePath}/js/bootstrap/bootstrap.min.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.js"></script>
         <script src="{$basePath}/js/bootstrap/bootstrap-datepicker.cs.js"></script>
-
-		<!-- Grido --> 
         <script src="{$basePath}/js/grido/jquery.grido.js{scache}"></script>
-        <script src="{$basePath}/js/grido/utils.js{scache}"></script>
-		<!--<script src="{$basePath}/js/grido/ajax.js"></script>-->
-		
-		<script src="{$basePath}/js/netteForms.js"></script>
-<!--		<script src="{$basePath}/js/nette.ajax.js"></script>
-
-		<script type="text/javascript">
-			$(function () {
-				$.nette.init();
-			});
-		</script>-->
+        <script n:if="$ajax"  src="{$basePath}/js/main.ajax.js{scache}"></script>
+        <script n:if="!$ajax" src="{$basePath}/js/main.js{scache}"></script>
 		{/block}
 	</body>
 </html>
