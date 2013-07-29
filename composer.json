@@ -21,7 +21,6 @@
 		"nette/nette": ">= 2.0.7",
 		"dibi/dibi": "dev-master",
 		"schmutzka/gettexttranslator": "2.0.2",
-		"nextras/forms": "dev-master",
 		"o5/grido": "dev-master",
 		"kdyby/curl": "@dev",
 		"egersdorfer/crontab": "dev-develop",
