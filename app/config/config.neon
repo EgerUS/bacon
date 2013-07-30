@@ -53,6 +53,7 @@ common:
 		scriptCommandsRepository: Commands\ScriptCommandsRepository
 		logRepository: Log\LogRepository
 		cronRepository: Cron\CronRepository
+		filesRepository: Files\FilesRepository
 
 
 	factories:

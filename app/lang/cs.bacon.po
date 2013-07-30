@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2013-07-15 15:55:41
+# Created: 2013-07-30 15:23:22
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2013-07-15 15:55+0200\n"
+"PO-Revision-Date: 2013-07-30 15:23+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -335,6 +335,15 @@ msgstr "Exportovat všechny záznamy"
 msgid "Failed to acknowledge log record"
 msgstr "Potvrzení záznamu logu se nezdařilo"
 
+msgid "File path"
+msgstr "Cesta k souboru"
+
+msgid "Filename"
+msgstr "Název souboru"
+
+msgid "Files"
+msgstr "Soubory"
+
 msgid "Fill in for password change..."
 msgstr "Vyplňte pro změnu hesla..."
 
@@ -436,6 +445,9 @@ msgstr "Seznam zařízení"
 msgid "List of log messages"
 msgstr "Výpis logu"
 
+msgid "List of saved files"
+msgstr "Seznam uložených souborů"
+
 msgid "List of scheduled tasks"
 msgstr "Seznam naplánovaných úloh"
 
@@ -484,6 +496,9 @@ msgid "New password must be at max %d characters long"
 msgstr[0] "Nové heslo může obsahovat maximálně %d znak"
 msgstr[1] "Nové heslo může obsahovat maximálně %d znaky"
 msgstr[2] "Nové heslo může obsahovat maximálně %d znaků"
+
+msgid "Next"
+msgstr "Další"
 
 msgid "No devices loaded from source '%s'"
 msgstr "Ze zdroje '%s' nebyly načteny žádná zařízení"
@@ -591,6 +606,9 @@ msgstr "Vyberte prosím skript"
 msgid "Please, select user role"
 msgstr "Vyberte prosím oprávnění uživatele"
 
+msgid "Previous"
+msgstr "Předchozí"
+
 msgid "Profile"
 msgstr "Profil"
 
@@ -610,6 +628,9 @@ msgstr[2] "Oprávnění může obsahovat maximálně %d znaků"
 
 msgid "Save"
 msgstr "Uložit"
+
+msgid "Saved files"
+msgstr "Uložené soubory"
 
 msgid "Scheduler (Cron)"
 msgstr "Plánovač (Cron)"
@@ -813,19 +834,13 @@ msgstr "manuální"
 msgid "none"
 msgstr "žádná"
 
-msgid "Previous"
-msgstr "Předchozí"
-
-msgid "Next"
-msgstr "Další"
+msgid "Record of this file does not exist"
+msgstr "Záznam o tomto souboru neexistuje"
 
 msgid "Česky"
 msgstr ""
 
 msgid "English"
-msgstr ""
-
-msgid "OK"
 msgstr ""
 
 msgid "10"
@@ -843,52 +858,3088 @@ msgstr ""
 msgid "100"
 msgstr ""
 
-msgid "Opravdu chcete potvrdit záznam o chybě ?"
+msgid "Mikrotik"
 msgstr ""
 
-msgid "Opravdu chcete potvrdit záznam varování ?"
+msgid "  Mikrotik L3"
 msgstr ""
 
-msgid "Acknowledges"
+msgid "  Mikrotik L2"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'test' ?"
+msgid "Cisco"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'SSH2 + SFTP' ?"
+msgid "  Cisco L2"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'TELNET + FTP' ?"
+msgid "CMTS"
 msgstr ""
 
-msgid "213.180.32.68"
+msgid "Huawei"
 msgstr ""
 
-msgid "172.31.209.139"
+msgid "OK"
 msgstr ""
 
-msgid "172.31.209.124"
+msgid "Opravdu chcete smazat 'Cisco' ?"
 msgstr ""
 
-msgid "172.31.209.48"
+msgid "Opravdu chcete smazat 'CMTS' ?"
 msgstr ""
 
-msgid "172.31.209.54"
+msgid "Opravdu chcete smazat 'Huawei' ?"
 msgstr ""
 
-msgid "172.31.209.138"
+msgid "Opravdu chcete smazat 'Mikrotik' ?"
 msgstr ""
 
-msgid "172.31.209.49"
+msgid "Opravdu chcete smazat 'Cisco L2' ?"
 msgstr ""
 
-msgid "172.31.209.50"
+msgid "Opravdu chcete smazat 'Mikrotik L2' ?"
 msgstr ""
 
-msgid "172.31.209.137"
+msgid "Opravdu chcete smazat 'Mikrotik L3' ?"
 msgstr ""
 
-msgid "188.175.254.58"
+msgid "Enter page:"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Cisco telnet TFTP backup' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Huawei backup SSH1' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Huawei backup SSH2' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Mikrotik backup' ?"
+msgstr ""
+
+msgid "172.30.2.244"
+msgstr ""
+
+msgid "172.30.14.182"
+msgstr ""
+
+msgid "172.30.10.22"
+msgstr ""
+
+msgid "172.30.8.204"
+msgstr ""
+
+msgid "172.30.10.228"
+msgstr ""
+
+msgid "10.135.65.4"
+msgstr ""
+
+msgid "172.30.10.13"
+msgstr ""
+
+msgid "172.30.4.70"
+msgstr ""
+
+msgid "172.30.3.227"
+msgstr ""
+
+msgid "172.30.9.7"
+msgstr ""
+
+msgid "172.30.99.2"
+msgstr ""
+
+msgid "172.30.8.134"
+msgstr ""
+
+msgid "172.30.12.189"
+msgstr ""
+
+msgid "172.30.13.58"
+msgstr ""
+
+msgid "172.30.4.237"
+msgstr ""
+
+msgid "172.30.2.198"
+msgstr ""
+
+msgid "172.30.4.30"
+msgstr ""
+
+msgid "172.30.66.5"
+msgstr ""
+
+msgid "172.30.6.127"
+msgstr ""
+
+msgid "172.30.4.230"
+msgstr ""
+
+msgid "172.30.176.73"
+msgstr ""
+
+msgid "172.31.165.226"
+msgstr ""
+
+msgid "172.30.65.125"
+msgstr ""
+
+msgid "172.31.220.54"
+msgstr ""
+
+msgid "172.30.14.14"
+msgstr ""
+
+msgid "172.30.9.149"
+msgstr ""
+
+msgid "172.30.1.253"
+msgstr ""
+
+msgid "172.31.222.42"
+msgstr ""
+
+msgid "172.30.4.36"
+msgstr ""
+
+msgid "172.30.65.5"
+msgstr ""
+
+msgid "172.30.66.82"
+msgstr ""
+
+msgid "172.30.65.131"
+msgstr ""
+
+msgid "172.30.8.242"
+msgstr ""
+
+msgid "172.30.5.26"
+msgstr ""
+
+msgid "172.31.161.19"
+msgstr ""
+
+msgid "10.135.76.3"
+msgstr ""
+
+msgid "172.31.224.70"
+msgstr ""
+
+msgid "172.30.66.8"
+msgstr ""
+
+msgid "10.135.72.5"
+msgstr ""
+
+msgid "172.30.65.74"
+msgstr ""
+
+msgid "172.30.16.29"
+msgstr ""
+
+msgid "172.30.2.38"
+msgstr ""
+
+msgid "10.100.17.191"
+msgstr ""
+
+msgid "172.30.8.52"
+msgstr ""
+
+msgid "172.30.8.130"
+msgstr ""
+
+msgid "172.27.205.197"
+msgstr ""
+
+msgid "172.30.65.133"
+msgstr ""
+
+msgid "172.30.7.15"
+msgstr ""
+
+msgid "172.31.165.188"
+msgstr ""
+
+msgid "10.100.0.174"
+msgstr ""
+
+msgid "172.30.177.35"
+msgstr ""
+
+msgid "172.30.66.80"
+msgstr ""
+
+msgid "172.30.9.73"
+msgstr ""
+
+msgid "172.30.176.68"
+msgstr ""
+
+msgid "172.30.4.45"
+msgstr ""
+
+msgid "172.30.13.118"
+msgstr ""
+
+msgid "172.30.66.49"
+msgstr ""
+
+msgid "172.30.10.126"
+msgstr ""
+
+msgid "172.30.8.121"
+msgstr ""
+
+msgid "10.135.78.7"
+msgstr ""
+
+msgid "172.30.3.2"
+msgstr ""
+
+msgid "172.31.224.46"
+msgstr ""
+
+msgid "172.30.10.244"
+msgstr ""
+
+msgid "172.30.9.5"
+msgstr ""
+
+msgid "172.30.2.8"
+msgstr ""
+
+msgid "172.30.2.223"
+msgstr ""
+
+msgid "172.30.10.250"
+msgstr ""
+
+msgid "172.30.4.29"
+msgstr ""
+
+msgid "172.30.64.132"
+msgstr ""
+
+msgid "172.30.4.251"
+msgstr ""
+
+msgid "172.30.11.117"
+msgstr ""
+
+msgid "172.30.5.17"
+msgstr ""
+
+msgid "172.30.14.153"
+msgstr ""
+
+msgid "172.30.66.56"
+msgstr ""
+
+msgid "10.135.81.6"
+msgstr ""
+
+msgid "172.30.8.5"
+msgstr ""
+
+msgid "10.100.8.26"
+msgstr ""
+
+msgid "172.30.10.23"
+msgstr ""
+
+msgid "10.135.71.5"
+msgstr ""
+
+msgid "172.31.251.21"
+msgstr ""
+
+msgid "172.30.9.2"
+msgstr ""
+
+msgid "172.30.65.188"
+msgstr ""
+
+msgid "172.30.64.67"
+msgstr ""
+
+msgid "172.30.3.7"
+msgstr ""
+
+msgid "172.30.4.6"
+msgstr ""
+
+msgid "172.30.8.10"
+msgstr ""
+
+msgid "172.31.165.197"
+msgstr ""
+
+msgid "172.30.176.79"
+msgstr ""
+
+msgid "172.30.14.57"
+msgstr ""
+
+msgid "172.31.165.202"
+msgstr ""
+
+msgid "172.30.1.20"
+msgstr ""
+
+msgid "172.31.242.11"
+msgstr ""
+
+msgid "172.31.221.59"
+msgstr ""
+
+msgid "10.135.66.6"
+msgstr ""
+
+msgid "172.30.65.68"
+msgstr ""
+
+msgid "10.135.66.5"
+msgstr ""
+
+msgid "172.30.65.69"
+msgstr ""
+
+msgid "172.30.10.225"
+msgstr ""
+
+msgid "172.30.14.10"
+msgstr ""
+
+msgid "172.31.250.55"
+msgstr ""
+
+msgid "172.31.243.6"
+msgstr ""
+
+msgid "172.30.5.21"
+msgstr ""
+
+msgid "172.30.16.6"
+msgstr ""
+
+msgid "172.31.242.4"
+msgstr ""
+
+msgid "172.30.2.13"
+msgstr ""
+
+msgid "172.30.11.90"
+msgstr ""
+
+msgid "172.30.14.58"
+msgstr ""
+
+msgid "172.30.9.143"
+msgstr ""
+
+msgid "172.30.177.2"
+msgstr ""
+
+msgid "172.31.165.240"
+msgstr ""
+
+msgid "172.30.9.70"
+msgstr ""
+
+msgid "172.31.65.206"
+msgstr ""
+
+msgid "172.31.165.183"
+msgstr ""
+
+msgid "172.31.165.244"
+msgstr ""
+
+msgid "172.31.251.16"
+msgstr ""
+
+msgid "172.30.65.8"
+msgstr ""
+
+msgid "172.31.224.158"
+msgstr ""
+
+msgid "172.30.7.252"
+msgstr ""
+
+msgid "172.30.14.135"
+msgstr ""
+
+msgid "172.30.11.123"
+msgstr ""
+
+msgid "172.30.14.140"
+msgstr ""
+
+msgid "172.30.11.3"
+msgstr ""
+
+msgid "172.30.7.242"
+msgstr ""
+
+msgid "172.30.65.42"
+msgstr ""
+
+msgid "172.27.205.245"
+msgstr ""
+
+msgid "172.30.9.6"
+msgstr ""
+
+msgid "172.30.96.8"
+msgstr ""
+
+msgid "172.30.2.7"
+msgstr ""
+
+msgid "172.30.6.253"
+msgstr ""
+
+msgid "172.31.242.10"
+msgstr ""
+
+msgid "10.100.0.128"
+msgstr ""
+
+msgid "172.30.3.226"
+msgstr ""
+
+msgid "172.30.8.72"
+msgstr ""
+
+msgid "172.30.16.61"
+msgstr ""
+
+msgid "172.30.14.134"
+msgstr ""
+
+msgid "172.30.8.241"
+msgstr ""
+
+msgid "213.180.53.34"
+msgstr ""
+
+msgid "172.30.176.69"
+msgstr ""
+
+msgid "172.30.64.133"
+msgstr ""
+
+msgid "172.30.9.124"
+msgstr ""
+
+msgid "172.30.10.245"
+msgstr ""
+
+msgid "172.31.221.36"
+msgstr ""
+
+msgid "172.30.65.3"
+msgstr ""
+
+msgid "10.100.10.167"
+msgstr ""
+
+msgid "172.30.2.232"
+msgstr ""
+
+msgid "10.100.12.234"
+msgstr ""
+
+msgid "172.30.7.245"
+msgstr ""
+
+msgid "172.31.224.228"
+msgstr ""
+
+msgid "172.31.32.3"
+msgstr ""
+
+msgid "172.30.4.9"
+msgstr ""
+
+msgid "172.30.6.117"
+msgstr ""
+
+msgid "172.31.220.35"
+msgstr ""
+
+msgid "172.30.14.21"
+msgstr ""
+
+msgid "172.31.165.232"
+msgstr ""
+
+msgid "172.31.66.29"
+msgstr ""
+
+msgid "172.30.8.70"
+msgstr ""
+
+msgid "172.30.4.238"
+msgstr ""
+
+msgid "172.30.9.118"
+msgstr ""
+
+msgid "172.30.10.229"
+msgstr ""
+
+msgid "172.30.7.247"
+msgstr ""
+
+msgid "172.30.66.53"
+msgstr ""
+
+msgid "172.30.9.123"
+msgstr ""
+
+msgid "172.30.16.15"
+msgstr ""
+
+msgid "172.30.2.250"
+msgstr ""
+
+msgid "172.30.65.116"
+msgstr ""
+
+msgid "172.31.64.19"
+msgstr ""
+
+msgid "172.30.7.3"
+msgstr ""
+
+msgid "94.74.230.22"
+msgstr ""
+
+msgid "172.30.4.61"
+msgstr ""
+
+msgid "172.30.12.132"
+msgstr ""
+
+msgid "10.100.0.118"
+msgstr ""
+
+msgid "172.31.220.38"
+msgstr ""
+
+msgid "172.30.64.136"
+msgstr ""
+
+msgid "172.30.11.68"
+msgstr ""
+
+msgid "172.30.8.4"
+msgstr ""
+
+msgid "172.30.4.2"
+msgstr ""
+
+msgid "172.30.6.115"
+msgstr ""
+
+msgid "172.31.177.14"
+msgstr ""
+
+msgid "172.31.165.201"
+msgstr ""
+
+msgid "172.31.138.8"
+msgstr ""
+
+msgid "172.30.6.18"
+msgstr ""
+
+msgid "172.30.10.196"
+msgstr ""
+
+msgid "172.30.8.59"
+msgstr ""
+
+msgid "172.30.2.240"
+msgstr ""
+
+msgid "172.30.15.2"
+msgstr ""
+
+msgid "172.30.14.185"
+msgstr ""
+
+msgid "172.31.195.217"
+msgstr ""
+
+msgid "10.135.78.11"
+msgstr ""
+
+msgid "172.30.14.180"
+msgstr ""
+
+msgid "10.135.66.4"
+msgstr ""
+
+msgid "172.30.10.10"
+msgstr ""
+
+msgid "172.30.16.5"
+msgstr ""
+
+msgid "172.30.4.11"
+msgstr ""
+
+msgid "172.30.10.238"
+msgstr ""
+
+msgid "172.30.14.125"
+msgstr ""
+
+msgid "172.30.2.218"
+msgstr ""
+
+msgid "172.30.13.119"
+msgstr ""
+
+msgid "172.31.202.6"
+msgstr ""
+
+msgid "172.31.221.58"
+msgstr ""
+
+msgid "172.31.220.62"
+msgstr ""
+
+msgid "172.31.199.2"
+msgstr ""
+
+msgid "172.30.66.87"
+msgstr ""
+
+msgid "172.30.14.50"
+msgstr ""
+
+msgid "172.30.14.141"
+msgstr ""
+
+msgid "172.30.255.2"
+msgstr ""
+
+msgid "172.31.224.34"
+msgstr ""
+
+msgid "172.31.245.11"
+msgstr ""
+
+msgid "188.175.113.6"
+msgstr ""
+
+msgid "172.30.4.38"
+msgstr ""
+
+msgid "172.30.4.55"
+msgstr ""
+
+msgid "172.31.133.7"
+msgstr ""
+
+msgid "172.30.11.116"
+msgstr ""
+
+msgid "172.30.9.189"
+msgstr ""
+
+msgid "172.30.8.244"
+msgstr ""
+
+msgid "172.30.6.9"
+msgstr ""
+
+msgid "172.30.13.66"
+msgstr ""
+
+msgid "172.30.96.6"
+msgstr ""
+
+msgid "172.30.9.69"
+msgstr ""
+
+msgid "172.30.14.194"
+msgstr ""
+
+msgid "172.30.4.12"
+msgstr ""
+
+msgid "10.100.11.23"
+msgstr ""
+
+msgid "172.30.5.2"
+msgstr ""
+
+msgid "172.30.11.125"
+msgstr ""
+
+msgid "172.30.14.126"
+msgstr ""
+
+msgid "172.31.250.16"
+msgstr ""
+
+msgid "172.30.177.162"
+msgstr ""
+
+msgid "172.30.16.20"
+msgstr ""
+
+msgid "10.135.68.4"
+msgstr ""
+
+msgid "172.30.16.7"
+msgstr ""
+
+msgid "172.30.10.4"
+msgstr ""
+
+msgid "10.100.20.61"
+msgstr ""
+
+msgid "172.31.52.201"
+msgstr ""
+
+msgid "172.30.10.15"
+msgstr ""
+
+msgid "172.30.4.44"
+msgstr ""
+
+msgid "10.100.9.120"
+msgstr ""
+
+msgid "172.30.65.53"
+msgstr ""
+
+msgid "172.30.8.104"
+msgstr ""
+
+msgid "172.31.164.232"
+msgstr ""
+
+msgid "10.135.80.4"
+msgstr ""
+
+msgid "172.31.222.78"
+msgstr ""
+
+msgid "172.31.242.5"
+msgstr ""
+
+msgid "172.31.221.27"
+msgstr ""
+
+msgid "172.27.205.201"
+msgstr ""
+
+msgid "172.30.16.14"
+msgstr ""
+
+msgid "172.31.165.239"
+msgstr ""
+
+msgid "172.30.14.45"
+msgstr ""
+
+msgid "172.30.11.195"
+msgstr ""
+
+msgid "172.30.2.239"
+msgstr ""
+
+msgid "172.30.10.55"
+msgstr ""
+
+msgid "172.31.165.245"
+msgstr ""
+
+msgid "172.31.165.248"
+msgstr ""
+
+msgid "172.31.165.243"
+msgstr ""
+
+msgid "172.31.165.241"
+msgstr ""
+
+msgid "10.100.11.162"
+msgstr ""
+
+msgid "172.31.221.28"
+msgstr ""
+
+msgid "172.30.4.10"
+msgstr ""
+
+msgid "172.31.161.157"
+msgstr ""
+
+msgid "172.31.250.63"
+msgstr ""
+
+msgid "10.100.64.56"
+msgstr ""
+
+msgid "172.30.16.58"
+msgstr ""
+
+msgid "172.31.73.4"
+msgstr ""
+
+msgid "172.31.150.251"
+msgstr ""
+
+msgid "172.30.10.123"
+msgstr ""
+
+msgid "172.30.65.47"
+msgstr ""
+
+msgid "172.28.2.57"
+msgstr ""
+
+msgid "172.30.5.22"
+msgstr ""
+
+msgid "172.29.10.2"
+msgstr ""
+
+msgid "172.30.4.247"
+msgstr ""
+
+msgid "10.100.17.190"
+msgstr ""
+
+msgid "172.30.9.137"
+msgstr ""
+
+msgid "172.29.1.66"
+msgstr ""
+
+msgid "172.30.2.248"
+msgstr ""
+
+msgid "172.31.161.7"
+msgstr ""
+
+msgid "172.30.9.138"
+msgstr ""
+
+msgid "172.31.161.208"
+msgstr ""
+
+msgid "10.135.64.4"
+msgstr ""
+
+msgid "10.100.13.38"
+msgstr ""
+
+msgid "172.30.65.50"
+msgstr ""
+
+msgid "10.100.19.214"
+msgstr ""
+
+msgid "10.135.79.5"
+msgstr ""
+
+msgid "172.30.6.243"
+msgstr ""
+
+msgid "172.30.11.69"
+msgstr ""
+
+msgid "172.30.65.6"
+msgstr ""
+
+msgid "172.30.14.187"
+msgstr ""
+
+msgid "10.135.64.9"
+msgstr ""
+
+msgid "172.30.14.186"
+msgstr ""
+
+msgid "172.30.64.61"
+msgstr ""
+
+msgid "172.30.96.7"
+msgstr ""
+
+msgid "172.30.4.240"
+msgstr ""
+
+msgid "172.31.229.38"
+msgstr ""
+
+msgid "172.31.242.9"
+msgstr ""
+
+msgid "172.30.65.70"
+msgstr ""
+
+msgid "172.31.245.18"
+msgstr ""
+
+msgid "10.135.64.3"
+msgstr ""
+
+msgid "10.135.80.5"
+msgstr ""
+
+msgid "172.31.250.57"
+msgstr ""
+
+msgid "10.100.66.44"
+msgstr ""
+
+msgid "10.100.19.106"
+msgstr ""
+
+msgid "172.30.8.132"
+msgstr ""
+
+msgid "10.100.0.135"
+msgstr ""
+
+msgid "172.30.10.246"
+msgstr ""
+
+msgid "172.30.10.247"
+msgstr ""
+
+msgid "172.30.5.250"
+msgstr ""
+
+msgid "172.30.10.18"
+msgstr ""
+
+msgid "172.30.65.49"
+msgstr ""
+
+msgid "172.30.11.118"
+msgstr ""
+
+msgid "172.30.65.62"
+msgstr ""
+
+msgid "172.30.14.13"
+msgstr ""
+
+msgid "172.30.8.68"
+msgstr ""
+
+msgid "172.30.5.24"
+msgstr ""
+
+msgid "172.30.14.51"
+msgstr ""
+
+msgid "10.100.12.206"
+msgstr ""
+
+msgid "172.30.9.61"
+msgstr ""
+
+msgid "172.30.65.114"
+msgstr ""
+
+msgid "172.30.4.31"
+msgstr ""
+
+msgid "172.30.10.232"
+msgstr ""
+
+msgid "172.30.1.15"
+msgstr ""
+
+msgid "172.30.3.4"
+msgstr ""
+
+msgid "172.30.12.68"
+msgstr ""
+
+msgid "10.135.71.3"
+msgstr ""
+
+msgid "172.30.8.131"
+msgstr ""
+
+msgid "10.100.64.177"
+msgstr ""
+
+msgid "172.31.16.8"
+msgstr ""
+
+msgid "172.30.14.15"
+msgstr ""
+
+msgid "172.30.65.189"
+msgstr ""
+
+msgid "172.30.2.235"
+msgstr ""
+
+msgid "10.135.76.5"
+msgstr ""
+
+msgid "172.30.14.137"
+msgstr ""
+
+msgid "172.30.14.61"
+msgstr ""
+
+msgid "10.100.0.39"
+msgstr ""
+
+msgid "172.30.4.47"
+msgstr ""
+
+msgid "10.135.76.6"
+msgstr ""
+
+msgid "172.30.16.17"
+msgstr ""
+
+msgid "10.100.8.49"
+msgstr ""
+
+msgid "172.30.12.186"
+msgstr ""
+
+msgid "172.30.2.222"
+msgstr ""
+
+msgid "10.135.77.4"
+msgstr ""
+
+msgid "10.100.96.14"
+msgstr ""
+
+msgid "172.30.8.49"
+msgstr ""
+
+msgid "10.100.11.211"
+msgstr ""
+
+msgid "172.30.2.242"
+msgstr ""
+
+msgid "172.30.14.52"
+msgstr ""
+
+msgid "172.30.64.189"
+msgstr ""
+
+msgid "172.30.2.26"
+msgstr ""
+
+msgid "172.30.13.9"
+msgstr ""
+
+msgid "172.30.4.42"
+msgstr ""
+
+msgid "172.30.2.9"
+msgstr ""
+
+msgid "172.30.65.134"
+msgstr ""
+
+msgid "10.100.0.233"
+msgstr ""
+
+msgid "172.30.10.58"
+msgstr ""
+
+msgid "172.30.65.35"
+msgstr ""
+
+msgid "172.30.4.37"
+msgstr ""
+
+msgid "10.100.18.160"
+msgstr ""
+
+msgid "172.30.9.134"
+msgstr ""
+
+msgid "172.30.2.10"
+msgstr ""
+
+msgid "172.30.65.36"
+msgstr ""
+
+msgid "172.30.64.188"
+msgstr ""
+
+msgid "10.100.10.115"
+msgstr ""
+
+msgid "172.30.66.54"
+msgstr ""
+
+msgid "172.31.34.102"
+msgstr ""
+
+msgid "192.168.134.200"
+msgstr ""
+
+msgid "172.30.2.247"
+msgstr ""
+
+msgid "172.30.14.47"
+msgstr ""
+
+msgid "172.30.4.229"
+msgstr ""
+
+msgid "172.30.66.73"
+msgstr ""
+
+msgid "172.31.220.158"
+msgstr ""
+
+msgid "172.30.11.75"
+msgstr ""
+
+msgid "172.30.2.17"
+msgstr ""
+
+msgid "10.100.18.254"
+msgstr ""
+
+msgid "172.30.177.37"
+msgstr ""
+
+msgid "172.30.8.118"
+msgstr ""
+
+msgid "172.30.64.135"
+msgstr ""
+
+msgid "172.30.65.112"
+msgstr ""
+
+msgid "172.30.12.130"
+msgstr ""
+
+msgid "172.31.243.5"
+msgstr ""
+
+msgid "172.30.65.72"
+msgstr ""
+
+msgid "172.30.2.228"
+msgstr ""
+
+msgid "10.135.76.4"
+msgstr ""
+
+msgid "172.30.8.199"
+msgstr ""
+
+msgid "172.30.2.3"
+msgstr ""
+
+msgid "172.30.11.2"
+msgstr ""
+
+msgid "172.30.9.9"
+msgstr ""
+
+msgid "172.30.12.14"
+msgstr ""
+
+msgid "172.30.4.56"
+msgstr ""
+
+msgid "172.30.8.108"
+msgstr ""
+
+msgid "172.30.4.63"
+msgstr ""
+
+msgid "172.30.12.185"
+msgstr ""
+
+msgid "172.30.14.144"
+msgstr ""
+
+msgid "172.30.5.10"
+msgstr ""
+
+msgid "172.31.203.18"
+msgstr ""
+
+msgid "172.30.8.110"
+msgstr ""
+
+msgid "172.30.8.18"
+msgstr ""
+
+msgid "172.30.10.52"
+msgstr ""
+
+msgid "172.30.4.254"
+msgstr ""
+
+msgid "172.30.11.119"
+msgstr ""
+
+msgid "172.30.176.77"
+msgstr ""
+
+msgid "172.30.6.244"
+msgstr ""
+
+msgid "172.30.65.59"
+msgstr ""
+
+msgid "172.30.9.62"
+msgstr ""
+
+msgid "172.31.250.51"
+msgstr ""
+
+msgid "10.135.77.3"
+msgstr ""
+
+msgid "172.30.8.60"
+msgstr ""
+
+msgid "172.30.12.190"
+msgstr ""
+
+msgid "172.30.65.135"
+msgstr ""
+
+msgid "172.30.8.107"
+msgstr ""
+
+msgid "172.30.4.15"
+msgstr ""
+
+msgid "172.30.4.232"
+msgstr ""
+
+msgid "172.30.8.117"
+msgstr ""
+
+msgid "172.30.4.223"
+msgstr ""
+
+msgid "10.135.75.5"
+msgstr ""
+
+msgid "172.30.176.67"
+msgstr ""
+
+msgid "172.30.2.2"
+msgstr ""
+
+msgid "10.100.15.88"
+msgstr ""
+
+msgid "172.30.65.40"
+msgstr ""
+
+msgid "172.30.8.232"
+msgstr ""
+
+msgid "172.30.14.5"
+msgstr ""
+
+msgid "172.30.4.60"
+msgstr ""
+
+msgid "172.30.10.73"
+msgstr ""
+
+msgid "172.30.96.69"
+msgstr ""
+
+msgid "172.30.66.79"
+msgstr ""
+
+msgid "172.30.8.198"
+msgstr ""
+
+msgid "172.30.65.9"
+msgstr ""
+
+msgid "10.135.75.4"
+msgstr ""
+
+msgid "172.30.64.55"
+msgstr ""
+
+msgid "172.30.14.196"
+msgstr ""
+
+msgid "172.30.6.245"
+msgstr ""
+
+msgid "172.30.10.248"
+msgstr ""
+
+msgid "172.30.3.196"
+msgstr ""
+
+msgid "10.135.79.7"
+msgstr ""
+
+msgid "172.30.14.39"
+msgstr ""
+
+msgid "172.30.2.43"
+msgstr ""
+
+msgid "10.135.64.10"
+msgstr ""
+
+msgid "172.30.6.251"
+msgstr ""
+
+msgid "172.30.5.11"
+msgstr ""
+
+msgid "172.30.6.118"
+msgstr ""
+
+msgid "10.135.78.9"
+msgstr ""
+
+msgid "172.30.16.16"
+msgstr ""
+
+msgid "10.100.0.84"
+msgstr ""
+
+msgid "172.30.10.205"
+msgstr ""
+
+msgid "10.135.78.3"
+msgstr ""
+
+msgid "172.30.176.76"
+msgstr ""
+
+msgid "172.30.14.159"
+msgstr ""
+
+msgid "172.30.9.67"
+msgstr ""
+
+msgid "172.30.14.145"
+msgstr ""
+
+msgid "172.30.14.30"
+msgstr ""
+
+msgid "172.30.10.234"
+msgstr ""
+
+msgid "172.30.3.6"
+msgstr ""
+
+msgid "172.30.8.201"
+msgstr ""
+
+msgid "10.135.79.6"
+msgstr ""
+
+msgid "172.30.64.68"
+msgstr ""
+
+msgid "172.30.65.75"
+msgstr ""
+
+msgid "172.30.7.246"
+msgstr ""
+
+msgid "172.30.64.4"
+msgstr ""
+
+msgid "172.30.13.132"
+msgstr ""
+
+msgid "172.30.8.124"
+msgstr ""
+
+msgid "172.30.8.101"
+msgstr ""
+
+msgid "172.30.66.76"
+msgstr ""
+
+msgid "172.30.10.237"
+msgstr ""
+
+msgid "172.30.14.152"
+msgstr ""
+
+msgid "172.30.8.62"
+msgstr ""
+
+msgid "172.30.10.48"
+msgstr ""
+
+msgid "172.30.14.253"
+msgstr ""
+
+msgid "172.30.14.147"
+msgstr ""
+
+msgid "172.30.5.3"
+msgstr ""
+
+msgid "172.30.65.48"
+msgstr ""
+
+msgid "172.30.66.6"
+msgstr ""
+
+msgid "10.135.76.8"
+msgstr ""
+
+msgid "172.30.64.62"
+msgstr ""
+
+msgid "172.30.66.72"
+msgstr ""
+
+msgid "172.30.4.244"
+msgstr ""
+
+msgid "172.30.66.84"
+msgstr ""
+
+msgid "172.30.12.3"
+msgstr ""
+
+msgid "172.31.250.32"
+msgstr ""
+
+msgid "10.135.72.4"
+msgstr ""
+
+msgid "172.31.246.6"
+msgstr ""
+
+msgid "10.135.64.5"
+msgstr ""
+
+msgid "172.30.8.139"
+msgstr ""
+
+msgid "172.31.251.19"
+msgstr ""
+
+msgid "172.30.10.222"
+msgstr ""
+
+msgid "172.30.6.249"
+msgstr ""
+
+msgid "172.30.8.138"
+msgstr ""
+
+msgid "172.31.34.103"
+msgstr ""
+
+msgid "172.30.2.252"
+msgstr ""
+
+msgid "172.30.14.181"
+msgstr ""
+
+msgid "10.135.76.7"
+msgstr ""
+
+msgid "172.30.1.240"
+msgstr ""
+
+msgid "172.30.11.73"
+msgstr ""
+
+msgid "172.30.9.75"
+msgstr ""
+
+msgid "172.30.16.12"
+msgstr ""
+
+msgid "172.30.12.184"
+msgstr ""
+
+msgid "172.30.96.67"
+msgstr ""
+
+msgid "172.30.10.6"
+msgstr ""
+
+msgid "172.30.3.219"
+msgstr ""
+
+msgid "172.30.14.195"
+msgstr ""
+
+msgid "172.30.2.5"
+msgstr ""
+
+msgid "172.30.16.32"
+msgstr ""
+
+msgid "172.30.10.231"
+msgstr ""
+
+msgid "172.30.64.131"
+msgstr ""
+
+msgid "172.30.12.61"
+msgstr ""
+
+msgid "172.30.6.246"
+msgstr ""
+
+msgid "172.30.5.247"
+msgstr ""
+
+msgid "172.30.10.195"
+msgstr ""
+
+msgid "172.31.224.124"
+msgstr ""
+
+msgid "172.30.8.207"
+msgstr ""
+
+msgid "172.30.14.48"
+msgstr ""
+
+msgid "172.31.15.202"
+msgstr ""
+
+msgid "172.30.10.47"
+msgstr ""
+
+msgid "172.30.12.131"
+msgstr ""
+
+msgid "172.30.66.59"
+msgstr ""
+
+msgid "172.30.2.254"
+msgstr ""
+
+msgid "172.31.12.201"
+msgstr ""
+
+msgid "10.100.15.173"
+msgstr ""
+
+msgid "172.30.16.60"
+msgstr ""
+
+msgid "172.30.8.140"
+msgstr ""
+
+msgid "172.30.16.31"
+msgstr ""
+
+msgid "172.30.10.131"
+msgstr ""
+
+msgid "172.30.10.132"
+msgstr ""
+
+msgid "172.30.11.115"
+msgstr ""
+
+msgid "172.31.225.21"
+msgstr ""
+
+msgid "172.30.14.177"
+msgstr ""
+
+msgid "172.30.10.133"
+msgstr ""
+
+msgid "172.31.222.72"
+msgstr ""
+
+msgid "172.31.245.23"
+msgstr ""
+
+msgid "172.30.8.250"
+msgstr ""
+
+msgid "172.31.224.20"
+msgstr ""
+
+msgid "172.30.7.240"
+msgstr ""
+
+msgid "172.30.14.6"
+msgstr ""
+
+msgid "172.30.16.34"
+msgstr ""
+
+msgid "172.30.14.38"
+msgstr ""
+
+msgid "172.30.10.46"
+msgstr ""
+
+msgid "10.135.81.5"
+msgstr ""
+
+msgid "172.31.251.36"
+msgstr ""
+
+msgid "172.30.65.41"
+msgstr ""
+
+msgid "172.30.14.53"
+msgstr ""
+
+msgid "172.30.12.183"
+msgstr ""
+
+msgid "172.30.11.61"
+msgstr ""
+
+msgid "172.30.8.17"
+msgstr ""
+
+msgid "172.31.224.123"
+msgstr ""
+
+msgid "10.135.80.3"
+msgstr ""
+
+msgid "10.135.71.4"
+msgstr ""
+
+msgid "172.30.10.74"
+msgstr ""
+
+msgid "172.30.10.69"
+msgstr ""
+
+msgid "172.30.14.44"
+msgstr ""
+
+msgid "172.30.4.69"
+msgstr ""
+
+msgid "172.30.4.71"
+msgstr ""
+
+msgid "172.30.14.158"
+msgstr ""
+
+msgid "172.30.10.249"
+msgstr ""
+
+msgid "172.30.14.184"
+msgstr ""
+
+msgid "172.30.9.3"
+msgstr ""
+
+msgid "172.31.225.150"
+msgstr ""
+
+msgid "172.30.65.39"
+msgstr ""
+
+msgid "172.30.14.43"
+msgstr ""
+
+msgid "172.30.6.248"
+msgstr ""
+
+msgid "172.30.2.238"
+msgstr ""
+
+msgid "172.30.4.246"
+msgstr ""
+
+msgid "172.30.11.124"
+msgstr ""
+
+msgid "172.30.9.190"
+msgstr ""
+
+msgid "172.30.3.5"
+msgstr ""
+
+msgid "172.30.9.145"
+msgstr ""
+
+msgid "172.30.14.178"
+msgstr ""
+
+msgid "172.30.4.227"
+msgstr ""
+
+msgid "172.30.5.198"
+msgstr ""
+
+msgid "172.30.9.131"
+msgstr ""
+
+msgid "172.30.10.233"
+msgstr ""
+
+msgid "172.30.14.143"
+msgstr ""
+
+msgid "172.30.9.60"
+msgstr ""
+
+msgid "172.30.12.188"
+msgstr ""
+
+msgid "172.30.4.54"
+msgstr ""
+
+msgid "172.30.12.180"
+msgstr ""
+
+msgid "172.30.66.61"
+msgstr ""
+
+msgid "172.30.10.59"
+msgstr ""
+
+msgid "172.30.66.60"
+msgstr ""
+
+msgid "172.30.4.53"
+msgstr ""
+
+msgid "172.30.9.115"
+msgstr ""
+
+msgid "172.30.10.57"
+msgstr ""
+
+msgid "172.30.13.120"
+msgstr ""
+
+msgid "172.30.7.254"
+msgstr ""
+
+msgid "172.30.16.10"
+msgstr ""
+
+msgid "172.30.96.5"
+msgstr ""
+
+msgid "172.30.8.54"
+msgstr ""
+
+msgid "172.30.8.144"
+msgstr ""
+
+msgid "172.30.9.136"
+msgstr ""
+
+msgid "172.31.251.37"
+msgstr ""
+
+msgid "172.31.178.232"
+msgstr ""
+
+msgid "172.30.6.116"
+msgstr ""
+
+msgid "172.30.2.44"
+msgstr ""
+
+msgid "172.30.64.56"
+msgstr ""
+
+msgid "172.30.14.12"
+msgstr ""
+
+msgid "172.30.5.6"
+msgstr ""
+
+msgid "10.135.78.10"
+msgstr ""
+
+msgid "172.30.66.71"
+msgstr ""
+
+msgid "172.30.5.13"
+msgstr ""
+
+msgid "172.30.66.48"
+msgstr ""
+
+msgid "172.30.10.7"
+msgstr ""
+
+msgid "172.30.6.254"
+msgstr ""
+
+msgid "172.31.245.16"
+msgstr ""
+
+msgid "172.30.8.3"
+msgstr ""
+
+msgid "172.31.221.18"
+msgstr ""
+
+msgid "172.30.8.125"
+msgstr ""
+
+msgid "172.30.7.2"
+msgstr ""
+
+msgid "172.30.64.66"
+msgstr ""
+
+msgid "172.30.16.27"
+msgstr ""
+
+msgid "172.30.10.211"
+msgstr ""
+
+msgid "172.30.255.3"
+msgstr ""
+
+msgid "172.30.6.250"
+msgstr ""
+
+msgid "172.30.4.34"
+msgstr ""
+
+msgid "10.100.10.238"
+msgstr ""
+
+msgid "172.30.7.253"
+msgstr ""
+
+msgid "172.31.220.34"
+msgstr ""
+
+msgid "172.30.10.61"
+msgstr ""
+
+msgid "172.30.65.123"
+msgstr ""
+
+msgid "172.30.14.190"
+msgstr ""
+
+msgid "172.31.220.166"
+msgstr ""
+
+msgid "172.30.64.187"
+msgstr ""
+
+msgid "172.30.8.212"
+msgstr ""
+
+msgid "172.30.178.84"
+msgstr ""
+
+msgid "172.30.65.122"
+msgstr ""
+
+msgid "172.30.1.22"
+msgstr ""
+
+msgid "10.100.65.130"
+msgstr ""
+
+msgid "172.30.10.213"
+msgstr ""
+
+msgid "172.30.65.56"
+msgstr ""
+
+msgid "172.30.10.60"
+msgstr ""
+
+msgid "172.30.8.58"
+msgstr ""
+
+msgid "172.30.14.8"
+msgstr ""
+
+msgid "172.30.4.225"
+msgstr ""
+
+msgid "172.30.12.2"
+msgstr ""
+
+msgid "172.30.65.115"
+msgstr ""
+
+msgid "172.30.13.122"
+msgstr ""
+
+msgid "172.30.14.46"
+msgstr ""
+
+msgid "172.30.8.120"
+msgstr ""
+
+msgid "10.135.66.3"
+msgstr ""
+
+msgid "172.30.8.115"
+msgstr ""
+
+msgid "172.30.8.195"
+msgstr ""
+
+msgid "172.30.65.51"
+msgstr ""
+
+msgid "172.30.2.16"
+msgstr ""
+
+msgid "172.30.10.122"
+msgstr ""
+
+msgid "172.30.66.81"
+msgstr ""
+
+msgid "10.135.64.8"
+msgstr ""
+
+msgid "172.30.14.161"
+msgstr ""
+
+msgid "172.30.8.51"
+msgstr ""
+
+msgid "172.30.1.18"
+msgstr ""
+
+msgid "172.30.14.136"
+msgstr ""
+
+msgid "172.30.64.69"
+msgstr ""
+
+msgid "172.30.8.2"
+msgstr ""
+
+msgid "172.30.2.219"
+msgstr ""
+
+msgid "172.30.5.5"
+msgstr ""
+
+msgid "172.30.64.6"
+msgstr ""
+
+msgid "172.30.64.130"
+msgstr ""
+
+msgid "172.30.176.75"
+msgstr ""
+
+msgid "172.30.14.150"
+msgstr ""
+
+msgid "172.30.10.243"
+msgstr ""
+
+msgid "10.100.13.181"
+msgstr ""
+
+msgid "172.30.10.251"
+msgstr ""
+
+msgid "172.30.14.4"
+msgstr ""
+
+msgid "172.30.5.16"
+msgstr ""
+
+msgid "172.30.8.61"
+msgstr ""
+
+msgid "172.31.250.101"
+msgstr ""
+
+msgid "172.31.220.222"
+msgstr ""
+
+msgid "172.30.16.11"
+msgstr ""
+
+msgid "172.30.14.56"
+msgstr ""
+
+msgid "172.30.5.4"
+msgstr ""
+
+msgid "172.30.11.121"
+msgstr ""
+
+msgid "10.100.0.72"
+msgstr ""
+
+msgid "172.30.13.126"
+msgstr ""
+
+msgid "172.30.9.147"
+msgstr ""
+
+msgid "172.30.65.43"
+msgstr ""
+
+msgid "10.135.79.4"
+msgstr ""
+
+msgid "172.30.4.239"
+msgstr ""
+
+msgid "172.30.15.62"
+msgstr ""
+
+msgid "172.30.10.125"
+msgstr ""
+
+msgid "172.30.8.206"
+msgstr ""
+
+msgid "172.30.13.59"
+msgstr ""
+
+msgid "172.30.177.36"
+msgstr ""
+
+msgid "172.30.10.8"
+msgstr ""
+
+msgid "172.30.14.142"
+msgstr ""
+
+msgid "172.30.14.60"
+msgstr ""
+
+msgid "172.30.3.198"
+msgstr ""
+
+msgid "172.30.15.3"
+msgstr ""
+
+msgid "172.30.66.126"
+msgstr ""
+
+msgid "172.30.5.19"
+msgstr ""
+
+msgid "172.30.66.55"
+msgstr ""
+
+msgid "172.30.10.11"
+msgstr ""
+
+msgid "172.30.10.56"
+msgstr ""
+
+msgid "172.30.14.11"
+msgstr ""
+
+msgid "172.30.8.119"
+msgstr ""
+
+msgid "172.30.5.254"
+msgstr ""
+
+msgid "172.30.64.70"
+msgstr ""
+
+msgid "172.30.9.126"
+msgstr ""
+
+msgid "172.30.2.27"
+msgstr ""
+
+msgid "172.30.65.121"
+msgstr ""
+
+msgid "172.30.5.12"
+msgstr ""
+
+msgid "172.30.176.70"
+msgstr ""
+
+msgid "172.31.224.90"
+msgstr ""
+
+msgid "172.30.2.15"
+msgstr ""
+
+msgid "172.30.65.120"
+msgstr ""
+
+msgid "172.30.14.29"
+msgstr ""
+
+msgid "172.30.8.116"
+msgstr ""
+
+msgid "172.30.4.250"
+msgstr ""
+
+msgid "172.30.14.183"
+msgstr ""
+
+msgid "172.30.14.160"
+msgstr ""
+
+msgid "172.31.251.3"
+msgstr ""
+
+msgid "172.30.10.3"
+msgstr ""
+
+msgid "172.31.251.12"
+msgstr ""
+
+msgid "172.30.4.57"
+msgstr ""
+
+msgid "172.30.10.197"
+msgstr ""
+
+msgid "172.30.64.75"
+msgstr ""
+
+msgid "172.30.16.18"
+msgstr ""
+
+msgid "172.30.6.252"
+msgstr ""
+
+msgid "10.135.78.14"
+msgstr ""
+
+msgid "10.100.0.35"
+msgstr ""
+
+msgid "172.30.1.23"
+msgstr ""
+
+msgid "172.30.12.67"
+msgstr ""
+
+msgid "172.30.11.122"
+msgstr ""
+
+msgid "172.31.221.34"
+msgstr ""
+
+msgid "172.30.64.2"
+msgstr ""
+
+msgid "172.30.14.139"
+msgstr ""
+
+msgid "10.135.75.3"
+msgstr ""
+
+msgid "172.30.4.33"
+msgstr ""
+
+msgid "172.30.9.77"
+msgstr ""
+
+msgid "172.30.14.3"
+msgstr ""
+
+msgid "172.31.250.102"
+msgstr ""
+
+msgid "172.30.11.74"
+msgstr ""
+
+msgid "172.30.8.47"
+msgstr ""
+
+msgid "172.30.9.135"
+msgstr ""
+
+msgid "10.135.78.5"
+msgstr ""
+
+msgid "172.30.64.139"
+msgstr ""
+
+msgid "172.30.11.194"
+msgstr ""
+
+msgid "172.30.65.190"
+msgstr ""
+
+msgid "172.30.1.21"
+msgstr ""
+
+msgid "172.31.224.227"
+msgstr ""
+
+msgid "172.30.2.4"
+msgstr ""
+
+msgid "172.30.10.19"
+msgstr ""
+
+msgid "172.30.4.234"
+msgstr ""
+
+msgid "10.135.68.3"
+msgstr ""
+
+msgid "172.30.7.20"
+msgstr ""
+
+msgid "172.30.7.12"
+msgstr ""
+
+msgid "172.30.2.246"
+msgstr ""
+
+msgid "172.30.14.148"
+msgstr ""
+
+msgid "172.30.176.78"
+msgstr ""
+
+msgid "172.30.65.2"
+msgstr ""
+
+msgid "172.30.9.133"
+msgstr ""
+
+msgid "10.135.74.5"
+msgstr ""
+
+msgid "172.30.66.74"
+msgstr ""
+
+msgid "172.30.12.62"
+msgstr ""
+
+msgid "172.30.8.203"
+msgstr ""
+
+msgid "172.30.96.66"
+msgstr ""
+
+msgid "10.135.78.8"
+msgstr ""
+
+msgid "10.135.74.4"
+msgstr ""
+
+msgid "172.30.65.119"
+msgstr ""
+
+msgid "10.100.15.68"
+msgstr ""
+
+msgid "172.30.2.28"
+msgstr ""
+
+msgid "172.31.234.2"
+msgstr ""
+
+msgid "172.30.3.233"
+msgstr ""
+
+msgid "172.30.8.71"
+msgstr ""
+
+msgid "172.30.12.133"
+msgstr ""
+
+msgid "172.30.9.11"
+msgstr ""
+
+msgid "172.30.10.198"
+msgstr ""
+
+msgid "172.30.12.6"
+msgstr ""
+
+msgid "172.30.14.189"
+msgstr ""
+
+msgid "172.30.14.49"
+msgstr ""
+
+msgid "172.30.2.233"
+msgstr ""
+
+msgid "172.30.65.38"
+msgstr ""
+
+msgid "172.30.2.236"
+msgstr ""
+
+msgid "172.30.64.3"
+msgstr ""
+
+msgid "172.30.13.124"
+msgstr ""
+
+msgid "172.30.4.5"
+msgstr ""
+
+msgid "172.30.8.126"
+msgstr ""
+
+msgid "172.31.251.22"
+msgstr ""
+
+msgid "172.30.5.18"
+msgstr ""
+
+msgid "172.30.10.223"
+msgstr ""
+
+msgid "172.30.14.7"
+msgstr ""
+
+msgid "172.30.4.13"
+msgstr ""
+
+msgid "172.30.8.46"
+msgstr ""
+
+msgid "172.30.9.139"
+msgstr ""
+
+msgid "172.30.65.71"
+msgstr ""
+
+msgid "172.31.220.98"
+msgstr ""
+
+msgid "10.135.78.12"
+msgstr ""
+
+msgid "172.30.2.6"
+msgstr ""
+
+msgid "172.30.11.70"
+msgstr ""
+
+msgid "172.30.7.13"
+msgstr ""
+
+msgid "172.30.66.57"
+msgstr ""
+
+msgid "172.31.15.14"
+msgstr ""
+
+msgid "172.30.11.72"
+msgstr ""
+
+msgid "172.30.8.208"
+msgstr ""
+
+msgid "172.30.8.69"
+msgstr ""
+
+msgid "172.30.5.248"
+msgstr ""
+
+msgid "172.30.65.44"
+msgstr ""
+
+msgid "172.30.10.54"
+msgstr ""
+
+msgid "172.30.4.49"
+msgstr ""
+
+msgid "172.30.8.213"
+msgstr ""
+
+msgid "172.30.65.54"
+msgstr ""
+
+msgid "172.30.14.151"
+msgstr ""
+
+msgid "172.30.10.218"
+msgstr ""
+
+msgid "172.30.14.146"
+msgstr ""
+
+msgid "172.30.8.136"
+msgstr ""
+
+msgid "172.30.14.41"
+msgstr ""
+
+msgid "10.100.65.146"
+msgstr ""
+
+msgid "172.30.65.118"
+msgstr ""
+
+msgid "172.30.66.10"
+msgstr ""
+
+msgid "172.30.4.231"
+msgstr ""
+
+msgid "172.30.8.133"
+msgstr ""
+
+msgid "172.30.66.77"
+msgstr ""
+
+msgid "172.30.4.46"
+msgstr ""
+
+msgid "172.30.13.190"
+msgstr ""
+
+msgid "172.30.10.189"
+msgstr ""
+
+msgid "172.30.11.253"
+msgstr ""
+
+msgid "10.135.81.4"
+msgstr ""
+
+msgid "172.30.66.9"
+msgstr ""
+
+msgid "172.30.66.78"
+msgstr ""
+
+msgid "172.30.65.111"
+msgstr ""
+
+msgid "172.30.8.103"
+msgstr ""
+
+msgid "172.31.195.227"
+msgstr ""
+
+msgid "172.30.8.55"
+msgstr ""
+
+msgid "172.30.11.196"
+msgstr ""
+
+msgid "172.30.2.12"
+msgstr ""
+
+msgid "172.30.4.3"
+msgstr ""
+
+msgid "172.31.15.201"
+msgstr ""
+
+msgid "172.30.10.239"
+msgstr ""
+
+msgid "172.31.220.102"
+msgstr ""
+
+msgid "172.30.3.230"
+msgstr ""
+
+msgid "172.30.16.4"
+msgstr ""
+
+msgid "172.30.65.57"
+msgstr ""
+
+msgid "172.30.96.70"
+msgstr ""
+
+msgid "172.30.10.5"
+msgstr ""
+
+msgid "172.30.14.132"
+msgstr ""
+
+msgid "172.30.65.52"
+msgstr ""
+
+msgid "172.30.8.114"
+msgstr ""
+
+msgid "172.30.10.67"
+msgstr ""
+
+msgid "172.30.11.71"
+msgstr ""
+
+msgid "172.30.13.125"
+msgstr ""
+
+msgid "172.30.9.72"
+msgstr ""
+
+msgid "172.31.220.238"
+msgstr ""
+
+msgid "172.30.14.133"
+msgstr ""
+
+msgid "172.30.96.9"
+msgstr ""
+
+msgid "10.135.79.3"
+msgstr ""
+
+msgid "172.30.12.7"
+msgstr ""
+
+msgid "172.30.3.13"
+msgstr ""
+
+msgid "172.30.12.66"
+msgstr ""
+
+msgid "172.30.7.10"
+msgstr ""
+
+msgid "172.30.8.66"
+msgstr ""
+
+msgid "172.30.8.123"
+msgstr ""
+
+msgid "172.30.64.190"
+msgstr ""
+
+msgid "172.30.9.116"
+msgstr ""
+
+msgid "172.30.9.142"
+msgstr ""
+
+msgid "172.30.9.146"
+msgstr ""
+
+msgid "172.31.225.22"
+msgstr ""
+
+msgid "172.30.10.62"
+msgstr ""
+
+msgid "172.30.8.50"
+msgstr ""
+
+msgid "172.30.7.239"
+msgstr ""
+
+msgid "172.30.64.137"
+msgstr ""
+
+msgid "172.30.178.83"
+msgstr ""
+
+msgid "172.30.2.249"
+msgstr ""
+
+msgid "172.30.13.123"
+msgstr ""
+
+msgid "172.30.9.125"
+msgstr ""
+
+msgid "172.30.8.106"
+msgstr ""
+
+msgid "172.30.8.48"
+msgstr ""
+
+msgid "172.30.9.152"
+msgstr ""
+
+msgid "172.30.14.36"
+msgstr ""
+
+msgid "172.30.10.190"
+msgstr ""
+
+msgid "172.31.250.22"
+msgstr ""
+
+msgid "172.30.4.16"
+msgstr ""
+
+msgid "172.30.8.141"
+msgstr ""
+
+msgid "172.30.14.154"
+msgstr ""
+
+msgid "172.30.9.121"
+msgstr ""
+
+msgid "172.30.8.143"
+msgstr ""
+
+msgid "172.30.66.7"
+msgstr ""
+
+msgid "172.30.8.251"
+msgstr ""
+
+msgid "172.30.6.17"
+msgstr ""
+
+msgid "172.30.96.68"
+msgstr ""
+
+msgid "172.30.9.4"
+msgstr ""
+
+msgid "10.135.72.3"
+msgstr ""
+
+msgid "172.30.8.6"
+msgstr ""
+
+msgid "172.30.4.43"
+msgstr ""
+
+msgid "172.30.9.148"
+msgstr ""
+
+msgid "172.30.3.12"
+msgstr ""
+
+msgid "172.30.9.8"
+msgstr ""
+
+msgid "172.30.11.254"
+msgstr ""
+
+msgid "172.30.4.249"
+msgstr ""
+
+msgid "172.30.10.17"
+msgstr ""
+
+msgid "172.30.8.142"
+msgstr ""
+
+msgid "172.30.10.219"
+msgstr ""
+
+msgid "172.30.9.10"
+msgstr ""
+
+msgid "172.30.2.11"
+msgstr ""
+
+msgid "10.135.78.13"
+msgstr ""
+
+msgid "172.30.10.240"
+msgstr ""
+
+msgid "172.30.9.144"
+msgstr ""
+
+msgid "172.30.4.252"
+msgstr ""
+
+msgid "172.30.14.40"
+msgstr ""
+
+msgid "172.30.4.253"
+msgstr ""
+
+msgid "172.30.65.61"
+msgstr ""
+
+msgid "172.30.4.243"
+msgstr ""
+
+msgid "172.30.65.132"
+msgstr ""
+
+msgid "172.30.3.228"
+msgstr ""
+
+msgid "172.30.6.16"
+msgstr ""
+
+msgid "172.30.2.231"
+msgstr ""
+
+msgid "172.30.7.251"
+msgstr ""
+
+msgid "172.30.4.35"
+msgstr ""
+
+msgid "172.30.66.123"
+msgstr ""
+
+msgid "172.30.4.248"
+msgstr ""
+
+msgid "172.30.4.222"
+msgstr ""
+
+msgid "172.30.2.221"
+msgstr ""
+
+msgid "172.30.6.247"
+msgstr ""
+
+msgid "172.30.10.50"
+msgstr ""
+
+msgid "172.30.10.210"
+msgstr ""
+
+msgid "172.30.9.76"
+msgstr ""
+
+msgid "172.30.4.59"
+msgstr ""
+
+msgid "172.30.64.134"
+msgstr ""
+
+msgid "172.30.4.32"
+msgstr ""
+
+msgid "172.30.8.105"
+msgstr ""
+
+msgid "172.30.10.45"
+msgstr ""
+
+msgid "172.30.7.4"
+msgstr ""
+
+msgid "172.30.8.73"
+msgstr ""
+
+msgid "172.30.9.122"
+msgstr ""
+
+msgid "172.30.9.132"
+msgstr ""
+
+msgid "172.30.65.73"
+msgstr ""
+
+msgid "172.30.3.240"
+msgstr ""
+
+msgid "172.30.10.130"
+msgstr ""
+
+msgid "172.30.65.45"
+msgstr ""
+
+msgid "172.30.13.67"
+msgstr ""
+
+msgid "10.100.0.87"
+msgstr ""
+
+msgid "172.30.6.8"
+msgstr ""
+
+msgid "172.30.14.77"
+msgstr ""
+
+msgid "172.30.14.179"
+msgstr ""
+
+msgid "172.30.14.66"
+msgstr ""
+
+msgid "172.30.66.125"
+msgstr ""
+
+msgid "172.30.11.62"
+msgstr ""
+
+msgid "172.30.8.137"
+msgstr ""
+
+msgid "172.30.4.58"
+msgstr ""
+
+msgid "10.135.78.4"
+msgstr ""
+
+msgid "172.30.8.197"
+msgstr ""
+
+msgid "172.30.4.14"
+msgstr ""
+
+msgid "172.30.1.24"
+msgstr ""
+
+msgid "172.30.11.126"
+msgstr ""
+
+msgid "172.30.4.220"
+msgstr ""
+
+msgid "172.30.5.20"
+msgstr ""
+
+msgid "172.30.2.25"
+msgstr ""
+
+msgid "172.30.8.209"
+msgstr ""
+
+msgid "172.30.7.249"
+msgstr ""
+
+msgid "172.30.6.114"
+msgstr ""
+
+msgid "172.30.10.9"
+msgstr ""
+
+msgid "172.30.16.9"
+msgstr ""
+
+msgid "172.30.14.42"
+msgstr ""
+
+msgid "172.30.64.71"
+msgstr ""
+
+msgid "172.30.65.4"
+msgstr ""
+
+msgid "172.30.14.55"
+msgstr ""
+
+msgid "172.30.7.5"
+msgstr ""
+
+msgid "172.30.4.235"
+msgstr ""
+
+msgid "172.30.67.2"
+msgstr ""
+
+msgid "172.30.3.210"
+msgstr ""
+
+msgid "172.30.65.117"
+msgstr ""
+
+msgid "172.30.7.250"
+msgstr ""
+
+msgid "172.30.4.4"
+msgstr ""
+
+msgid "172.30.65.7"
+msgstr ""
+
+msgid "172.30.14.149"
+msgstr ""
+
+msgid "172.30.10.194"
+msgstr ""
+
+msgid "172.31.224.166"
+msgstr ""
+
+msgid "10.135.65.3"
+msgstr ""
+
+msgid "172.30.65.55"
+msgstr ""
+
+msgid "172.30.11.114"
+msgstr ""
+
+msgid "172.30.9.68"
+msgstr ""
+
+msgid "172.30.10.224"
+msgstr ""
+
+msgid "172.30.10.230"
+msgstr ""
+
+msgid "172.30.11.67"
+msgstr ""
+
+msgid "172.30.14.54"
+msgstr ""
+
+msgid "172.30.10.212"
+msgstr ""
+
+msgid "172.30.6.128"
+msgstr ""
+
+msgid "172.30.16.30"
+msgstr ""
+
+msgid "172.31.245.21"
+msgstr ""
+
+msgid "172.30.2.227"
+msgstr ""
+
+msgid "172.30.9.188"
+msgstr ""
+
+msgid "172.30.4.236"
+msgstr ""
+
+msgid "172.30.65.58"
+msgstr ""
+
+msgid "172.30.9.74"
+msgstr ""
+
+msgid "172.30.7.248"
+msgstr ""
+
+msgid "172.30.12.187"
+msgstr ""
+
+msgid "172.30.4.224"
+msgstr ""
+
+msgid "172.30.5.15"
+msgstr ""
+
+msgid "172.31.220.78"
+msgstr ""
+
+msgid "172.30.11.120"
+msgstr ""
+
+msgid "172.30.14.251"
+msgstr ""
+
+msgid "172.30.9.187"
+msgstr ""
+
+msgid "172.30.8.112"
+msgstr ""
+
+msgid "172.30.176.74"
+msgstr ""
+
+msgid "172.30.64.5"
+msgstr ""
+
+msgid "172.30.8.102"
+msgstr ""
+
+msgid "172.30.10.51"
+msgstr ""
+
+msgid "172.30.3.20"
+msgstr ""
+
+msgid "172.30.6.119"
+msgstr ""
+
+msgid "172.30.12.8"
+msgstr ""
+
+msgid "172.30.9.140"
+msgstr ""
+
+msgid "172.30.5.25"
+msgstr ""
+
+msgid "172.30.9.71"
+msgstr ""
+
+msgid "172.30.66.52"
+msgstr ""
+
+msgid "172.30.9.141"
+msgstr ""
+
+msgid "172.30.4.233"
+msgstr ""
+
+msgid "172.16.16.37"
+msgstr ""
+
+msgid "172.30.8.56"
+msgstr ""
+
+msgid "172.30.10.124"
+msgstr ""
+
+msgid "172.30.10.252"
+msgstr ""
+
+msgid "172.30.4.62"
+msgstr ""
+
+msgid "172.30.8.45"
+msgstr ""
+
+msgid "172.30.8.67"
+msgstr ""
+
+msgid "172.30.3.3"
+msgstr ""
+
+msgid "172.30.10.236"
+msgstr ""
+
+msgid "172.30.14.138"
+msgstr ""
+
+msgid "172.30.8.122"
+msgstr ""
+
+msgid "188.175.254.179"
+msgstr ""
+
+msgid "188.175.113.82"
 msgstr ""
 
 msgid "188.175.254.178"
@@ -897,256 +3948,301 @@ msgstr ""
 msgid "213.180.32.69"
 msgstr ""
 
-msgid "172.31.209.82"
+msgid "82.150.162.10"
 msgstr ""
 
-msgid "188.175.254.179"
-msgstr ""
-
-msgid "172.31.209.123"
-msgstr ""
-
-msgid "172.31.209.134"
-msgstr ""
-
-msgid "172.31.209.98"
-msgstr ""
-
-msgid "213.180.32.169"
-msgstr ""
-
-msgid "188.175.70.66"
-msgstr ""
-
-msgid "188.175.254.66"
-msgstr ""
-
-msgid "90.182.20.85"
-msgstr ""
-
-msgid "172.31.5.3"
+msgid "172.31.209.50"
 msgstr ""
 
 msgid "213.180.35.134"
 msgstr ""
 
-msgid "188.175.70.198"
+msgid "90.182.20.85"
 msgstr ""
 
-msgid "82.150.162.10"
+msgid "172.31.209.123"
 msgstr ""
 
-msgid "188.175.113.82"
+msgid "172.31.209.98"
 msgstr ""
 
-msgid "188.175.254.166"
+msgid "172.31.5.3"
 msgstr ""
 
-msgid "172.31.209.72"
-msgstr ""
-
-msgid "172.31.209.130"
-msgstr ""
-
-msgid "172.31.209.133"
-msgstr ""
-
-msgid "172.31.209.132"
+msgid "172.31.209.138"
 msgstr ""
 
 msgid "172.31.209.131"
 msgstr ""
 
+msgid "172.31.209.82"
+msgstr ""
+
+msgid "188.175.254.58"
+msgstr ""
+
+msgid "188.175.254.166"
+msgstr ""
+
 msgid "172.31.209.135"
 msgstr ""
 
-msgid "172.31.209.136"
+msgid "172.31.209.48"
+msgstr ""
+
+msgid "172.31.209.72"
 msgstr ""
 
 msgid "172.31.209.125"
 msgstr ""
 
+msgid "188.175.70.198"
+msgstr ""
+
+msgid "172.31.209.139"
+msgstr ""
+
+msgid "172.31.209.54"
+msgstr ""
+
+msgid "172.31.209.130"
+msgstr ""
+
+msgid "172.31.209.49"
+msgstr ""
+
 msgid "213.180.47.14"
+msgstr ""
+
+msgid "188.175.70.66"
+msgstr ""
+
+msgid "213.180.32.68"
+msgstr ""
+
+msgid "172.31.209.137"
 msgstr ""
 
 msgid "172.30.15.196"
 msgstr ""
 
-msgid "192.168.1.1"
+msgid "172.31.209.132"
+msgstr ""
+
+msgid "172.31.209.134"
+msgstr ""
+
+msgid "213.180.32.169"
 msgstr ""
 
 msgid "172.31.209.129"
 msgstr ""
 
-msgid "Mikrotik"
+msgid "172.31.209.124"
 msgstr ""
 
-msgid "  Mikrotik L3"
+msgid "172.31.209.133"
 msgstr ""
 
-msgid "Linux"
+msgid "188.175.254.66"
 msgstr ""
 
-msgid "SSH2 + SFTP"
+msgid "172.31.209.136"
 msgstr ""
 
-msgid "TELNET + FTP"
+msgid "94.74.194.34"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'sda' ?"
+msgid "188.175.70.234"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'SSH2 + FTP' ?"
+msgid "188.175.70.18"
 msgstr ""
 
-msgid "Enter page:"
+msgid "94.74.194.186"
 msgstr ""
 
-msgid "Mikrotik L3"
+msgid "94.74.194.42"
 msgstr ""
 
-msgid "RouterOS"
+msgid "188.175.70.42"
 msgstr ""
 
-msgid "Portax Mikrotik L2"
+msgid "94.74.194.170"
 msgstr ""
 
-msgid "Portax Mikrotik L3"
+msgid "10.128.1.117"
 msgstr ""
 
-msgid "asda"
+msgid "188.175.70.190"
 msgstr ""
 
-msgid "dsf"
+msgid "188.175.70.210"
 msgstr ""
 
-msgid "sdf"
+msgid "188.175.70.94"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.30.15.196' ?"
+msgid "94.74.194.178"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.123' ?"
+msgid "94.74.194.35"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.124' ?"
+msgid "94.74.194.25"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.125' ?"
+msgid "172.30.14.155"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.129' ?"
+msgid "172.31.160.3"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.130' ?"
+msgid "172.31.167.2"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.131' ?"
+msgid "172.31.1.7"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.132' ?"
+msgid "10.128.1.115"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.133' ?"
+msgid "172.31.1.4"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.134' ?"
+msgid "172.30.10.70"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.135' ?"
+msgid "172.31.1.2"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.136' ?"
+msgid "172.31.32.4"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.137' ?"
+msgid "172.31.1.10"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.138' ?"
+msgid "212.71.144.43"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.139' ?"
+msgid "172.30.65.66"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.48' ?"
+msgid "172.31.0.2"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.49' ?"
+msgid "172.30.5.30"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.50' ?"
+msgid "172.31.200.2"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.54' ?"
+msgid "172.31.178.2"
 msgstr ""
 
-msgid "Opravdu chcete smazat '172.31.209.72' ?"
+msgid "10.135.20.110"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Mikrotik L3' ?"
+msgid "172.30.64.140"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Linux' ?"
+msgid "172.30.0.236"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Mikrotik' ?"
+msgid "172.31.252.204"
 msgstr ""
 
-msgid "Cisco"
+msgid "192.168.159.201"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Cisco' ?"
+msgid "10.135.2.15"
 msgstr ""
 
-msgid "Cisco switch"
+msgid "172.31.1.6"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Cisco switch' ?"
+msgid "10.128.20.10"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'sme0.adm.i' ?"
+msgid "10.135.20.100"
 msgstr ""
 
-msgid "aaa"
+msgid "172.31.219.148"
 msgstr ""
 
 msgid "sme0.adm.i"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Cisco telnet TFTP backup' ?"
+msgid "172.31.1.8"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'asda' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgid "172.30.15.66"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'dsf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgid "172.31.16.7"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Portax Mikrotik L2' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgid "213.180.32.20"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Portax Mikrotik L3' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgid "172.31.34.2"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'sdf' ? Všechna zařízení tohoto zdroje budou převedena do manuálního režimu, ale nebudou odstraněna."
+msgid "10.128.13.2"
 msgstr ""
 
-msgid "  Mikrotik L2"
+msgid "172.31.208.124"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Mikrotik L2' ?"
+msgid "172.30.0.252"
 msgstr ""
 
-msgid "  Cisco L2"
+msgid "172.30.66.70"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'Cisco L2' ?"
+msgid "172.31.208.155"
 msgstr ""
 
-msgid "CMTS"
+msgid "192.168.1.1"
 msgstr ""
 
-msgid "Opravdu chcete smazat 'CMTS' ?"
+msgid "Mikrotik backup"
+msgstr ""
+
+msgid "Cisco telnet TFTP backup"
+msgstr ""
+
+msgid "Huawei backup SSH1"
+msgstr ""
+
+msgid "Huawei backup SSH2"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'SSH2 + SFTP' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat 'Cisco TFTP backup' ?"
+msgstr ""
+
+msgid "Cisco switch"
+msgstr ""
+
+msgid "RouterOS"
+msgstr ""
+
+msgid "Portax Mikrotik L3"
+msgstr ""
+
+msgid "Portax Mikrotik L2"
+msgstr ""
+
+msgid "Portax CMTS"
+msgstr ""
+
+msgid "Portax Cisco L2"
+msgstr ""
+
+msgid "Portax Huawei"
 msgstr ""
 
 msgid "Opravdu chcete smazat '10.100.0.118' ?"
@@ -1209,15 +4305,69 @@ msgstr ""
 msgid "Opravdu chcete smazat '10.100.13.38' ?"
 msgstr ""
 
-msgid "Opravdu chcete smazat '213.180.53.34' ?"
+msgid "Opravdu chcete smazat '172.30.15.196' ?"
 msgstr ""
 
-msgid "Opravdu chcete smazat '82.150.162.10' ?"
+msgid "Opravdu chcete smazat '172.31.209.123' ?"
 msgstr ""
 
-msgid "Opravdu chcete smazat '90.182.20.85' ?"
+msgid "Opravdu chcete smazat '172.31.209.124' ?"
 msgstr ""
 
-msgid "Opravdu chcete smazat '94.74.230.22' ?"
+msgid "Opravdu chcete smazat '172.31.209.125' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.129' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.130' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.131' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.132' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.133' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.134' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.135' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.136' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.137' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.138' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.139' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.48' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.49' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.50' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.54' ?"
+msgstr ""
+
+msgid "Opravdu chcete smazat '172.31.209.72' ?"
+msgstr ""
+
+msgid "File does not exist"
+msgstr ""
+
+msgid "File record does not exist"
 msgstr ""
 

@@ -20,12 +20,16 @@ class ScriptCommandsRepository extends Nette\Object {
 
 	/** @var \Log\LogRepository */
 	public $log;
+	
+	/** @var \Files\FilesRepository */
+	public $files;
 
 	public $logRecord;
+	public $fileRecord;
 	public $deviceHost;
 	public $deviceUsername;
 	public $devicePassword;
-	public $fileStoragePath = '/var/backup/';
+	public $fileStoragePath;
 
 	/** @var \Device\DeviceRepository */
 	private $Drepo;
@@ -41,9 +45,10 @@ class ScriptCommandsRepository extends Nette\Object {
 	private $dateTime;
 	private $dateTimeFull;
 	
-    public function __construct(\Log\LogRepository $LogRepository, \Device\DeviceRepository $DeviceRepository, \Group\DeviceGroupRepository $DeviceGroupRepository, \Script\ScriptRepository $ScriptRepository)
+    public function __construct(\Log\LogRepository $LogRepository, \Files\FilesRepository $FilesRepository, \Device\DeviceRepository $DeviceRepository, \Group\DeviceGroupRepository $DeviceGroupRepository, \Script\ScriptRepository $ScriptRepository)
     {
 		$this->log = $LogRepository;
+		$this->files = $FilesRepository;
 		$this->Drepo = $DeviceRepository;
 		$this->DGrepo = $DeviceGroupRepository;
 		$this->Srepo = $ScriptRepository;
@@ -60,6 +65,7 @@ class ScriptCommandsRepository extends Nette\Object {
 				$this->logRecord['message'] = 'Loaded class ['.$class.']';
 				$this->logRecord['severity'] = 'info';
 				$this->log->addLog($this->logRecord);
+				$this->fileRecord['class'] = $class;
 			} else {
 				$this->logRecord['message'] = 'Fail to load class ['.$class.']';
 				$this->logRecord['severity'] = 'error';
@@ -90,6 +96,8 @@ class ScriptCommandsRepository extends Nette\Object {
 					? $this->devicePassword = $deviceData->authenticationPassword
 					: $this->devicePassword = $deviceData->password;
 			
+			$this->fileStoragePath = '/var/backup/'.$deviceData->deviceClass.'/'.$this->deviceHost.'/';
+			
 			$this->log->setLogId();
 			$this->logRecord = array("logId" => $this->log->getLogId(),
 									 "deviceHost" => $this->deviceHost,
@@ -97,6 +105,13 @@ class ScriptCommandsRepository extends Nette\Object {
 									 "deviceGroupName" => $deviceData->deviceGroupName,
 									 "scriptId" => $scriptData->id,
 									 "scriptName" => $scriptData->scriptName);
+
+			$this->fileRecord = array("deviceHost" => $this->deviceHost,
+									  "deviceGroupId" => $deviceData->deviceGroupId,
+									  "deviceGroupName" => $deviceData->deviceGroupName,
+									  "scriptId" => $scriptData->id,
+									  "scriptName" => $scriptData->scriptName,
+									  "filePath" => $this->fileStoragePath);
 
 			foreach (preg_split('/\r\n|\n|\r/', $scriptData->commands) as $value) {
 				$cmd = explode('->', rtrim($value, ';'));
