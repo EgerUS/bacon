@@ -90,31 +90,32 @@ class SCP extends \Nette\Object {
 		$this->init();
 		if ($this->connection)
 		{
-			$target = rtrim($this->script->fileStoragePath, '/').'/'.$this->script->deviceHost.'/';
-			if (!file_exists($target))
+			if (!file_exists(STORAGE_PATH))
 			{
-				if (@mkdir($target, 0777, true))
+				if (@mkdir(STORAGE_PATH, 0777, true))
 				{
-					$this->script->logRecord['message'] = 'Created target directory ['.$target.'].';
+					$this->script->logRecord['message'] = 'Created target directory ['.STORAGE_PATH.'].';
 					$this->script->logRecord['severity'] = 'info';
 					$this->script->log->addLog($this->script->logRecord);
 				} else {
-					$this->script->logRecord['message'] = 'Failed to create target directory ['.$target.'].';
+					$this->script->logRecord['message'] = 'Failed to create target directory ['.STORAGE_PATH.'].';
 					$this->script->logRecord['severity'] = 'error';
 					$this->script->log->addLog($this->script->logRecord);
 					return FALSE;
 				}
 			} else {
-				$this->script->logRecord['message'] = 'Target directory ['.$target.'] exists';
+				$this->script->logRecord['message'] = 'Target directory ['.STORAGE_PATH.'] exists';
 				$this->script->logRecord['severity'] = 'info';
 				$this->script->log->addLog($this->script->logRecord);
 			}
 
-			if (@$this->connection->get($file, $target.$file))
+			if (@$this->connection->get($file, STORAGE_PATH.$file))
 			{
-				$this->script->logRecord['message'] = 'The file ['.$file.'] was successfully downloaded to ['.$target.']';
+				$this->script->logRecord['message'] = 'The file ['.$file.'] was successfully downloaded to ['.STORAGE_PATH.']';
 				$this->script->logRecord['severity'] = 'success';
 				$this->script->log->addLog($this->script->logRecord);
+				$this->script->fileRecord['filename'] = $file;
+				$this->script->files->addLog($this->script->fileRecord);
 			} else {
 				$this->script->logRecord['message'] = 'Failed to download file ['.$file.']';
 				$this->script->logRecord['severity'] = 'error';

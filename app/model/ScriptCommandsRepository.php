@@ -29,7 +29,6 @@ class ScriptCommandsRepository extends Nette\Object {
 	public $deviceHost;
 	public $deviceUsername;
 	public $devicePassword;
-	public $fileStoragePath;
 
 	/** @var \Device\DeviceRepository */
 	private $Drepo;
@@ -96,8 +95,8 @@ class ScriptCommandsRepository extends Nette\Object {
 					? $this->devicePassword = $deviceData->authenticationPassword
 					: $this->devicePassword = $deviceData->password;
 			
-			$this->fileStoragePath = '/var/backup/'.$deviceData->deviceClass.'/'.$this->deviceHost.'/';
-			
+			define('STORAGE_PATH', '/var/backup/'.$deviceData->deviceClass.'/'.$this->deviceHost.'/');
+
 			$this->log->setLogId();
 			$this->logRecord = array("logId" => $this->log->getLogId(),
 									 "deviceHost" => $this->deviceHost,
@@ -111,7 +110,7 @@ class ScriptCommandsRepository extends Nette\Object {
 									  "deviceGroupName" => $deviceData->deviceGroupName,
 									  "scriptId" => $scriptData->id,
 									  "scriptName" => $scriptData->scriptName,
-									  "filePath" => $this->fileStoragePath);
+									  "filePath" => STORAGE_PATH);
 
 			foreach (preg_split('/\r\n|\n|\r/', $scriptData->commands) as $value) {
 				$cmd = explode('->', rtrim($value, ';'));
